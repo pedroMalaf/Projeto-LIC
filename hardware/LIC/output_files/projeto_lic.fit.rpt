@@ -1,5 +1,5 @@
 Fitter report for projeto_lic
-Mon Mar 14 22:05:38 2022
+Mon Mar 14 22:29:00 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Mon Mar 14 22:05:38 2022       ;
+; Fitter Status                      ; Successful - Mon Mar 14 22:29:00 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; projeto_lic                                 ;
 ; Top-level Entity Name              ; shift_register                              ;
@@ -578,7 +578,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/Users/roby/Documents/ISEL/projeto-lic/hardware/LIC/output_files/projeto_lic.pin.
+The pin-out file can be found in C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/output_files/projeto_lic.pin.
 
 
 +---------------------------------------------------------------------+
@@ -1647,7 +1647,7 @@ Info (332144): No user constrained base clocks found in the design
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
-Info (176353): Automatically promoted node clk~input (placed in PIN M8 (CLK1n, DIFFIO_RX_L36n, DIFFOUT_L36n, High_Speed)) File: C:/Users/roby/Documents/ISEL/projeto-lic/hardware/LIC/shift_register.vhd Line: 9
+Info (176353): Automatically promoted node clk~input (placed in PIN M8 (CLK1n, DIFFIO_RX_L36n, DIFFOUT_L36n, High_Speed)) File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd Line: 9
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G3
 Info (176233): Starting register packing
 Info (176235): Finished register packing
@@ -1872,19 +1872,19 @@ Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 10M50DAF484C6GES are preliminary
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:02
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
-Info (144001): Generated suppressed messages file C:/Users/roby/Documents/ISEL/projeto-lic/hardware/LIC/output_files/projeto_lic.fit.smsg
+Info (144001): Generated suppressed messages file C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/output_files/projeto_lic.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 194 warnings
-    Info: Peak virtual memory: 5379 megabytes
-    Info: Processing ended: Mon Mar 14 22:05:38 2022
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:18
+    Info: Peak virtual memory: 5377 megabytes
+    Info: Processing ended: Mon Mar 14 22:29:01 2022
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:19
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/Users/roby/Documents/ISEL/projeto-lic/hardware/LIC/output_files/projeto_lic.fit.smsg.
+The suppressed messages can be found in C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/output_files/projeto_lic.fit.smsg.
 
 

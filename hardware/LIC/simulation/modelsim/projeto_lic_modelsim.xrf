@@ -1,12 +1,12 @@
 vendor_name = ModelSim
-source_file = 1, C:/Users/roby/Documents/ISEL/projeto-lic/hardware/LIC/shift_register.vhd
-source_file = 1, C:/Users/roby/Documents/ISEL/projeto-lic/hardware/LIC/FFD.vhd
-source_file = 1, C:/Users/roby/Documents/ISEL/projeto-lic/hardware/LIC/shift_register_tb.vhd
+source_file = 1, C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd
+source_file = 1, C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd
+source_file = 1, C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register_tb.vhd
 source_file = 1, c:/intelfpga_lite/20.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, c:/intelfpga_lite/20.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
 source_file = 1, c:/intelfpga_lite/20.1/quartus/libraries/vhdl/ieee/timing_b.vhd
 source_file = 1, c:/intelfpga_lite/20.1/quartus/libraries/vhdl/ieee/timing_p.vhd
-source_file = 1, C:/Users/roby/Documents/ISEL/projeto-lic/hardware/LIC/db/projeto_lic.cbx.xml
+source_file = 1, C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/db/projeto_lic.cbx.xml
 design_name = shift_register
 instance = comp, \~QUARTUS_CREATED_GND~I , ~QUARTUS_CREATED_GND~I, shift_register, 1
 instance = comp, \D[0]~output , D[0]~output, shift_register, 1

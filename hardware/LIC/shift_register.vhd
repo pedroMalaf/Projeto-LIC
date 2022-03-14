@@ -5,7 +5,7 @@ USE IEEE.std_logic_1164.ALL;
 
 ENTITY shift_register IS
 	PORT (
-		Sin : IN std_logic;
+		Sin : IN STD_LOGIC;
 		clk, enable : IN STD_LOGIC;
 		D : OUT STD_LOGIC_VECTOR(9 DOWNTO 0)
 	);
@@ -24,7 +24,7 @@ ARCHITECTURE arq OF shift_register IS
 		);
 	END COMPONENT;
  
-	SIGNAL q : std_logic_vector(9 DOWNTO 0);
+	SIGNAL q : STD_LOGIC_VECTOR(9 DOWNTO 0);
 
 BEGIN
 
