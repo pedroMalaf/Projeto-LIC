@@ -1,0 +1,144 @@
+|shift_register
+Sin => FFD:u_ffd0.D
+clk => FFD:u_ffd0.CLK
+clk => FFD:u_ffd1.CLK
+clk => FFD:u_ffd2.CLK
+clk => FFD:u_ffd3.CLK
+clk => FFD:u_ffd4.CLK
+clk => FFD:u_ffd5.CLK
+clk => FFD:u_ffd6.CLK
+clk => FFD:u_ffd7.CLK
+clk => FFD:u_ffd8.CLK
+clk => FFD:u_ffd9.CLK
+enable => FFD:u_ffd0.EN
+enable => FFD:u_ffd1.EN
+enable => FFD:u_ffd2.EN
+enable => FFD:u_ffd3.EN
+enable => FFD:u_ffd4.EN
+enable => FFD:u_ffd5.EN
+enable => FFD:u_ffd6.EN
+enable => FFD:u_ffd7.EN
+enable => FFD:u_ffd8.EN
+enable => FFD:u_ffd9.EN
+enable => D.IN1
+enable => D.IN1
+enable => D.IN1
+enable => D.IN1
+enable => D.IN1
+enable => D.IN1
+enable => D.IN1
+enable => D.IN1
+enable => D.IN1
+enable => D.IN1
+D[0] << D.DB_MAX_OUTPUT_PORT_TYPE
+D[1] << D.DB_MAX_OUTPUT_PORT_TYPE
+D[2] << D.DB_MAX_OUTPUT_PORT_TYPE
+D[3] << D.DB_MAX_OUTPUT_PORT_TYPE
+D[4] << D.DB_MAX_OUTPUT_PORT_TYPE
+D[5] << D.DB_MAX_OUTPUT_PORT_TYPE
+D[6] << D.DB_MAX_OUTPUT_PORT_TYPE
+D[7] << D.DB_MAX_OUTPUT_PORT_TYPE
+D[8] << D.DB_MAX_OUTPUT_PORT_TYPE
+D[9] << D.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd0
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd1
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd2
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd3
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd4
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd5
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd6
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd7
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd8
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|shift_register|FFD:u_ffd9
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
