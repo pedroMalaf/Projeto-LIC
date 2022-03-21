@@ -8,26 +8,26 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/simulation/modelsim
+Z0 dC:/Users/pedri/Projeto-LIC/hardware/LIC/simulation/modelsim
 Effd
-Z1 w1647293889
+Z1 w1647812079
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 !i122 1
 R0
-Z4 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd
-Z5 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd
+Z4 8C:/Users/pedri/Projeto-LIC/hardware/LIC/FFD.vhd
+Z5 FC:/Users/pedri/Projeto-LIC/hardware/LIC/FFD.vhd
 l0
 L6 1
 VaA[ea1mO`b85H:If:@1ZY2
 !s100 e?z8]`9IUe;fRY<;1a4HO3
 Z6 OV;C;2020.1;71
 31
-Z7 !s110 1647297981
+Z7 !s110 1647890063
 !i10b 1
-Z8 !s108 1647297981.000000
-Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd|
-Z10 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd|
+Z8 !s108 1647890063.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/pedri/Projeto-LIC/hardware/LIC/FFD.vhd|
+Z10 !s107 C:/Users/pedri/Projeto-LIC/hardware/LIC/FFD.vhd|
 !i113 1
 Z11 o-93 -work work
 Z12 tExplicit 1 CvgOpt 0
@@ -50,25 +50,66 @@ R10
 !i113 1
 R11
 R12
+Eparity_check_tb
+Z13 w1647890012
+R2
+R3
+!i122 2
+R0
+Z14 8C:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check_tb.vhd
+Z15 FC:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check_tb.vhd
+l0
+L6 1
+VMkM4:m`Glc@WzEAT3ldVY0
+!s100 BKQQQEW8i@9gECFG@30On0
+R6
+31
+R7
+!i10b 1
+R8
+Z16 !s90 -reportprogress|300|-93|-work|work|C:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check_tb.vhd|
+!s107 C:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check_tb.vhd|
+!i113 1
+R11
+R12
+Aarq
+R2
+R3
+DEx4 work 15 parity_check_tb 0 22 MkM4:m`Glc@WzEAT3ldVY0
+!i122 2
+l28
+L9 75
+V:JD@]6S1XnHUXA5a;HcUo2
+!s100 SO^acaEO72mC7ejlknAV=0
+R6
+31
+R7
+!i10b 1
+R8
+R16
+Z17 !s107 C:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check_tb.vhd|
+!i113 1
+R11
+R12
 Eshift_register
-Z13 w1647297176
+Z18 w1647860650
 R2
 R3
 !i122 0
 R0
-Z14 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd
-Z15 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd
+Z19 8C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register.vhd
+Z20 FC:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register.vhd
 l0
 L6 1
 Voab<BVFoKMEb7Of@OX]Kn0
 !s100 5<dT;6Fd<SXiI1z82FYFA3
 R6
 31
-Z16 !s110 1647297980
+R7
 !i10b 1
-Z17 !s108 1647297980.000000
-Z18 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd|
-Z19 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd|
+R8
+Z21 !s90 -reportprogress|300|-93|-work|work|C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register.vhd|
+Z22 !s107 C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register.vhd|
 !i113 1
 R11
 R12
@@ -83,52 +124,11 @@ VC0^=VjCg3b?;:cl7TYi[L1
 !s100 ]V]J=nFCX4O_GbNXj_PHP3
 R6
 31
-R16
-!i10b 1
-R17
-R18
-R19
-!i113 1
-R11
-R12
-Eshift_register_tb
-Z20 w1647297896
-R2
-R3
-!i122 2
-R0
-Z21 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register_tb.vhd
-Z22 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register_tb.vhd
-l0
-L6 1
-VUW1L6I^iA13cmA3c8X^f>1
-!s100 FYb?H=ZTL5d:SJ?OXR6Z93
-R6
-31
 R7
 !i10b 1
 R8
-Z23 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register_tb.vhd|
-!s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register_tb.vhd|
-!i113 1
-R11
-R12
-Aarq
-R2
-R3
-DEx4 work 17 shift_register_tb 0 22 UW1L6I^iA13cmA3c8X^f>1
-!i122 2
-l26
-L9 78
-V5Kc89:6MhhAzWBG1nd6cO1
-!s100 id^2A537o;]IYZ5`DTf[>2
-R6
-31
-R7
-!i10b 1
-R8
-R23
-Z24 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register_tb.vhd|
+R21
+R22
 !i113 1
 R11
 R12

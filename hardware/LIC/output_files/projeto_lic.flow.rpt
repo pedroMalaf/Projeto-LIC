@@ -1,5 +1,5 @@
 Flow report for projeto_lic
-Mon Mar 14 22:48:17 2022
+Mon Mar 21 19:14:01 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Mon Mar 14 22:48:17 2022       ;
+; Flow Status                        ; Successful - Mon Mar 21 19:14:01 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; projeto_lic                                 ;
 ; Top-level Entity Name              ; shift_register                              ;
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/14/2022 22:47:34 ;
+; Start date & time ; 03/21/2022 19:13:35 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; projeto_lic         ;
 +-------------------+---------------------+
@@ -78,15 +78,19 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+---------------+----------------+-------------------+
 ; Assignment Name                      ; Value                                  ; Default Value ; Entity Name    ; Section Id        ;
 +--------------------------------------+----------------------------------------+---------------+----------------+-------------------+
-; COMPILER_SIGNATURE_ID                ; 66619476324623.164729805410056         ; --            ; --             ; --                ;
+; COMPILER_SIGNATURE_ID                ; 24580031918431.164789001522224         ; --            ; --             ; --                ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --             ; parity_check_tb   ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --             ; shift_register_tb ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; shift_register_tb                      ; --            ; --             ; eda_simulation    ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; parity_check_tb                        ; --            ; --             ; eda_simulation    ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                            ; --            ; --             ; eda_simulation    ;
 ; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)              ; <None>        ; --             ; --                ;
 ; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --             ; eda_simulation    ;
+; EDA_TEST_BENCH_FILE                  ; parity_check_tb.vhd                    ; --            ; --             ; parity_check_tb   ;
 ; EDA_TEST_BENCH_FILE                  ; shift_register_tb.vhd                  ; --            ; --             ; shift_register_tb ;
+; EDA_TEST_BENCH_MODULE_NAME           ; parity_check_tb                        ; --            ; --             ; parity_check_tb   ;
 ; EDA_TEST_BENCH_MODULE_NAME           ; shift_register_tb                      ; --            ; --             ; shift_register_tb ;
 ; EDA_TEST_BENCH_NAME                  ; shift_register_tb                      ; --            ; --             ; eda_simulation    ;
+; EDA_TEST_BENCH_NAME                  ; parity_check_tb                        ; --            ; --             ; eda_simulation    ;
 ; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --             ; eda_simulation    ;
 ; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --             ; --                ;
 ; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --             ; --                ;
@@ -105,12 +109,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:15     ; 1.0                     ; 4783 MB             ; 00:00:34                           ;
-; Fitter               ; 00:00:15     ; 1.0                     ; 5378 MB             ; 00:00:18                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 4686 MB             ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.0                     ; 4794 MB             ; 00:00:03                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4641 MB             ; 00:00:01                           ;
-; Total                ; 00:00:38     ; --                      ; --                  ; 00:01:00                           ;
+; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 4856 MB             ; 00:00:21                           ;
+; Fitter               ; 00:00:10     ; 1.0                     ; 6603 MB             ; 00:00:17                           ;
+; Assembler            ; 00:00:02     ; 1.0                     ; 4688 MB             ; 00:00:02                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.1                     ; 4928 MB             ; 00:00:02                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4642 MB             ; 00:00:00                           ;
+; Total                ; 00:00:22     ; --                      ; --                  ; 00:00:42                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -119,11 +123,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-IH6CTB0  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; DESKTOP-IH6CTB0  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-IH6CTB0  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; DESKTOP-IH6CTB0  ; Windows 10 ; 10.0       ; x86_64         ;
-; EDA Netlist Writer   ; DESKTOP-IH6CTB0  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; PedroMalafaia    ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; PedroMalafaia    ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; PedroMalafaia    ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; PedroMalafaia    ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; PedroMalafaia    ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

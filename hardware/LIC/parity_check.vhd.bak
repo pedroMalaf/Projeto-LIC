@@ -1,1 +1,13 @@
- 
+-- Parity check
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY parity_check IS
+	PORT (
+		data : IN STD_LOGIC;
+		clk : IN STD_LOGIC;
+		init : IN STD_LOGIC;
+		err : OUT STD_LOGIC
+	);
+END parity_check;

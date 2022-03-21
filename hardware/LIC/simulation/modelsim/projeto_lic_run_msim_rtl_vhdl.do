@@ -5,12 +5,12 @@ if {[file exists rtl_work]} {
 vlib rtl_work
 vmap work rtl_work
 
-vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd}
-vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd}
+vcom -93 -work work {C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register.vhd}
+vcom -93 -work work {C:/Users/pedri/Projeto-LIC/hardware/LIC/FFD.vhd}
 
-vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register_tb.vhd}
+vcom -93 -work work {C:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check_tb.vhd}
 
-vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  shift_register_tb
+vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  parity_check_tb
 
 add wave *
 view structure
