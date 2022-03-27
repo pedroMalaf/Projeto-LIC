@@ -1,5 +1,5 @@
 Analysis & Synthesis report for projeto_lic
-Mon Mar 21 19:13:43 2022
+Mon Mar 21 22:05:35 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -14,20 +14,14 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Inverted Register Statistics
- 10. Port Connectivity Checks: "FFD:u_ffd9"
- 11. Port Connectivity Checks: "FFD:u_ffd8"
- 12. Port Connectivity Checks: "FFD:u_ffd7"
- 13. Port Connectivity Checks: "FFD:u_ffd6"
- 14. Port Connectivity Checks: "FFD:u_ffd5"
- 15. Port Connectivity Checks: "FFD:u_ffd4"
- 16. Port Connectivity Checks: "FFD:u_ffd3"
- 17. Port Connectivity Checks: "FFD:u_ffd2"
- 18. Port Connectivity Checks: "FFD:u_ffd1"
- 19. Port Connectivity Checks: "FFD:u_ffd0"
- 20. Post-Synthesis Netlist Statistics for Top Partition
- 21. Elapsed Time Per Partition
- 22. Analysis & Synthesis Messages
+  9. Port Connectivity Checks: "adder:u_adder"
+ 10. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD3"
+ 11. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD2"
+ 12. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD1"
+ 13. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD0"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -54,16 +48,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Mar 21 19:13:43 2022       ;
+; Analysis & Synthesis Status        ; Successful - Mon Mar 21 22:05:34 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; projeto_lic                                 ;
-; Top-level Entity Name              ; shift_register                              ;
+; Top-level Entity Name              ; counter                                     ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 20                                          ;
-;     Total combinational functions  ; 11                                          ;
-;     Dedicated logic registers      ; 10                                          ;
-; Total registers                    ; 10                                          ;
-; Total pins                         ; 13                                          ;
+; Total logic elements               ; 0                                           ;
+;     Total combinational functions  ; 0                                           ;
+;     Dedicated logic registers      ; 0                                           ;
+; Total registers                    ; 0                                           ;
+; Total pins                         ; 6                                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -79,7 +73,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; 10M50DAF484C6GES   ;                    ;
-; Top-level entity name                                            ; shift_register     ; projeto_lic        ;
+; Top-level entity name                                            ; counter            ; projeto_lic        ;
 ; Family name                                                      ; MAX 10             ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -164,77 +158,68 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 16          ;
-; Maximum allowed            ; 16          ;
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 16          ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                      ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                               ; Library ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
-; shift_register.vhd               ; yes             ; User VHDL File  ; C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register.vhd ;         ;
-; FFD.vhd                          ; yes             ; User VHDL File  ; C:/Users/pedri/Projeto-LIC/hardware/LIC/FFD.vhd            ;         ;
-+----------------------------------+-----------------+-----------------+------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                               ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                        ; Library ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
+; FFD.vhd                          ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd       ;         ;
+; counter.vhd                      ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd   ;         ;
+; adder.vhd                        ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd     ;         ;
+; fulladder.vhd                    ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd ;         ;
+; register.vhd                     ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd  ;         ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                ;
-+---------------------------------------------+--------------+
-; Resource                                    ; Usage        ;
-+---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 20           ;
-;                                             ;              ;
-; Total combinational functions               ; 11           ;
-; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 0            ;
-;     -- 3 input functions                    ; 0            ;
-;     -- <=2 input functions                  ; 11           ;
-;                                             ;              ;
-; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 11           ;
-;     -- arithmetic mode                      ; 0            ;
-;                                             ;              ;
-; Total registers                             ; 10           ;
-;     -- Dedicated logic registers            ; 10           ;
-;     -- I/O registers                        ; 0            ;
-;                                             ;              ;
-; I/O pins                                    ; 13           ;
-;                                             ;              ;
-; Embedded Multiplier 9-bit elements          ; 0            ;
-;                                             ;              ;
-; Maximum fan-out node                        ; enable~input ;
-; Maximum fan-out                             ; 20           ;
-; Total fan-out                               ; 74           ;
-; Average fan-out                             ; 1.57         ;
-+---------------------------------------------+--------------+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+;                                             ;       ;
+; Total combinational functions               ; 0     ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- <=2 input functions                  ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 0     ;
+;     -- arithmetic mode                      ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 0     ;
+;     -- Dedicated logic registers            ; 0     ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 6     ;
+;                                             ;       ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; clr   ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 6     ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                          ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------+----------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name        ; Entity Name    ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------+----------------+--------------+
-; |shift_register            ; 11 (10)             ; 10 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 13   ; 0            ; 0          ; |shift_register            ; shift_register ; work         ;
-;    |FFD:u_ffd0|            ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd0 ; FFD            ; work         ;
-;    |FFD:u_ffd1|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd1 ; FFD            ; work         ;
-;    |FFD:u_ffd2|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd2 ; FFD            ; work         ;
-;    |FFD:u_ffd3|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd3 ; FFD            ; work         ;
-;    |FFD:u_ffd4|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd4 ; FFD            ; work         ;
-;    |FFD:u_ffd5|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd5 ; FFD            ; work         ;
-;    |FFD:u_ffd6|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd6 ; FFD            ; work         ;
-;    |FFD:u_ffd7|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd7 ; FFD            ; work         ;
-;    |FFD:u_ffd8|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd8 ; FFD            ; work         ;
-;    |FFD:u_ffd9|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |shift_register|FFD:u_ffd9 ; FFD            ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+----------------------------+----------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
+; |counter                   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 6    ; 0            ; 0          ; |counter            ; counter     ; work         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -243,133 +228,66 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 10    ;
+; Total registers                              ; 0     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 10    ;
+; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------+
-; Inverted Register Statistics                      ;
-+-----------------------------------------+---------+
-; Inverted Register                       ; Fan out ;
-+-----------------------------------------+---------+
-; FFD:u_ffd0|Q                            ; 2       ;
-; FFD:u_ffd1|Q                            ; 2       ;
-; FFD:u_ffd2|Q                            ; 2       ;
-; FFD:u_ffd3|Q                            ; 2       ;
-; FFD:u_ffd4|Q                            ; 2       ;
-; FFD:u_ffd5|Q                            ; 2       ;
-; FFD:u_ffd6|Q                            ; 2       ;
-; FFD:u_ffd7|Q                            ; 2       ;
-; FFD:u_ffd8|Q                            ; 2       ;
-; FFD:u_ffd9|Q                            ; 1       ;
-; Total number of inverted registers = 10 ;         ;
-+-----------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "adder:u_adder"                                                                         ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; b[3..1] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; b[0]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; cin     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd9"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
++--------------------------------------------------+
+; Port Connectivity Checks: "reg:u_reg|FFD:u_FFD3" ;
++-------+-------+----------+-----------------------+
+; Port  ; Type  ; Severity ; Details               ;
++-------+-------+----------+-----------------------+
+; set   ; Input ; Info     ; Stuck at GND          ;
+; reset ; Input ; Info     ; Stuck at GND          ;
++-------+-------+----------+-----------------------+
 
 
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd8"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
++--------------------------------------------------+
+; Port Connectivity Checks: "reg:u_reg|FFD:u_FFD2" ;
++-------+-------+----------+-----------------------+
+; Port  ; Type  ; Severity ; Details               ;
++-------+-------+----------+-----------------------+
+; set   ; Input ; Info     ; Stuck at GND          ;
+; reset ; Input ; Info     ; Stuck at GND          ;
++-------+-------+----------+-----------------------+
 
 
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd7"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
++--------------------------------------------------+
+; Port Connectivity Checks: "reg:u_reg|FFD:u_FFD1" ;
++-------+-------+----------+-----------------------+
+; Port  ; Type  ; Severity ; Details               ;
++-------+-------+----------+-----------------------+
+; set   ; Input ; Info     ; Stuck at GND          ;
+; reset ; Input ; Info     ; Stuck at GND          ;
++-------+-------+----------+-----------------------+
 
 
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd6"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
-
-
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd5"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
-
-
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd4"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
-
-
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd3"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
-
-
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd2"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
-
-
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd1"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
-
-
-+-----------------------------------------+
-; Port Connectivity Checks: "FFD:u_ffd0"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at GND ;
-; set   ; Input ; Info     ; Stuck at GND ;
-+-------+-------+----------+--------------+
++--------------------------------------------------+
+; Port Connectivity Checks: "reg:u_reg|FFD:u_FFD0" ;
++-------+-------+----------+-----------------------+
+; Port  ; Type  ; Severity ; Details               ;
++-------+-------+----------+-----------------------+
+; set   ; Input ; Info     ; Stuck at GND          ;
+; reset ; Input ; Info     ; Stuck at GND          ;
++-------+-------+----------+-----------------------+
 
 
 +-----------------------------------------------------+
@@ -377,16 +295,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 13                          ;
-; cycloneiii_ff         ; 10                          ;
-;     ENA               ; 10                          ;
-; cycloneiii_lcell_comb ; 11                          ;
-;     normal            ; 11                          ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 10                          ;
+; boundary_port         ; 6                           ;
+; cycloneiii_lcell_comb ; 1                           ;
+;     normal            ; 1                           ;
+;         0 data inputs ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 1.00                        ;
-; Average LUT depth     ; 0.96                        ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
 +-----------------------+-----------------------------+
 
 
@@ -405,47 +320,63 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Mon Mar 21 19:13:35 2022
+    Info: Processing started: Mon Mar 21 22:05:17 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off projeto_lic -c projeto_lic
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file shift_register.vhd
-    Info (12022): Found design unit 1: shift_register-arq File: C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register.vhd Line: 14
-    Info (12023): Found entity 1: shift_register File: C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register.vhd Line: 6
+    Info (12022): Found design unit 1: shift_register-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd Line: 14
+    Info (12023): Found entity 1: shift_register File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file ffd.vhd
-    Info (12022): Found design unit 1: FFD-arq File: C:/Users/pedri/Projeto-LIC/hardware/LIC/FFD.vhd Line: 17
-    Info (12023): Found entity 1: FFD File: C:/Users/pedri/Projeto-LIC/hardware/LIC/FFD.vhd Line: 6
+    Info (12022): Found design unit 1: FFD-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd Line: 17
+    Info (12023): Found entity 1: FFD File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file shift_register_tb.vhd
-    Info (12022): Found design unit 1: shift_register_tb-arq File: C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register_tb.vhd Line: 9
-    Info (12023): Found entity 1: shift_register_tb File: C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register_tb.vhd Line: 6
+    Info (12022): Found design unit 1: shift_register_tb-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register_tb.vhd Line: 9
+    Info (12023): Found entity 1: shift_register_tb File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register_tb.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file counter.vhd
-    Info (12022): Found design unit 1: counter-arq File: C:/Users/pedri/Projeto-LIC/hardware/LIC/counter.vhd Line: 14
-    Info (12023): Found entity 1: counter File: C:/Users/pedri/Projeto-LIC/hardware/LIC/counter.vhd Line: 6
+    Info (12022): Found design unit 1: counter-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 14
+    Info (12023): Found entity 1: counter File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file parity_check.vhd
-    Info (12022): Found design unit 1: parity_check-arq File: C:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check.vhd Line: 15
-    Info (12023): Found entity 1: parity_check File: C:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check.vhd Line: 6
-Info (12021): Found 2 design units, including 1 entities, in source file counter_register.vhd
-    Info (12022): Found design unit 1: counter_register-arq File: C:/Users/pedri/Projeto-LIC/hardware/LIC/counter_register.vhd Line: 13
-    Info (12023): Found entity 1: counter_register File: C:/Users/pedri/Projeto-LIC/hardware/LIC/counter_register.vhd Line: 5
-Info (12021): Found 2 design units, including 1 entities, in source file counter_adder.vhd
-    Info (12022): Found design unit 1: counter_adder-arq File: C:/Users/pedri/Projeto-LIC/hardware/LIC/counter_adder.vhd Line: 16
-    Info (12023): Found entity 1: counter_adder File: C:/Users/pedri/Projeto-LIC/hardware/LIC/counter_adder.vhd Line: 6
+    Info (12022): Found design unit 1: parity_check-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/parity_check.vhd Line: 15
+    Info (12023): Found entity 1: parity_check File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/parity_check.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file parity_check_tb.vhd
-    Info (12022): Found design unit 1: parity_check_tb-arq File: C:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check_tb.vhd Line: 9
-    Info (12023): Found entity 1: parity_check_tb File: C:/Users/pedri/Projeto-LIC/hardware/LIC/parity_check_tb.vhd Line: 6
-Info (12127): Elaborating entity "shift_register" for the top level hierarchy
-Info (12128): Elaborating entity "FFD" for hierarchy "FFD:u_ffd0" File: C:/Users/pedri/Projeto-LIC/hardware/LIC/shift_register.vhd Line: 31
-Info (286030): Timing-Driven Synthesis is running
+    Info (12022): Found design unit 1: parity_check_tb-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/parity_check_tb.vhd Line: 9
+    Info (12023): Found entity 1: parity_check_tb File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/parity_check_tb.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file adder.vhd
+    Info (12022): Found design unit 1: adder-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd Line: 18
+    Info (12023): Found entity 1: adder File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file fulladder.vhd
+    Info (12022): Found design unit 1: fulladder-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd Line: 17
+    Info (12023): Found entity 1: fulladder File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file register.vhd
+    Info (12022): Found design unit 1: reg-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd Line: 15
+    Info (12023): Found entity 1: reg File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file counter_tb.vhd
+    Info (12022): Found design unit 1: counter_tb-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd Line: 9
+    Info (12023): Found entity 1: counter_tb File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd Line: 6
+Info (12127): Elaborating entity "counter" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at counter.vhd(10): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
+Info (12128): Elaborating entity "reg" for hierarchy "reg:u_reg" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 41
+Info (12128): Elaborating entity "FFD" for hierarchy "reg:u_reg|FFD:u_FFD0" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd Line: 25
+Info (12128): Elaborating entity "adder" for hierarchy "adder:u_adder" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 48
+Info (12128): Elaborating entity "fulladder" for hierarchy "adder:u_adder|fulladder:u_full_adder0" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd Line: 30
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "err[0]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
+    Warning (13410): Pin "err[1]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
+    Warning (13410): Pin "err[2]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
+    Warning (13410): Pin "err[3]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 33 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 20 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4856 megabytes
-    Info: Processing ended: Mon Mar 21 19:13:43 2022
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:21
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clr" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 8
+    Warning (15610): No output dependent on input pin "clk" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 9
+Info (21057): Implemented 6 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 4 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 4775 megabytes
+    Info: Processing ended: Mon Mar 21 22:05:35 2022
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:37
 
 

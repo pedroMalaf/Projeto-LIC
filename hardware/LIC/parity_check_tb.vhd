@@ -1,4 +1,4 @@
--- parity check test bench
+-- Parity check Testbench
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -10,23 +10,19 @@ ARCHITECTURE arq OF parity_check_tb IS
 
 	COMPONENT parity_check IS
 		PORT (
-		data : IN STD_LOGIC;
-		clk : IN STD_LOGIC;
-		init : IN STD_LOGIC;
-		err : OUT STD_LOGIC
-	);
+			data : IN STD_LOGIC;
+			clk : IN STD_LOGIC;
+			init : IN STD_LOGIC;
+			err : OUT STD_LOGIC
+		);
 	END COMPONENT;
 
 	CONSTANT MCLK_PERIOD : TIME := 20 ns;
 	CONSTANT MCLK_HALF_PERIOD : TIME := MCLK_PERIOD / 2;
 
-	SIGNAL data_tb : STD_LOGIC;
-	SIGNAL clk_tb : STD_LOGIC;
-	SIGNAL init_tb : STD_LOGIC;
-	SIGNAL err_tb : STD_LOGIC;
-	
-BEGiN
+	SIGNAL data_tb, clk_tb, init_tb, err_tb : STD_LOGIC;
 
+BEGIN
 	UUT : parity_check
 	PORT MAP(
 		data => data_tb, 
@@ -34,7 +30,7 @@ BEGiN
 		init => init_tb, 
 		err => err_tb
 	);
-	
+ 
 	clk_gen : PROCESS
 	BEGIN
 		clk_tb <= '0';
@@ -43,40 +39,36 @@ BEGiN
 		WAIT FOR MCLK_HALF_PERIOD;
 	END PROCESS;
 
-stimulus : PROCESS
+	stimulus : PROCESS
 	BEGIN
-	
 		init_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
-		
+ 
 		init_tb <= '1';
-		
+		--WAIT FOR MCLK_PERIOD; -- ?
+ 
+		data_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+
+		data_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+
 		data_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		data_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
  
 		data_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		data_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		data_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
  
-		data_tb <= '1';
-		WAIT FOR MCLK_PERIOD;
- 
-		data_tb <= '0';
-		WAIT FOR MCLK_PERIOD;
- 
-		data_tb <= '0';
-		WAIT FOR MCLK_PERIOD;
-		
 		init_tb <= '0';
-		
 		WAIT;
 	END PROCESS;
 

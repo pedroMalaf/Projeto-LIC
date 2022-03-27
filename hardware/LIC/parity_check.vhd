@@ -24,24 +24,22 @@ ARCHITECTURE arq OF parity_check IS
 			Q : OUT STD_LOGIC
 		);
 	END COMPONENT;
- 
-	SIGNAL not_init, q, d : STD_LOGIC;
-	
-BEGIN
 
-d <= data xor q;
-not_init <= not init;
+	SIGNAL d, q : STD_LOGIC;
+
+BEGIN
+	d <= data XOR q;
 
 	u_ffd0 : FFD
-		PORT MAP(
-			EN => '1', 
-			RESET => not_init, 
-			SET => '0', 
-			CLK => clk, 
-			D => d, 
-			Q => q
-		);
-			
+	PORT MAP(
+		EN => '1', 
+		RESET => NOT(init), 
+		SET => '0', 
+		CLK => clk, 
+		D => d, 
+		Q => q
+	);
+
 	err <= q;
-		
- end arq;
+
+END arq;

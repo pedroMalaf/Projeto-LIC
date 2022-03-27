@@ -1,48 +1,32 @@
-|shift_register
-Sin => FFD:u_ffd0.D
-clk => FFD:u_ffd0.CLK
-clk => FFD:u_ffd1.CLK
-clk => FFD:u_ffd2.CLK
-clk => FFD:u_ffd3.CLK
-clk => FFD:u_ffd4.CLK
-clk => FFD:u_ffd5.CLK
-clk => FFD:u_ffd6.CLK
-clk => FFD:u_ffd7.CLK
-clk => FFD:u_ffd8.CLK
-clk => FFD:u_ffd9.CLK
-enable => FFD:u_ffd0.EN
-enable => FFD:u_ffd1.EN
-enable => FFD:u_ffd2.EN
-enable => FFD:u_ffd3.EN
-enable => FFD:u_ffd4.EN
-enable => FFD:u_ffd5.EN
-enable => FFD:u_ffd6.EN
-enable => FFD:u_ffd7.EN
-enable => FFD:u_ffd8.EN
-enable => FFD:u_ffd9.EN
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-D[0] << D.DB_MAX_OUTPUT_PORT_TYPE
-D[1] << D.DB_MAX_OUTPUT_PORT_TYPE
-D[2] << D.DB_MAX_OUTPUT_PORT_TYPE
-D[3] << D.DB_MAX_OUTPUT_PORT_TYPE
-D[4] << D.DB_MAX_OUTPUT_PORT_TYPE
-D[5] << D.DB_MAX_OUTPUT_PORT_TYPE
-D[6] << D.DB_MAX_OUTPUT_PORT_TYPE
-D[7] << D.DB_MAX_OUTPUT_PORT_TYPE
-D[8] << D.DB_MAX_OUTPUT_PORT_TYPE
-D[9] << D.DB_MAX_OUTPUT_PORT_TYPE
+|counter
+clr => reg:u_reg.CE
+clk => reg:u_reg.CLK
+err[0] << comb.DB_MAX_OUTPUT_PORT_TYPE
+err[1] << err[1].DB_MAX_OUTPUT_PORT_TYPE
+err[2] << err[2].DB_MAX_OUTPUT_PORT_TYPE
+err[3] << err[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|shift_register|FFD:u_ffd0
+|counter|reg:u_reg
+F[0] => FFD:u_FFD0.D
+F[1] => FFD:u_FFD1.D
+F[2] => FFD:u_FFD2.D
+F[3] => FFD:u_FFD3.D
+CE => FFD:u_FFD0.EN
+CE => FFD:u_FFD1.EN
+CE => FFD:u_FFD2.EN
+CE => FFD:u_FFD3.EN
+CLK => FFD:u_FFD0.CLK
+CLK => FFD:u_FFD1.CLK
+CLK => FFD:u_FFD2.CLK
+CLK => FFD:u_FFD3.CLK
+Q[0] <= FFD:u_FFD0.Q
+Q[1] <= FFD:u_FFD1.Q
+Q[2] <= FFD:u_FFD2.Q
+Q[3] <= FFD:u_FFD3.Q
+
+
+|counter|reg:u_reg|FFD:u_FFD0
 CLK => Q~reg0.CLK
 RESET => Q~reg0.ACLR
 RESET => Q.IN0
@@ -52,7 +36,7 @@ EN => Q~reg0.ENA
 Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|shift_register|FFD:u_ffd1
+|counter|reg:u_reg|FFD:u_FFD1
 CLK => Q~reg0.CLK
 RESET => Q~reg0.ACLR
 RESET => Q.IN0
@@ -62,7 +46,7 @@ EN => Q~reg0.ENA
 Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|shift_register|FFD:u_ffd2
+|counter|reg:u_reg|FFD:u_FFD2
 CLK => Q~reg0.CLK
 RESET => Q~reg0.ACLR
 RESET => Q.IN0
@@ -72,7 +56,7 @@ EN => Q~reg0.ENA
 Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|shift_register|FFD:u_ffd3
+|counter|reg:u_reg|FFD:u_FFD3
 CLK => Q~reg0.CLK
 RESET => Q~reg0.ACLR
 RESET => Q.IN0
@@ -82,63 +66,64 @@ EN => Q~reg0.ENA
 Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|shift_register|FFD:u_ffd4
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|counter|adder:u_adder
+A[0] => fulladder:u_full_adder0.A
+A[1] => fulladder:u_full_adder1.A
+A[2] => fulladder:u_full_adder2.A
+A[3] => fulladder:u_full_adder3.A
+B[0] => fulladder:u_full_adder0.B
+B[1] => fulladder:u_full_adder1.B
+B[2] => fulladder:u_full_adder2.B
+B[3] => fulladder:u_full_adder3.B
+Cin => fulladder:u_full_adder0.Cin
+S[0] <= fulladder:u_full_adder0.S
+S[1] <= fulladder:u_full_adder1.S
+S[2] <= fulladder:u_full_adder2.S
+S[3] <= fulladder:u_full_adder3.S
+Cout <= fulladder:u_full_adder3.Cout
 
 
-|shift_register|FFD:u_ffd5
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|counter|adder:u_adder|fulladder:u_full_adder0
+A => S.IN0
+A => Cout.IN0
+B => S.IN1
+B => Cout.IN1
+Cin => S.IN1
+Cin => Cout.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|shift_register|FFD:u_ffd6
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|counter|adder:u_adder|fulladder:u_full_adder1
+A => S.IN0
+A => Cout.IN0
+B => S.IN1
+B => Cout.IN1
+Cin => S.IN1
+Cin => Cout.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|shift_register|FFD:u_ffd7
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|counter|adder:u_adder|fulladder:u_full_adder2
+A => S.IN0
+A => Cout.IN0
+B => S.IN1
+B => Cout.IN1
+Cin => S.IN1
+Cin => Cout.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|shift_register|FFD:u_ffd8
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|shift_register|FFD:u_ffd9
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|counter|adder:u_adder|fulladder:u_full_adder3
+A => S.IN0
+A => Cout.IN0
+B => S.IN1
+B => Cout.IN1
+Cin => S.IN1
+Cin => Cout.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
 
 
