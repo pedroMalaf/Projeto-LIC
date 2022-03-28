@@ -1,10 +1,8 @@
 |counter
 clr => reg:u_reg.CE
 clk => reg:u_reg.CLK
-err[0] << comb.DB_MAX_OUTPUT_PORT_TYPE
-err[1] << err[1].DB_MAX_OUTPUT_PORT_TYPE
-err[2] << err[2].DB_MAX_OUTPUT_PORT_TYPE
-err[3] << err[3].DB_MAX_OUTPUT_PORT_TYPE
+d_flag << d_flag.DB_MAX_OUTPUT_PORT_TYPE
+p_flag << p_flag.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |counter|reg:u_reg

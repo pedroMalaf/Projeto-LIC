@@ -12,7 +12,7 @@ ARCHITECTURE arq OF counter_tb IS
 		PORT (
 			clr : IN STD_LOGIC;
 			clk : IN STD_LOGIC;
-			err : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+			d_flag, p_flag : OUT STD_LOGIC
 		);
 	END COMPONENT;
 
@@ -20,14 +20,15 @@ ARCHITECTURE arq OF counter_tb IS
 	CONSTANT MCLK_HALF_PERIOD : TIME := MCLK_PERIOD / 2;
 
 	SIGNAL clr_tb, clk_tb : STD_LOGIC;
-	SIGNAL err_tb : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL d_flag_tb, p_flag_tb : STD_LOGIC;
 
 BEGIN
 	UUT : counter
 	PORT MAP(
 		clr => clr_tb, 
 		clk => clk_tb, 
-		err => err_tb
+		d_flag => d_flag_tb,
+		p_flag => p_flag_tb
 	);
  
 	clk_gen : PROCESS

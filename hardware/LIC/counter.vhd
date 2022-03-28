@@ -7,7 +7,7 @@ ENTITY counter IS
 	PORT (
 		clr : IN STD_LOGIC;
 		clk : IN STD_LOGIC;
-		d_flag, p_flag : OUT STD_LOGIC_VECTOR(1 DOWNTO 0)
+		d_flag, p_flag : OUT STD_LOGIC
 	);
 END counter;
 
@@ -54,7 +54,7 @@ BEGIN
 		S => s_add
 	);
 	
-	p_dlag <= s_add(3) AND NOT(s_add(2)) AND s_add(1) AND NOT(s_add(0)); --10
+	d_flag <= s_add(3) AND NOT(s_add(2)) AND s_add(1) AND NOT(s_add(0)); --10
 	p_flag <= s_add(3) AND NOT(s_add(2)) AND s_add(1) AND s_add(0); --11
  
 END arq;

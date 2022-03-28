@@ -1,5 +1,5 @@
 Analysis & Synthesis report for projeto_lic
-Mon Mar 21 22:05:35 2022
+Mon Mar 28 10:34:20 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -14,14 +14,15 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Port Connectivity Checks: "adder:u_adder"
- 10. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD3"
- 11. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD2"
- 12. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD1"
- 13. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD0"
- 14. Post-Synthesis Netlist Statistics for Top Partition
- 15. Elapsed Time Per Partition
- 16. Analysis & Synthesis Messages
+  9. Inverted Register Statistics
+ 10. Port Connectivity Checks: "adder:u_adder"
+ 11. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD3"
+ 12. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD2"
+ 13. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD1"
+ 14. Port Connectivity Checks: "reg:u_reg|FFD:u_FFD0"
+ 15. Post-Synthesis Netlist Statistics for Top Partition
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
 
 
 
@@ -48,16 +49,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Mar 21 22:05:34 2022       ;
+; Analysis & Synthesis Status        ; Successful - Mon Mar 28 10:34:20 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; projeto_lic                                 ;
 ; Top-level Entity Name              ; counter                                     ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 0                                           ;
-;     Total combinational functions  ; 0                                           ;
-;     Dedicated logic registers      ; 0                                           ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 6                                           ;
+; Total logic elements               ; 6                                           ;
+;     Total combinational functions  ; 6                                           ;
+;     Dedicated logic registers      ; 4                                           ;
+; Total registers                    ; 4                                           ;
+; Total pins                         ; 4                                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -162,10 +163,11 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -182,44 +184,54 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-;                                             ;       ;
-; Total combinational functions               ; 0     ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 6     ;
-;                                             ;       ;
-; Embedded Multiplier 9-bit elements          ; 0     ;
-;                                             ;       ;
-; Maximum fan-out node                        ; clr   ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 6     ;
-; Average fan-out                             ; 0.50  ;
-+---------------------------------------------+-------+
++----------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                          ;
++---------------------------------------------+------------------------+
+; Resource                                    ; Usage                  ;
++---------------------------------------------+------------------------+
+; Estimated Total logic elements              ; 6                      ;
+;                                             ;                        ;
+; Total combinational functions               ; 6                      ;
+; Logic element usage by number of LUT inputs ;                        ;
+;     -- 4 input functions                    ; 3                      ;
+;     -- 3 input functions                    ; 1                      ;
+;     -- <=2 input functions                  ; 2                      ;
+;                                             ;                        ;
+; Logic elements by mode                      ;                        ;
+;     -- normal mode                          ; 6                      ;
+;     -- arithmetic mode                      ; 0                      ;
+;                                             ;                        ;
+; Total registers                             ; 4                      ;
+;     -- Dedicated logic registers            ; 4                      ;
+;     -- I/O registers                        ; 0                      ;
+;                                             ;                        ;
+; I/O pins                                    ; 4                      ;
+;                                             ;                        ;
+; Embedded Multiplier 9-bit elements          ; 0                      ;
+;                                             ;                        ;
+; Maximum fan-out node                        ; reg:u_reg|FFD:u_FFD0|Q ;
+; Maximum fan-out                             ; 6                      ;
+; Total fan-out                               ; 36                     ;
+; Average fan-out                             ; 2.00                   ;
++---------------------------------------------+------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; |counter                   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 6    ; 0            ; 0          ; |counter            ; counter     ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                ;
++---------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------+-------------+--------------+
+; Compilation Hierarchy Node      ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                            ; Entity Name ; Library Name ;
++---------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------+-------------+--------------+
+; |counter                        ; 6 (2)               ; 4 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 4    ; 0            ; 0          ; |counter                                       ; counter     ; work         ;
+;    |adder:u_adder|              ; 3 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |counter|adder:u_adder                         ; adder       ; work         ;
+;       |fulladder:u_full_adder1| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |counter|adder:u_adder|fulladder:u_full_adder1 ; fulladder   ; work         ;
+;       |fulladder:u_full_adder2| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |counter|adder:u_adder|fulladder:u_full_adder2 ; fulladder   ; work         ;
+;       |fulladder:u_full_adder3| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |counter|adder:u_adder|fulladder:u_full_adder3 ; fulladder   ; work         ;
+;    |reg:u_reg|                  ; 1 (0)               ; 4 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |counter|reg:u_reg                             ; reg         ; work         ;
+;       |FFD:u_FFD0|              ; 1 (1)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |counter|reg:u_reg|FFD:u_FFD0                  ; FFD         ; work         ;
+;       |FFD:u_FFD1|              ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |counter|reg:u_reg|FFD:u_FFD1                  ; FFD         ; work         ;
+;       |FFD:u_FFD2|              ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |counter|reg:u_reg|FFD:u_FFD2                  ; FFD         ; work         ;
+;       |FFD:u_FFD3|              ; 0 (0)               ; 1 (1)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |counter|reg:u_reg|FFD:u_FFD3                  ; FFD         ; work         ;
++---------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -228,14 +240,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 4     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 4     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; reg:u_reg|FFD:u_FFD2|Q                 ; 4       ;
+; reg:u_reg|FFD:u_FFD1|Q                 ; 5       ;
+; reg:u_reg|FFD:u_FFD0|Q                 ; 6       ;
+; reg:u_reg|FFD:u_FFD3|Q                 ; 3       ;
+; Total number of inverted registers = 4 ;         ;
++----------------------------------------+---------+
 
 
 +-------------------------------------------------------------------------------------------------------------------+
@@ -295,13 +320,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 6                           ;
-; cycloneiii_lcell_comb ; 1                           ;
-;     normal            ; 1                           ;
-;         0 data inputs ; 1                           ;
+; boundary_port         ; 4                           ;
+; cycloneiii_ff         ; 4                           ;
+;     ENA               ; 4                           ;
+; cycloneiii_lcell_comb ; 6                           ;
+;     normal            ; 6                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 1                           ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 3                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 0.00                        ;
-; Average LUT depth     ; 0.00                        ;
+; Max LUT depth         ; 1.00                        ;
+; Average LUT depth     ; 0.83                        ;
 +-----------------------+-----------------------------+
 
 
@@ -320,7 +350,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Mon Mar 21 22:05:17 2022
+    Info: Processing started: Mon Mar 28 10:34:05 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off projeto_lic -c projeto_lic
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -354,29 +384,31 @@ Info (12021): Found 2 design units, including 1 entities, in source file registe
 Info (12021): Found 2 design units, including 1 entities, in source file counter_tb.vhd
     Info (12022): Found design unit 1: counter_tb-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd Line: 9
     Info (12023): Found entity 1: counter_tb File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file serial_control.vhd
+    Info (12022): Found design unit 1: serial_control-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd Line: 14
+    Info (12023): Found entity 1: serial_control File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file serial_control_tb.vhd
+    Info (12022): Found design unit 1: serial_control_tb-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd Line: 9
+    Info (12023): Found entity 1: serial_control_tb File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file serial_receiver.vhd
+    Info (12022): Found design unit 1: serial_receiver-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_receiver.vhd Line: 18
+    Info (12023): Found entity 1: serial_receiver File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_receiver.vhd Line: 6
 Info (12127): Elaborating entity "counter" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at counter.vhd(10): used implicit default value for signal "err" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
-Info (12128): Elaborating entity "reg" for hierarchy "reg:u_reg" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 41
+Info (12128): Elaborating entity "reg" for hierarchy "reg:u_reg" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 40
 Info (12128): Elaborating entity "FFD" for hierarchy "reg:u_reg|FFD:u_FFD0" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd Line: 25
 Info (12128): Elaborating entity "adder" for hierarchy "adder:u_adder" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 48
 Info (12128): Elaborating entity "fulladder" for hierarchy "adder:u_adder|fulladder:u_full_adder0" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd Line: 30
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "err[0]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
-    Warning (13410): Pin "err[1]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
-    Warning (13410): Pin "err[2]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
-    Warning (13410): Pin "err[3]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 10
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clr" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 8
-    Warning (15610): No output dependent on input pin "clk" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 9
-Info (21057): Implemented 6 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 10 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 4 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 4775 megabytes
-    Info: Processing ended: Mon Mar 21 22:05:35 2022
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:37
+    Info (21059): Implemented 2 output pins
+    Info (21061): Implemented 6 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4784 megabytes
+    Info: Processing ended: Mon Mar 28 10:34:20 2022
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:34
 
 

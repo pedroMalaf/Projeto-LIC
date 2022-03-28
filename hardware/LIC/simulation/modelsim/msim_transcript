@@ -12,75 +12,75 @@
 # 
 # vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:07:40 on Mar 21,2022
+# Start time: 08:18:31 on Mar 28,2022
 # vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity FFD
 # -- Compiling architecture arq of FFD
-# End time: 22:07:40 on Mar 21,2022, Elapsed time: 0:00:00
+# End time: 08:18:32 on Mar 28,2022, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:07:40 on Mar 21,2022
+# Start time: 08:18:32 on Mar 28,2022
 # vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity counter
 # -- Compiling architecture arq of counter
-# End time: 22:07:41 on Mar 21,2022, Elapsed time: 0:00:01
+# End time: 08:18:32 on Mar 28,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:07:41 on Mar 21,2022
+# Start time: 08:18:32 on Mar 28,2022
 # vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity adder
 # -- Compiling architecture arq of adder
-# End time: 22:07:41 on Mar 21,2022, Elapsed time: 0:00:00
+# End time: 08:18:32 on Mar 28,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:07:41 on Mar 21,2022
+# Start time: 08:18:32 on Mar 28,2022
 # vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity fulladder
 # -- Compiling architecture arq of fulladder
-# End time: 22:07:41 on Mar 21,2022, Elapsed time: 0:00:00
+# End time: 08:18:32 on Mar 28,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:07:41 on Mar 21,2022
+# Start time: 08:18:32 on Mar 28,2022
 # vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity reg
 # -- Compiling architecture arq of reg
-# End time: 22:07:41 on Mar 21,2022, Elapsed time: 0:00:00
+# End time: 08:18:33 on Mar 28,2022, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
 # vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:07:41 on Mar 21,2022
+# Start time: 08:18:33 on Mar 28,2022
 # vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity counter_tb
 # -- Compiling architecture arq of counter_tb
-# End time: 22:07:41 on Mar 21,2022, Elapsed time: 0:00:00
+# End time: 08:18:33 on Mar 28,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  counter_tb
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs=""+acc"" counter_tb 
-# Start time: 22:07:41 on Mar 21,2022
+# Start time: 08:18:33 on Mar 28,2022
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -90,8 +90,6 @@
 # Loading work.ffd(arq)
 # Loading work.adder(arq)
 # Loading work.fulladder(arq)
-# ** Warning: (vsim-8683) Uninitialized out port /counter_tb/UUT/err(3 downto 0) has no driver.
-# This port will contribute value (UUUU) to the signal network.
 # 
 # add wave *
 # view structure
@@ -99,8 +97,7 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-add wave -position end  sim:/counter_tb/UUT/u_adder/u_full_adder0/A
 # Break key hit
-# Simulation stop requested.
-# End time: 22:12:40 on Mar 21,2022, Elapsed time: 0:04:59
-# Errors: 0, Warnings: 1
+# Break in Architecture arq at C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd line 22
+# End time: 08:19:01 on Mar 28,2022, Elapsed time: 0:00:28
+# Errors: 0, Warnings: 0
