@@ -2,24 +2,7 @@
 	"partitions" : [
 		{
 			"name" : "Top",
-			"pins" : [
-				{
-					"name" : "d_flag",
-					"strict" : false
-				},
-				{
-					"name" : "p_flag",
-					"strict" : false
-				},
-				{
-					"name" : "clk",
-					"strict" : false
-				},
-				{
-					"name" : "clr",
-					"strict" : false
-				}
-			]
+			"pins" : []
 		}
 	]
 }
