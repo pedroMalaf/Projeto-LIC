@@ -9,37 +9,37 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/simulation/modelsim
-Eadder
-Z1 w1647901637
+Eserial_control
+Z1 w1648937059
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 2
+!i122 0
 R0
-Z4 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd
-Z5 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd
+Z4 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd
+Z5 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd
 l0
 L7 1
-V6<HIPNPimh@ikgfCE[A8Y0
-!s100 Of:9gOSF]=5m5YUV@AHRY0
+V:7zE?T`iQzjnOIQ=]aRdI1
+!s100 gdL_06<`I6BJlkX<AXnkU3
 Z6 OV;C;2020.1;71
 31
-Z7 !s110 1648451912
+Z7 !s110 1648938517
 !i10b 1
-Z8 !s108 1648451912.000000
-Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd|
-Z10 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd|
+Z8 !s108 1648938517.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd|
+Z10 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd|
 !i113 1
 Z11 o-93 -work work
 Z12 tExplicit 1 CvgOpt 0
 Aarq
 R2
 R3
-DEx4 work 5 adder 0 22 6<HIPNPimh@ikgfCE[A8Y0
-!i122 2
-l29
-L18 48
-VTYG7XAD`OVAWUY^g<=NO60
-!s100 Mm8N22aBTz`F?iV[bCoko3
+DEx4 work 14 serial_control 0 22 :7zE?T`iQzjnOIQ=]aRdI1
+!i122 0
+l25
+L15 59
+Vb5LbZVgzA]3f5[kVOA76b0
+!s100 AmnfoE:kD=Hd;2XC<enfb1
 R6
 31
 R7
@@ -50,208 +50,44 @@ R10
 !i113 1
 R11
 R12
-Ecounter
-Z13 w1648451799
+Eserial_control_tb
+Z13 w1648938398
 R2
 R3
 !i122 1
 R0
-Z14 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd
-Z15 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd
+Z14 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd
+Z15 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd
 l0
 L6 1
-VfO6L63NUVNkfbHCHV@QXG1
-!s100 ?kE0D5G8Wb4@3>R1oTQ2T2
+V46gnnDfHAF[RalARSg^=k2
+!s100 G?3UY4Y3i>kDFlA:N:[n]2
 R6
 31
-R7
+Z16 !s110 1648938518
 !i10b 1
-R8
-Z16 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd|
-Z17 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd|
+Z17 !s108 1648938518.000000
+Z18 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd|
+!s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd|
 !i113 1
 R11
 R12
 Aarq
 R2
 R3
-DEx4 work 7 counter 0 22 fO6L63NUVNkfbHCHV@QXG1
+DEx4 work 17 serial_control_tb 0 22 46gnnDfHAF[RalARSg^=k2
 !i122 1
-l39
-L14 47
-V@P?odULEBYj_g4]8cP=aG2
-!s100 17lXBKC>hdcEMMm9M3l[<2
+l26
+L9 97
+VVI_ONmECUBJOKKAMMFz:Z0
+!s100 hH?H373l@Tb=T80d50Njj0
 R6
 31
-R7
-!i10b 1
-R8
 R16
+!i10b 1
 R17
-!i113 1
-R11
-R12
-Ecounter_tb
-Z18 w1648451854
-R2
-R3
-!i122 5
-R0
-Z19 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd
-Z20 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd
-l0
-L6 1
-VCYcQo0I]eoE@SFnOh4``03
-!s100 @4nRaK;zU13FdH7zoS:fm1
-R6
-31
-Z21 !s110 1648451913
-!i10b 1
-Z22 !s108 1648451913.000000
-Z23 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd|
-!s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd|
-!i113 1
-R11
-R12
-Aarq
-R2
-R3
-DEx4 work 10 counter_tb 0 22 CYcQo0I]eoE@SFnOh4``03
-!i122 5
-l25
-L9 45
-VfX4lCc7:TG1c9^_98AI8=2
-!s100 IF26:6f?zcg`?1hIe>]g@3
-R6
-31
-R21
-!i10b 1
-R22
-R23
-Z24 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd|
-!i113 1
-R11
-R12
-Effd
-Z25 w1647901708
-R2
-R3
-!i122 0
-R0
-Z26 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd
-Z27 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd
-l0
-L6 1
-VaA[ea1mO`b85H:If:@1ZY2
-!s100 e?z8]`9IUe;fRY<;1a4HO3
-R6
-31
-R7
-!i10b 1
-Z28 !s108 1648451911.000000
-Z29 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd|
-Z30 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd|
-!i113 1
-R11
-R12
-Aarq
-R2
-R3
-DEx4 work 3 ffd 0 22 aA[ea1mO`b85H:If:@1ZY2
-!i122 0
-l19
-L17 7
-V:m@IYkzMS2?:Cn<4K>mLT1
-!s100 0M;Zgf@15[n9XnG_kiH351
-R6
-31
-R7
-!i10b 1
-R28
-R29
-R30
-!i113 1
-R11
-R12
-Efulladder
-Z31 w1647901717
-R2
-R3
-!i122 3
-R0
-Z32 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd
-Z33 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd
-l0
-L6 1
-VEk4f53nZC7P:gX<mDfgim3
-!s100 coQjQj:`3z?nbK>Cl8ZG]1
-R6
-31
-R7
-!i10b 1
-R8
-Z34 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd|
-Z35 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd|
-!i113 1
-R11
-R12
-Aarq
-R2
-R3
-DEx4 work 9 fulladder 0 22 Ek4f53nZC7P:gX<mDfgim3
-!i122 3
-l18
-L17 5
-V?g4D^39WH]oYEalZP@a]@0
-!s100 f^i3MKJAjTS3f@nfQSnA?1
-R6
-31
-R7
-!i10b 1
-R8
-R34
-R35
-!i113 1
-R11
-R12
-Ereg
-Z36 w1647901749
-R2
-R3
-!i122 4
-R0
-Z37 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd
-Z38 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd
-l0
-L6 1
-VMRNReNKdC:EYDjT_fMg8d1
-!s100 jg6KeA`EgJM[a`P=^6jN@0
-R6
-31
-R7
-!i10b 1
-R8
-Z39 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd|
-Z40 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd|
-!i113 1
-R11
-R12
-Aarq
-R2
-R3
-DEx4 work 3 reg 0 22 MRNReNKdC:EYDjT_fMg8d1
-!i122 4
-l24
-L15 51
-VH6j5O@C2H[UWbXfkYjlBD1
-!s100 C4ac6ZF<OPE1ceBma^X`b0
-R6
-31
-R7
-!i10b 1
-R8
-R39
-R40
+R18
+Z19 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd|
 !i113 1
 R11
 R12

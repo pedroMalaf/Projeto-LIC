@@ -49,7 +49,56 @@ BEGIN
 
 	stimulus : PROCESS
 	BEGIN
+		
+		-- input: not_SS, accept, pFlag, dFlag, RXerror
+		-- statebefore -> stateafter
+		reset_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
+		
+		-- 00 -> 00
+		not_SS_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+		
+		-- 00 -> 01
+		not_SS_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		-- 01 -> 01
+		not_SS_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		-- 01 -> 01
+		not_SS_tb <= '1';
+		dFlag_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		-- 01 -> 10
+		not_SS_tb <= '1';
+		dFlag_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+		
+		-- 10 -> 10
+		pFlag_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		-- TO TEST: RXerror = 1 (10 -> 00)
+		
+		-- 10 -> 11
+		pFlag_tb <= '1';
+		RXerror_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		-- 11 -> 11
+		accept_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		-- 11 -> 00
+		accept_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+		
+		reset_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+		
 		WAIT;
 	END PROCESS;
 

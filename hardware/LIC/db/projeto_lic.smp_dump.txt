@@ -1,5 +1,5 @@
 
-State Machine - |IOS|serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS
+State Machine - |serial_control|CS
 Name CS.STATE_END CS.STATE_RECEIVED CS.STATE_RECEIVING CS.STATE_AVAILABLE 
 CS.STATE_AVAILABLE 0 0 0 0 
 CS.STATE_RECEIVING 0 0 1 1 

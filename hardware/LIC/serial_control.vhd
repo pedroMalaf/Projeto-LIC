@@ -1,4 +1,5 @@
--- Serial Controller (state machine) TOTEST
+-- Serial Controller (state machine)
+-- (check serialcontroller-asm.png for info)
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -38,7 +39,7 @@ BEGIN
 				END IF;
  
 			WHEN STATE_RECEIVING => 
-				IF (dFlag = '1') THEN
+				IF (not_SS = '1' AND dFlag = '1') THEN
 					NS <= STATE_RECEIVED;
 				ELSE
 					NS <= STATE_RECEIVING;
@@ -48,16 +49,16 @@ BEGIN
 				IF (pFlag = '0') THEN
 					NS <= STATE_RECEIVED;
 				ELSIF (pFlag = '1' AND RXerror = '0') THEN
-					NS <= STATE_AVAILABLE;
+					NS <= STATE_END;
 				ELSE
-					NS <= STATE_END; -- pFlag = '1' and RXerror = '1'
+					NS <= STATE_AVAILABLE; -- pFlag = '1' and RXerror = '1'
 				END IF;
  
 			WHEN STATE_END => 
 				IF (accept = '1') THEN
 					NS <= STATE_AVAILABLE;
 				ELSE
-					NS <= STATE_RECEIVED;
+					NS <= STATE_END;
 				END IF; 
  
 		END CASE;
@@ -65,8 +66,8 @@ BEGIN
 
 	-- Generate outputs
 	busy <= '1' WHEN (CS = STATE_END) ELSE '0';
-	wr <= '0' WHEN (CS = STATE_AVAILABLE) ELSE '1';
-	init <= '0' WHEN (CS = STATE_AVAILABLE) ELSE '1';
+	wr <= '1' WHEN (CS = STATE_RECEIVING) ELSE '0';
+	init <= '1' WHEN (CS = STATE_AVAILABLE) ELSE '0';
 	DXval <= '1' WHEN (CS = STATE_END) ELSE '0';
 
 END arq;

@@ -10,86 +10,38 @@
 # Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd}
+# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 08:18:31 on Mar 28,2022
-# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd 
+# Start time: 23:28:37 on Apr 02,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity FFD
-# -- Compiling architecture arq of FFD
-# End time: 08:18:32 on Mar 28,2022, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd}
-# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 08:18:32 on Mar 28,2022
-# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity counter
-# -- Compiling architecture arq of counter
-# End time: 08:18:32 on Mar 28,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd}
-# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 08:18:32 on Mar 28,2022
-# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity adder
-# -- Compiling architecture arq of adder
-# End time: 08:18:32 on Mar 28,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd}
-# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 08:18:32 on Mar 28,2022
-# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity fulladder
-# -- Compiling architecture arq of fulladder
-# End time: 08:18:32 on Mar 28,2022, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd}
-# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 08:18:32 on Mar 28,2022
-# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity reg
-# -- Compiling architecture arq of reg
-# End time: 08:18:33 on Mar 28,2022, Elapsed time: 0:00:01
+# -- Compiling entity serial_control
+# -- Compiling architecture arq of serial_control
+# End time: 23:28:37 on Apr 02,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd}
+# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 08:18:33 on Mar 28,2022
-# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter_tb.vhd 
+# Start time: 23:28:38 on Apr 02,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity counter_tb
-# -- Compiling architecture arq of counter_tb
-# End time: 08:18:33 on Mar 28,2022, Elapsed time: 0:00:00
+# -- Compiling entity serial_control_tb
+# -- Compiling architecture arq of serial_control_tb
+# End time: 23:28:38 on Apr 02,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  counter_tb
-# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs=""+acc"" counter_tb 
-# Start time: 08:18:33 on Mar 28,2022
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  serial_control_tb
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs=""+acc"" serial_control_tb 
+# Start time: 23:28:38 on Apr 02,2022
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
-# Loading work.counter_tb(arq)
-# Loading work.counter(arq)
-# Loading work.reg(arq)
-# Loading work.ffd(arq)
-# Loading work.adder(arq)
-# Loading work.fulladder(arq)
+# Loading work.serial_control_tb(arq)
+# Loading work.serial_control(arq)
 # 
 # add wave *
 # view structure
@@ -97,7 +49,5 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# Break key hit
-# Break in Architecture arq at C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd line 22
-# End time: 08:19:01 on Mar 28,2022, Elapsed time: 0:00:28
+# End time: 23:36:14 on Apr 02,2022, Elapsed time: 0:07:36
 # Errors: 0, Warnings: 0
