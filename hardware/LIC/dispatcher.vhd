@@ -26,6 +26,7 @@ ARCHITECTURE arq OF dispatcher IS
 type STATE_TYPE is (STATE_AVAILABLE, STATE_SENDING_TICKET, STATE_SENDING_LCD, STATE_END);
 
 signal CS, NS: STATE_TYPE; -- Current & Next State 
+signal din_s: STD_LOGIC_VECTOR(8 downto 0); -- Remove indicator bit (LCD ou TD)
 
 BEGIN
 
@@ -41,7 +42,7 @@ generate_next_state: process (CS, Dval, Din, Fsh)
 												NS <= STATE_AVAILABLE; 
 											elsif (Dval = '1' and Din(9) = '1') then
 												NS <= STATE_SENDING_TICKET;  
-											elsif (DVAL = '1' and Din(9) = '0') then
+											elsif (Dval = '1' and Din(9) = '0') then
 												NS <= STATE_SENDING_LCD;
 											end if;
 			
@@ -54,15 +55,24 @@ generate_next_state: process (CS, Dval, Din, Fsh)
 									else
 										NS <= STATE_AVAILABLE;
 									end if;
-									
-			--when STATE_END => 		-- TODO accept
+								
 		end case;
 	end process;
+	
+din_s(0) <= Din(0);
+din_s(1) <= Din(1);
+din_s(2) <= Din(2);
+din_s(3) <= Din(3);
+din_s(4) <= Din(4);
+din_s(5) <= Din(5);
+din_s(6) <= Din(6);
+din_s(7) <= Din(7);
+din_s(8) <= Din(8);
 
 -- Generate outputs
 WrT <= '1' when (CS = STATE_SENDING_TICKET) else '0';
-Dout <= Din when (CS = STATE_SENDING_TICKET or CS = STATE_SENDING_LCD) else '1'; ----- ns como se faz 
-WrL <= '1' when (CS = STATE_SENDING_LCD) else '1';
+WrL <= '1' when (CS = STATE_SENDING_LCD) else '0';
+Dout <= din_s when (CS = STATE_SENDING_TICKET or CS = STATE_SENDING_LCD) else "000000000"; 
 DONE <= '1' when (CS = STATE_END) else '0';
  
 END arq;

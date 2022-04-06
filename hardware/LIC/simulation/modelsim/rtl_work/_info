@@ -9,37 +9,37 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/simulation/modelsim
-Eserial_control
-Z1 w1648937059
+Edispatcher
+Z1 w1649251575
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 !i122 0
 R0
-Z4 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd
-Z5 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd
+Z4 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd
+Z5 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd
 l0
-L7 1
-V:7zE?T`iQzjnOIQ=]aRdI1
-!s100 gdL_06<`I6BJlkX<AXnkU3
+L6 1
+VckSKBjBhf:8[Yk<6nVDa;3
+!s100 VD;H=UIc1V13k0T9d@2fO1
 Z6 OV;C;2020.1;71
 31
-Z7 !s110 1648938517
+Z7 !s110 1649255086
 !i10b 1
-Z8 !s108 1648938517.000000
-Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd|
-Z10 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd|
+Z8 !s108 1649255086.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd|
+Z10 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd|
 !i113 1
 Z11 o-93 -work work
 Z12 tExplicit 1 CvgOpt 0
 Aarq
 R2
 R3
-DEx4 work 14 serial_control 0 22 :7zE?T`iQzjnOIQ=]aRdI1
+DEx4 work 10 dispatcher 0 22 ckSKBjBhf:8[Yk<6nVDa;3
 !i122 0
-l25
-L15 59
-Vb5LbZVgzA]3f5[kVOA76b0
-!s100 AmnfoE:kD=Hd;2XC<enfb1
+l31
+L19 60
+ViT;nF1:P^Z@Jg1Z6m41di0
+!s100 EQ<EZB<O@MB?7S67O]3Z?3
 R6
 31
 R7
@@ -50,44 +50,44 @@ R10
 !i113 1
 R11
 R12
-Eserial_control_tb
-Z13 w1648938398
+Edispatcher_tb
+Z13 w1649254277
 R2
 R3
 !i122 1
 R0
-Z14 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd
-Z15 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd
+Z14 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd
+Z15 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd
 l0
 L6 1
-V46gnnDfHAF[RalARSg^=k2
-!s100 G?3UY4Y3i>kDFlA:N:[n]2
+VK1BdIgAQ]0KRFWeDo4i221
+!s100 GX`>keLSSRk^EfbhJP>k`0
 R6
 31
-Z16 !s110 1648938518
+R7
 !i10b 1
-Z17 !s108 1648938518.000000
-Z18 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd|
-!s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd|
+R8
+Z16 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd|
+!s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd|
 !i113 1
 R11
 R12
-Aarq
+Aarqui
 R2
 R3
-DEx4 work 17 serial_control_tb 0 22 46gnnDfHAF[RalARSg^=k2
+DEx4 work 13 dispatcher_tb 0 22 K1BdIgAQ]0KRFWeDo4i221
 !i122 1
-l26
-L9 97
-VVI_ONmECUBJOKKAMMFz:Z0
-!s100 hH?H373l@Tb=T80d50Njj0
+l32
+L9 70
+VISf=mWeJ]f=FK`zNFV>bH2
+!s100 CL0>JAL[a>?LTO80mFgJB3
 R6
 31
-R16
+R7
 !i10b 1
-R17
-R18
-Z19 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd|
+R8
+R16
+Z17 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd|
 !i113 1
 R11
 R12

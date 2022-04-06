@@ -2,52 +2,7 @@
 	"partitions" : [
 		{
 			"name" : "Top",
-			"pins" : [
-				{
-					"name" : "wr",
-					"strict" : false
-				},
-				{
-					"name" : "init",
-					"strict" : false
-				},
-				{
-					"name" : "DXval",
-					"strict" : false
-				},
-				{
-					"name" : "busy",
-					"strict" : false
-				},
-				{
-					"name" : "dFlag",
-					"strict" : false
-				},
-				{
-					"name" : "not_SS",
-					"strict" : false
-				},
-				{
-					"name" : "clk",
-					"strict" : false
-				},
-				{
-					"name" : "reset",
-					"strict" : false
-				},
-				{
-					"name" : "accept",
-					"strict" : false
-				},
-				{
-					"name" : "RXerror",
-					"strict" : false
-				},
-				{
-					"name" : "pFlag",
-					"strict" : false
-				}
-			]
+			"pins" : []
 		}
 	]
 }

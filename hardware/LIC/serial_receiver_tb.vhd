@@ -50,6 +50,26 @@ BEGIN
 	stimulus : PROCESS
 	BEGIN
 		WAIT FOR MCLK_PERIOD;
+		
+		-- entrada normal, 
+		SDX_tb <= '1';
+		SDX_tb <= '1';
+		SDX_tb <= '1';
+		SDX_tb <= '1';
+		SDX_tb <= '1';
+		SDX_tb <= '1';
+		SDX_tb <= '1';
+		SDX_tb <= '1';
+		SDX_tb <= '1';
+		SDX_tb <= '1';
+		SDX_tb <= '1'; --parity
+		
+		
+		-- uma entrada incompleta e de seguida outra entrada para ver se aquilo começava de novo
+		
+		
+		
+		-- uma entrada com o bit de paridade errado
  
 		WAIT;
 	END PROCESS;

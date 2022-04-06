@@ -10,38 +10,38 @@
 # Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd}
+# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 23:28:37 on Apr 02,2022
-# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd 
+# Start time: 15:24:46 on Apr 06,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity serial_control
-# -- Compiling architecture arq of serial_control
-# End time: 23:28:37 on Apr 02,2022, Elapsed time: 0:00:00
+# -- Compiling entity dispatcher
+# -- Compiling architecture arq of dispatcher
+# End time: 15:24:46 on Apr 06,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd}
+# vcom -93 -work work {C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd}
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 23:28:38 on Apr 02,2022
-# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control_tb.vhd 
+# Start time: 15:24:46 on Apr 06,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Compiling entity serial_control_tb
-# -- Compiling architecture arq of serial_control_tb
-# End time: 23:28:38 on Apr 02,2022, Elapsed time: 0:00:00
+# -- Compiling entity dispatcher_tb
+# -- Compiling architecture arqui of dispatcher_tb
+# End time: 15:24:46 on Apr 06,2022, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
-# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  serial_control_tb
-# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs=""+acc"" serial_control_tb 
-# Start time: 23:28:38 on Apr 02,2022
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  dispatcher_tb
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs=""+acc"" dispatcher_tb 
+# Start time: 15:24:46 on Apr 06,2022
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
-# Loading work.serial_control_tb(arq)
-# Loading work.serial_control(arq)
+# Loading work.dispatcher_tb(arqui)
+# Loading work.dispatcher(arq)
 # 
 # add wave *
 # view structure
@@ -49,5 +49,7 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# End time: 23:36:14 on Apr 02,2022, Elapsed time: 0:07:36
+# Break key hit
+# Break in Process clk_gen at C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd line 49
+# End time: 15:25:01 on Apr 06,2022, Elapsed time: 0:00:15
 # Errors: 0, Warnings: 0

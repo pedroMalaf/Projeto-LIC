@@ -10,7 +10,7 @@ ENTITY IOS IS
 		not_SS : IN STD_LOGIC;
 		Fsh : IN STD_LOGIC; --> Fn -> fsh
 		WrT : OUT STD_LOGIC; --> Wrt -> Prt
-		Dout : OUT STD_LOGIC_VECTOR(7 DOWNTO 0); --> Dout -> DId; Dout -> D
+		Dout : OUT STD_LOGIC_VECTOR(8 DOWNTO 0); --> Dout -> DId; Dout -> D
 		WrL : OUT STD_LOGIC; --> wrl -> E 
 		busy : OUT STD_LOGIC
 	);
@@ -34,7 +34,7 @@ ARCHITECTURE arq OF IOS IS
 		PORT (
 			Fsh, Dval : IN STD_LOGIC;
 			Din : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
-			Dout : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+			Dout : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
 			WrT, WrL : OUT std_logic;
 			done : OUT std_logic
 		);
