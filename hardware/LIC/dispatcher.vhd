@@ -46,15 +46,14 @@ generate_next_state: process (CS, Dval, Din, Fsh)
 												NS <= STATE_SENDING_LCD;
 											end if;
 			
-			when STATE_SENDING_TICKET => NS <= STATE_END;
-		
+			when STATE_SENDING_TICKET => if (Fsh = '0') then
+														NS <= STATE_SENDING_TICKET;
+													elsif (Fsh = '1') then
+														NS <= STATE_END;
+													
 			when STATE_SENDING_LCD => NS <= STATE_END;
 			
-			when STATE_END => if (Fsh = '0') then 
-										NS <= STATE_END;
-									else
-										NS <= STATE_AVAILABLE;
-									end if;
+			when STATE_END => NS <= STATE_AVAILABLE;
 								
 		end case;
 	end process;
@@ -72,7 +71,7 @@ din_s(8) <= Din(8);
 -- Generate outputs
 WrT <= '1' when (CS = STATE_SENDING_TICKET) else '0';
 WrL <= '1' when (CS = STATE_SENDING_LCD) else '0';
-Dout <= din_s when (CS = STATE_SENDING_TICKET or CS = STATE_SENDING_LCD) else "000000000"; 
+Dout <= din_s;  
 DONE <= '1' when (CS = STATE_END) else '0';
  
 END arq;
