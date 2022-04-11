@@ -1,14 +1,47 @@
-import isel.leic.*
-import isel.leic.simul.gate.Gate
+import isel.leic.UsbPort
 
+// Testbench
 fun main() {
-    HAL.init(255)
-    //
+    HAL.init(146)
+
+    // readBits
+    // state = 146 (1001 0010) ; mask = 57 (0011 1001) ; readBits = 16 (0001 0000)
+    assert(HAL.readBits(0b111001) == 0b00010000)
+    println("HAL.readBits test passed")
+
+    // isBit
+    // state = 146 (1001 0010) ; mask = 8 (0000 1000) ; isBit = true
+    assert(HAL.isBit(0b00001000))
+    // state = 146 (1001 0010) ; mask = 0 (0000 0000) ; isBit = false
+    assert(!HAL.isBit(0))
+    println("HAL.isBit test passed")
+
+    // setBits
+    // state = 128 (1000 0000) ; mask = 15 (0000 1111) ; output leds = 143 (1000 1111)
+    HAL.lastState = 128
+    HAL.setBits(0b00001111)
+    println("running HAL.setBits")
+
+    // clrBits
+    // state = 143 (1000 1111) ; mask = 3 (0000 0011) ; output leds = 140 (1000 1100)
+    HAL.clrBits(0b00000011)
+    println("running HAL.clrBits")
+
+    // writeBits
+    // state = 140 (1000 1100) ; mask = 15 (0000 1111) ; value = 9 (0000 1001) ;  output leds = 137 (1000 1001)
+    HAL.writeBits(0b00001111, 0b00001001)
+    println("running HAL.writeBits")
 }
 
-// Virtualiza o acesso ao sistema UsbPort
+// HAL - Virtualiza o acesso ao sistema UsbPort
 object HAL {
-    private var lastState = 255  // all pins ON by default
+    var lastState = 255  // all pins ON by default
+
+    // Muda o estado dos output leds para [newState]
+    private fun changeState(newState: Int) {
+        UsbPort.write(newState)
+        lastState = newState
+    }
 
     // Inicia a classe, começando com os bits a [state]
     fun init(state: Int) {
@@ -32,22 +65,16 @@ object HAL {
     fun writeBits(mask: Int, value: Int) {
         val num = mask and value
         val numMask = mask.inv() and lastState
-        val newState = numMask or num
-        UsbPort.write(newState)
-        lastState = newState
+        changeState(numMask or num)
     }
 
     // Coloca os bits representados por mask no valor lógico ‘1’
     fun setBits(mask: Int) {
-        val newState = mask or lastState
-        UsbPort.write(newState)
-        lastState = newState
+        changeState(mask or lastState)
     }
 
     // Coloca os bits representados por mask no valor lógico ‘0’
     fun clrBits(mask: Int) {
-        val newState = mask.inv() and lastState
-        UsbPort.write(newState)
-        lastState = newState
+        changeState(mask.inv() and lastState)
     }
 }
