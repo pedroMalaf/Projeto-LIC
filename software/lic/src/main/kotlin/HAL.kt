@@ -1,6 +1,6 @@
 import isel.leic.UsbPort
 
-// Testbench
+// Testbench (RUN THIS WITH BREAKPOINTS TO DEBUG LEDS)
 fun main() {
     HAL.init(146)
 
@@ -33,7 +33,12 @@ fun main() {
     println("running HAL.writeBits")
 }
 
-// HAL - Virtualiza o acesso ao sistema UsbPort
+/**
+ * HAL
+ *
+ * Virtualiza o acesso ao sistema UsbPort
+ *
+ */
 object HAL {
     var lastState = 255  // all pins ON by default
 
@@ -45,8 +50,7 @@ object HAL {
 
     // Inicia a classe, começando com os bits a [state]
     fun init(state: Int) {
-        lastState = state
-        UsbPort.write(lastState)
+        changeState(state)
     }
 
     // Retorna true se o bit tiver o valor lógico ‘1’
