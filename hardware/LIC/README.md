@@ -1,28 +1,35 @@
 # Ticket Machine
 ## Hardware implementation
 
-### IOS
-- [quase?] IOS
-- [ ] IOS testbench
-    - [X] Serial receiver
-    - [ ] Serial receiver testbench 
-        - [X] Shift register
-        - [X] Shift register testbench
-        - [X] Counter
-        - [X] Counter testbench
-        - [X] Parity check
-        - [X] Parity check testbench
-        - [X] Serial controller
-        - [X] Serial controller testbench
-    - [X] Dispatcher
-    - [X] Dispatcher testbench
-<img src="https://github.com/pedroMalaf/Projeto-Lic/blob/main/images/ios.png">
+<img src="https://github.com/pedroMalaf/Projeto-LIC/blob/master/images/ios.png?raw=true">
 
+Legenda:
+- ✔️ - Implementado e testado
+- ✖️ - Não implementado
+- 🟡 - Falta testar / ver se tem bugs
+
+### IOS
+- [🟡] IOS
+- [✖️] IOS testbench
+    - [✔️] Serial receiver
+    - [✖️] Serial receiver testbench 
+        - [✔️] Shift register
+        - [✔️] Shift register testbench
+        - [✔️] Counter
+        - [✔️] Counter testbench
+        - [✔️] Parity check
+        - [✔️] Parity check testbench
+        - [✔️] Serial controller
+        - [✔️] Serial controller testbench
+    - [✔️] Dispatcher
+    - [✔️] Dispatcher testbench
+   
 ### Ticket dispenser
-- [quase?] Ticket dispenser
-- [quase?] Ticket dispenser testbench
+- [🟡] Ticket dispenser
+- [🟡] Ticket dispenser testbench
 
 ### Ticket machine
-Junta Ticket dispenser + IOS
-*todo: imagem to quadro aqui ou assim*
+✖️ Juntar Ticket dispenser + IOS
+
+*todo: imagem do quadro aqui @pedroMalaf*
 
