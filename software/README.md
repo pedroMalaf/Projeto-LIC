@@ -1,7 +1,7 @@
 # Ticket Machine
 ## Software implementation
 
-<img src="https://github.com/pedroMalaf/Projeto-LIC/blob/master/images/software_ticker_machine.png?raw=true">
+<img src="https://github.com/pedroMalaf/Projeto-LIC/blob/master/images/software_ticket_machine.png?raw=true">
 
 ### Software
 - [✔️] HAL
@@ -11,9 +11,6 @@
 - [✔️] Ticket dispenser
 - [✔️] Ticket dispenser testbench
 - [🟡] Testar o software na placa
-
-
-*todo: imagem do quadro aqui @pedroMalaf*
 
 
 *Legenda:*
