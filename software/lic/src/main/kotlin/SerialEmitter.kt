@@ -20,6 +20,6 @@ object SerialEmitter {
 
     // Retorna true se o canal série estiver ocupado
     fun isBusy(): Boolean {
-
+        return true
     }
 }
