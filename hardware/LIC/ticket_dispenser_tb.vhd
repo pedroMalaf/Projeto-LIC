@@ -12,7 +12,7 @@ ARCHITECTURE arq OF ticket_dispenser_tb IS
         PORT (
 		MCLK: IN STD_LOGIC;
 		reset: IN STD_LOGIC;
-		collet: IN STD_LOGIC; -- collet ticker: tirar o bilhete, simular com meter um switch a 1 e dps 0
+		collect: IN STD_LOGIC; -- collect ticker: tirar o bilhete, simular com meter um switch a 1 e dps 0
 		
 		HEX0, HEX1, HEX2: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 		
@@ -28,7 +28,7 @@ ARCHITECTURE arq OF ticket_dispenser_tb IS
 	 SIGNAL clk_tb: STD_LOGIC;
 
 		SIGNAL reset_tb: STD_LOGIC;
-		SIGNAL collet_tb: STD_LOGIC;
+		SIGNAL collect_tb: STD_LOGIC;
 		 
 		SIGNAL HEX0_tb, HEX1_tb, HEX2_tb: STD_LOGIC_VECTOR(7 DOWNTO 0);
 		 
@@ -41,7 +41,7 @@ BEGIN
     UUT : ticket_dispenser
     PORT MAP(
         reset => reset_tb,
-		  collet => collet_tb,
+		  collect => collect_tb,
 		  HEX0 => HEX0_tb,
 		  HEX1 => HEX1_tb,
 		  HEX2 => HEX2_tb,

@@ -7,7 +7,7 @@ ENTITY ticket_dispenser IS
 	PORT (
 		MCLK: IN STD_LOGIC;
 		reset: IN STD_LOGIC;
-		collet: IN STD_LOGIC; -- collet ticker: tirar o bilhete, simular com meter um switch a 1 e dps 0
+		collect: IN STD_LOGIC; -- collect ticket: tirar o bilhete, simular com meter um switch a 1 e dps 0
 		
 		HEX0, HEX1, HEX2: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 		
@@ -50,6 +50,6 @@ begin
         HEX0 => HEX2
     );
 	
-	Fn <= collet;
+	Fn <= collect;
 	
 END arq;
