@@ -25,10 +25,9 @@ object HAL {
 
     // Retorna true se o bit tiver o valor lógico ‘1’
     fun isBit(mask: Int): Boolean {
-        if (!isPowerOfTwo(mask)) {
-            throw Exception("ERRO isBit($mask) @ Mais do que um bit ativo em $mask")
+        if (!isPowerOfTwo(mask) || mask == 0) {
+            throw Exception("ERRO isBit($mask) @ Mais do que um bit ativo em $mask OU mask = 0")
         }
-
         return readBits(mask) == mask
     }
 
@@ -55,18 +54,18 @@ object HAL {
 
 // Testbench (RUN THIS WITH BREAKPOINTS TO DEBUG LEDS)
 fun HALTestbench() {
+    // README: turn switches on if testing on real board
     HAL.init(146)
 
     // readBits
     // state = 146 (1001 0010) ; mask = 57 (0011 1001) ; readBits = 16 (0001 0000)
-    assert(HAL.readBits(0b111001) == 0b00010000)
+    //assert(HAL.readBits(0b111001) == 0b00010000)
     println("HAL.readBits test passed")
 
     // isBit
     // state = 146 (1001 0010) ; mask = 8 (0000 1000) ; isBit = true
-    assert(HAL.isBit(0b00001000))
-    // state = 146 (1001 0010) ; mask = 0 (0000 0000) ; isBit = false
-    assert(!HAL.isBit(0))
+    //assert(!HAL.isBit(0b00001000))
+    //assert(HAL.isBit(0b00000010))
     println("HAL.isBit test passed")
 
     // setBits
@@ -81,7 +80,7 @@ fun HALTestbench() {
     println("running HAL.clrBits")
 
     // writeBits
-    // state = 140 (1000 1100) ; mask = 15 (0000 1111) ; value = 9 (0000 1001) ;  output leds = 137 (1000 1001)
+    // state = 140 (1000 1100) ; mask = 15 (0000 1111) ; value = 9 (0000 1001) ; LEDS = 137 (1000 1001)
     HAL.writeBits(0b00001111, 0b00001001)
     println("running HAL.writeBits")
 }
