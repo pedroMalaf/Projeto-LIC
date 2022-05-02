@@ -1,386 +1,325 @@
-|IOS
-SCLK => serial_receiver:u_serial_receiver.SCLK
-SDX => serial_receiver:u_serial_receiver.SDX
-not_SS => serial_receiver:u_serial_receiver.not_SS
-Fsh => ~NO_FANOUT~
-WrT <= dispatcher:u_dispatcher.WrT
-Dout[0] <= dispatcher:u_dispatcher.Dout[0]
-Dout[1] <= dispatcher:u_dispatcher.Dout[1]
-Dout[2] <= dispatcher:u_dispatcher.Dout[2]
-Dout[3] <= dispatcher:u_dispatcher.Dout[3]
-Dout[4] <= dispatcher:u_dispatcher.Dout[4]
-Dout[5] <= dispatcher:u_dispatcher.Dout[5]
-Dout[6] <= dispatcher:u_dispatcher.Dout[6]
-Dout[7] <= dispatcher:u_dispatcher.Dout[7]
-Dout[8] <= dispatcher:u_dispatcher.Dout[8]
-WrL <= dispatcher:u_dispatcher.WrL
-busy <= serial_receiver:u_serial_receiver.busy
+|ticket_dispenser
+MCLK => ~NO_FANOUT~
+reset => decoderHex:UdecoderHex.clear
+reset => decoderHex:UdecoderHex1.clear
+reset => decoderHex:UdecoderHex2.clear
+collet => Fn.DATAIN
+HEX0[0] <= decoderHex:UdecoderHex.HEX0[0]
+HEX0[1] <= decoderHex:UdecoderHex.HEX0[1]
+HEX0[2] <= decoderHex:UdecoderHex.HEX0[2]
+HEX0[3] <= decoderHex:UdecoderHex.HEX0[3]
+HEX0[4] <= decoderHex:UdecoderHex.HEX0[4]
+HEX0[5] <= decoderHex:UdecoderHex.HEX0[5]
+HEX0[6] <= decoderHex:UdecoderHex.HEX0[6]
+HEX0[7] <= decoderHex:UdecoderHex.HEX0[7]
+HEX1[0] <= decoderHex:UdecoderHex1.HEX0[0]
+HEX1[1] <= decoderHex:UdecoderHex1.HEX0[1]
+HEX1[2] <= decoderHex:UdecoderHex1.HEX0[2]
+HEX1[3] <= decoderHex:UdecoderHex1.HEX0[3]
+HEX1[4] <= decoderHex:UdecoderHex1.HEX0[4]
+HEX1[5] <= decoderHex:UdecoderHex1.HEX0[5]
+HEX1[6] <= decoderHex:UdecoderHex1.HEX0[6]
+HEX1[7] <= decoderHex:UdecoderHex1.HEX0[7]
+HEX2[0] <= decoderHex:UdecoderHex2.HEX0[0]
+HEX2[1] <= decoderHex:UdecoderHex2.HEX0[1]
+HEX2[2] <= decoderHex:UdecoderHex2.HEX0[2]
+HEX2[3] <= decoderHex:UdecoderHex2.HEX0[3]
+HEX2[4] <= decoderHex:UdecoderHex2.HEX0[4]
+HEX2[5] <= decoderHex:UdecoderHex2.HEX0[5]
+HEX2[6] <= decoderHex:UdecoderHex2.HEX0[6]
+HEX2[7] <= decoderHex:UdecoderHex2.HEX0[7]
+Prt => ~NO_FANOUT~
+Rt => decoderHex:UdecoderHex2.A[0]
+d_id[0] => decoderHex:UdecoderHex1.A[0]
+d_id[1] => decoderHex:UdecoderHex1.A[1]
+d_id[2] => decoderHex:UdecoderHex1.A[2]
+d_id[3] => decoderHex:UdecoderHex1.A[3]
+o_id[0] => decoderHex:UdecoderHex.A[0]
+o_id[1] => decoderHex:UdecoderHex.A[1]
+o_id[2] => decoderHex:UdecoderHex.A[2]
+o_id[3] => decoderHex:UdecoderHex.A[3]
+Fn <= collet.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|IOS|serial_receiver:u_serial_receiver
-SDX => shift_register:u_shift_register.Sin
-SDX => parity_check:u_parity_check.data
-SCLK => shift_register:u_shift_register.clk
-SCLK => counter:u_counter.clk
-SCLK => parity_check:u_parity_check.clk
-SCLK => serial_control:u_serial_control.clk
-not_SS => serial_control:u_serial_control.not_SS
-accept => serial_control:u_serial_control.accept
-D[0] <= shift_register:u_shift_register.D[0]
-D[1] <= shift_register:u_shift_register.D[1]
-D[2] <= shift_register:u_shift_register.D[2]
-D[3] <= shift_register:u_shift_register.D[3]
-D[4] <= shift_register:u_shift_register.D[4]
-D[5] <= shift_register:u_shift_register.D[5]
-D[6] <= shift_register:u_shift_register.D[6]
-D[7] <= shift_register:u_shift_register.D[7]
-D[8] <= shift_register:u_shift_register.D[8]
-D[9] <= shift_register:u_shift_register.D[9]
-DXval <= serial_control:u_serial_control.DXval
-busy <= comb.DB_MAX_OUTPUT_PORT_TYPE
+|ticket_dispenser|decoderHex:UdecoderHex
+A[0] => int7seg:U0.d[0]
+A[1] => int7seg:U0.d[1]
+A[2] => int7seg:U0.d[2]
+A[3] => int7seg:U0.d[3]
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+HEX0[0] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[1] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[2] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[3] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[4] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[5] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[6] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[7] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register
-Sin => FFD:u_ffd0.D
-clk => FFD:u_ffd0.CLK
-clk => FFD:u_ffd1.CLK
-clk => FFD:u_ffd2.CLK
-clk => FFD:u_ffd3.CLK
-clk => FFD:u_ffd4.CLK
-clk => FFD:u_ffd5.CLK
-clk => FFD:u_ffd6.CLK
-clk => FFD:u_ffd7.CLK
-clk => FFD:u_ffd8.CLK
-clk => FFD:u_ffd9.CLK
-enable => FFD:u_ffd0.EN
-enable => FFD:u_ffd1.EN
-enable => FFD:u_ffd2.EN
-enable => FFD:u_ffd3.EN
-enable => FFD:u_ffd4.EN
-enable => FFD:u_ffd5.EN
-enable => FFD:u_ffd6.EN
-enable => FFD:u_ffd7.EN
-enable => FFD:u_ffd8.EN
-enable => FFD:u_ffd9.EN
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-enable => D.IN1
-D[0] <= D.DB_MAX_OUTPUT_PORT_TYPE
-D[1] <= D.DB_MAX_OUTPUT_PORT_TYPE
-D[2] <= D.DB_MAX_OUTPUT_PORT_TYPE
-D[3] <= D.DB_MAX_OUTPUT_PORT_TYPE
-D[4] <= D.DB_MAX_OUTPUT_PORT_TYPE
-D[5] <= D.DB_MAX_OUTPUT_PORT_TYPE
-D[6] <= D.DB_MAX_OUTPUT_PORT_TYPE
-D[7] <= D.DB_MAX_OUTPUT_PORT_TYPE
-D[8] <= D.DB_MAX_OUTPUT_PORT_TYPE
-D[9] <= D.DB_MAX_OUTPUT_PORT_TYPE
+|ticket_dispenser|decoderHex:UdecoderHex|int7seg:U0
+d[0] => Equal0.IN0
+d[0] => Equal1.IN3
+d[0] => Equal2.IN1
+d[0] => Equal3.IN3
+d[0] => Equal4.IN1
+d[0] => Equal5.IN3
+d[0] => Equal6.IN2
+d[0] => Equal7.IN3
+d[0] => Equal8.IN1
+d[0] => Equal9.IN3
+d[0] => Equal10.IN2
+d[0] => Equal11.IN3
+d[0] => Equal12.IN2
+d[0] => Equal13.IN3
+d[0] => Equal14.IN3
+d[1] => Equal0.IN3
+d[1] => Equal1.IN0
+d[1] => Equal2.IN0
+d[1] => Equal3.IN2
+d[1] => Equal4.IN3
+d[1] => Equal5.IN1
+d[1] => Equal6.IN1
+d[1] => Equal7.IN2
+d[1] => Equal8.IN3
+d[1] => Equal9.IN1
+d[1] => Equal10.IN1
+d[1] => Equal11.IN2
+d[1] => Equal12.IN3
+d[1] => Equal13.IN2
+d[1] => Equal14.IN2
+d[2] => Equal0.IN2
+d[2] => Equal1.IN2
+d[2] => Equal2.IN3
+d[2] => Equal3.IN0
+d[2] => Equal4.IN0
+d[2] => Equal5.IN0
+d[2] => Equal6.IN0
+d[2] => Equal7.IN1
+d[2] => Equal8.IN2
+d[2] => Equal9.IN2
+d[2] => Equal10.IN3
+d[2] => Equal11.IN1
+d[2] => Equal12.IN1
+d[2] => Equal13.IN1
+d[2] => Equal14.IN1
+d[3] => Equal0.IN1
+d[3] => Equal1.IN1
+d[3] => Equal2.IN2
+d[3] => Equal3.IN1
+d[3] => Equal4.IN2
+d[3] => Equal5.IN2
+d[3] => Equal6.IN3
+d[3] => Equal7.IN0
+d[3] => Equal8.IN0
+d[3] => Equal9.IN0
+d[3] => Equal10.IN0
+d[3] => Equal11.IN0
+d[3] => Equal12.IN0
+d[3] => Equal13.IN0
+d[3] => Equal14.IN0
+dOut[0] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[1] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[2] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[3] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[4] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[5] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[6] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[7] <= <VCC>
 
 
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd0
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|ticket_dispenser|decoderHex:UdecoderHex1
+A[0] => int7seg:U0.d[0]
+A[1] => int7seg:U0.d[1]
+A[2] => int7seg:U0.d[2]
+A[3] => int7seg:U0.d[3]
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+HEX0[0] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[1] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[2] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[3] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[4] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[5] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[6] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[7] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd1
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|ticket_dispenser|decoderHex:UdecoderHex1|int7seg:U0
+d[0] => Equal0.IN0
+d[0] => Equal1.IN3
+d[0] => Equal2.IN1
+d[0] => Equal3.IN3
+d[0] => Equal4.IN1
+d[0] => Equal5.IN3
+d[0] => Equal6.IN2
+d[0] => Equal7.IN3
+d[0] => Equal8.IN1
+d[0] => Equal9.IN3
+d[0] => Equal10.IN2
+d[0] => Equal11.IN3
+d[0] => Equal12.IN2
+d[0] => Equal13.IN3
+d[0] => Equal14.IN3
+d[1] => Equal0.IN3
+d[1] => Equal1.IN0
+d[1] => Equal2.IN0
+d[1] => Equal3.IN2
+d[1] => Equal4.IN3
+d[1] => Equal5.IN1
+d[1] => Equal6.IN1
+d[1] => Equal7.IN2
+d[1] => Equal8.IN3
+d[1] => Equal9.IN1
+d[1] => Equal10.IN1
+d[1] => Equal11.IN2
+d[1] => Equal12.IN3
+d[1] => Equal13.IN2
+d[1] => Equal14.IN2
+d[2] => Equal0.IN2
+d[2] => Equal1.IN2
+d[2] => Equal2.IN3
+d[2] => Equal3.IN0
+d[2] => Equal4.IN0
+d[2] => Equal5.IN0
+d[2] => Equal6.IN0
+d[2] => Equal7.IN1
+d[2] => Equal8.IN2
+d[2] => Equal9.IN2
+d[2] => Equal10.IN3
+d[2] => Equal11.IN1
+d[2] => Equal12.IN1
+d[2] => Equal13.IN1
+d[2] => Equal14.IN1
+d[3] => Equal0.IN1
+d[3] => Equal1.IN1
+d[3] => Equal2.IN2
+d[3] => Equal3.IN1
+d[3] => Equal4.IN2
+d[3] => Equal5.IN2
+d[3] => Equal6.IN3
+d[3] => Equal7.IN0
+d[3] => Equal8.IN0
+d[3] => Equal9.IN0
+d[3] => Equal10.IN0
+d[3] => Equal11.IN0
+d[3] => Equal12.IN0
+d[3] => Equal13.IN0
+d[3] => Equal14.IN0
+dOut[0] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[1] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[2] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[3] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[4] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[5] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[6] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[7] <= <VCC>
 
 
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd2
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|ticket_dispenser|decoderHex:UdecoderHex2
+A[0] => int7seg:U0.d[0]
+A[1] => int7seg:U0.d[1]
+A[2] => int7seg:U0.d[2]
+A[3] => int7seg:U0.d[3]
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+clear => HEX0.OUTPUTSELECT
+HEX0[0] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[1] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[2] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[3] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[4] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[5] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[6] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[7] <= HEX0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd3
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd4
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd5
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd6
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd7
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd8
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd9
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter
-clr => reg:u_reg.CE
-clk => reg:u_reg.CLK
-d_flag <= d_flag.DB_MAX_OUTPUT_PORT_TYPE
-p_flag <= p_flag.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg
-F[0] => FFD:u_FFD0.D
-F[1] => FFD:u_FFD1.D
-F[2] => FFD:u_FFD2.D
-F[3] => FFD:u_FFD3.D
-CE => FFD:u_FFD0.EN
-CE => FFD:u_FFD1.EN
-CE => FFD:u_FFD2.EN
-CE => FFD:u_FFD3.EN
-CLK => FFD:u_FFD0.CLK
-CLK => FFD:u_FFD1.CLK
-CLK => FFD:u_FFD2.CLK
-CLK => FFD:u_FFD3.CLK
-Q[0] <= FFD:u_FFD0.Q
-Q[1] <= FFD:u_FFD1.Q
-Q[2] <= FFD:u_FFD2.Q
-Q[3] <= FFD:u_FFD3.Q
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD0
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD1
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD2
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD3
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|adder:u_adder
-A[0] => fulladder:u_full_adder0.A
-A[1] => fulladder:u_full_adder1.A
-A[2] => fulladder:u_full_adder2.A
-A[3] => fulladder:u_full_adder3.A
-B[0] => fulladder:u_full_adder0.B
-B[1] => fulladder:u_full_adder1.B
-B[2] => fulladder:u_full_adder2.B
-B[3] => fulladder:u_full_adder3.B
-Cin => fulladder:u_full_adder0.Cin
-S[0] <= fulladder:u_full_adder0.S
-S[1] <= fulladder:u_full_adder1.S
-S[2] <= fulladder:u_full_adder2.S
-S[3] <= fulladder:u_full_adder3.S
-Cout <= fulladder:u_full_adder3.Cout
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|adder:u_adder|fulladder:u_full_adder0
-A => S.IN0
-A => Cout.IN0
-B => S.IN1
-B => Cout.IN1
-Cin => S.IN1
-Cin => Cout.IN1
-S <= S.DB_MAX_OUTPUT_PORT_TYPE
-Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|adder:u_adder|fulladder:u_full_adder1
-A => S.IN0
-A => Cout.IN0
-B => S.IN1
-B => Cout.IN1
-Cin => S.IN1
-Cin => Cout.IN1
-S <= S.DB_MAX_OUTPUT_PORT_TYPE
-Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|adder:u_adder|fulladder:u_full_adder2
-A => S.IN0
-A => Cout.IN0
-B => S.IN1
-B => Cout.IN1
-Cin => S.IN1
-Cin => Cout.IN1
-S <= S.DB_MAX_OUTPUT_PORT_TYPE
-Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|counter:u_counter|adder:u_adder|fulladder:u_full_adder3
-A => S.IN0
-A => Cout.IN0
-B => S.IN1
-B => Cout.IN1
-Cin => S.IN1
-Cin => Cout.IN1
-S <= S.DB_MAX_OUTPUT_PORT_TYPE
-Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|parity_check:u_parity_check
-data => d.IN1
-clk => FFD:u_ffd0.CLK
-init => FFD:u_ffd0.RESET
-err <= FFD:u_ffd0.Q
-
-
-|IOS|serial_receiver:u_serial_receiver|parity_check:u_parity_check|FFD:u_ffd0
-CLK => Q~reg0.CLK
-RESET => Q~reg0.ACLR
-RESET => Q.IN0
-SET => Q.IN1
-D => Q~reg0.DATAIN
-EN => Q~reg0.ENA
-Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|serial_receiver:u_serial_receiver|serial_control:u_serial_control
-not_SS => generate_next_state.IN0
-not_SS => Selector0.IN2
-not_SS => Selector1.IN1
-accept => Selector0.IN3
-accept => Selector3.IN2
-pFlag => generate_next_state.IN0
-pFlag => NS.OUTPUTSELECT
-pFlag => NS.OUTPUTSELECT
-pFlag => Selector2.IN2
-dFlag => generate_next_state.IN1
-RXerror => generate_next_state.IN1
-reset => CS~3.DATAIN
-clk => CS~1.DATAIN
-wr <= wr.DB_MAX_OUTPUT_PORT_TYPE
-init <= init.DB_MAX_OUTPUT_PORT_TYPE
-DXval <= DXval.DB_MAX_OUTPUT_PORT_TYPE
-busy <= busy.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|IOS|dispatcher:u_dispatcher
-reset => CS~3.DATAIN
-clk => CS~1.DATAIN
-Fsh => Selector1.IN3
-Fsh => Selector0.IN2
-Dval => generate_next_state.IN0
-Dval => generate_next_state.IN0
-Dval => NS.STATE_SENDING_LCD.OUTPUTSELECT
-Dval => NS.STATE_SENDING_TICKET.IN1
-Dval => NS.STATE_SENDING_TICKET.OUTPUTSELECT
-Dval => Selector1.IN1
-Din[0] => Dout.DATAB
-Din[1] => Dout.DATAB
-Din[2] => Dout.DATAB
-Din[3] => Dout.DATAB
-Din[4] => Dout.DATAB
-Din[5] => Dout.DATAB
-Din[6] => Dout.DATAB
-Din[7] => Dout.DATAB
-Din[8] => Dout.DATAB
-Din[9] => generate_next_state.IN1
-Din[9] => generate_next_state.IN1
-WrT <= WrT.DB_MAX_OUTPUT_PORT_TYPE
-Dout[0] <= Dout.DB_MAX_OUTPUT_PORT_TYPE
-Dout[1] <= Dout.DB_MAX_OUTPUT_PORT_TYPE
-Dout[2] <= Dout.DB_MAX_OUTPUT_PORT_TYPE
-Dout[3] <= Dout.DB_MAX_OUTPUT_PORT_TYPE
-Dout[4] <= Dout.DB_MAX_OUTPUT_PORT_TYPE
-Dout[5] <= Dout.DB_MAX_OUTPUT_PORT_TYPE
-Dout[6] <= Dout.DB_MAX_OUTPUT_PORT_TYPE
-Dout[7] <= Dout.DB_MAX_OUTPUT_PORT_TYPE
-Dout[8] <= Dout.DB_MAX_OUTPUT_PORT_TYPE
-WrL <= WrL.DB_MAX_OUTPUT_PORT_TYPE
-done <= done.DB_MAX_OUTPUT_PORT_TYPE
+|ticket_dispenser|decoderHex:UdecoderHex2|int7seg:U0
+d[0] => Equal0.IN0
+d[0] => Equal1.IN3
+d[0] => Equal2.IN1
+d[0] => Equal3.IN3
+d[0] => Equal4.IN1
+d[0] => Equal5.IN3
+d[0] => Equal6.IN2
+d[0] => Equal7.IN3
+d[0] => Equal8.IN1
+d[0] => Equal9.IN3
+d[0] => Equal10.IN2
+d[0] => Equal11.IN3
+d[0] => Equal12.IN2
+d[0] => Equal13.IN3
+d[0] => Equal14.IN3
+d[1] => Equal0.IN3
+d[1] => Equal1.IN0
+d[1] => Equal2.IN0
+d[1] => Equal3.IN2
+d[1] => Equal4.IN3
+d[1] => Equal5.IN1
+d[1] => Equal6.IN1
+d[1] => Equal7.IN2
+d[1] => Equal8.IN3
+d[1] => Equal9.IN1
+d[1] => Equal10.IN1
+d[1] => Equal11.IN2
+d[1] => Equal12.IN3
+d[1] => Equal13.IN2
+d[1] => Equal14.IN2
+d[2] => Equal0.IN2
+d[2] => Equal1.IN2
+d[2] => Equal2.IN3
+d[2] => Equal3.IN0
+d[2] => Equal4.IN0
+d[2] => Equal5.IN0
+d[2] => Equal6.IN0
+d[2] => Equal7.IN1
+d[2] => Equal8.IN2
+d[2] => Equal9.IN2
+d[2] => Equal10.IN3
+d[2] => Equal11.IN1
+d[2] => Equal12.IN1
+d[2] => Equal13.IN1
+d[2] => Equal14.IN1
+d[3] => Equal0.IN1
+d[3] => Equal1.IN1
+d[3] => Equal2.IN2
+d[3] => Equal3.IN1
+d[3] => Equal4.IN2
+d[3] => Equal5.IN2
+d[3] => Equal6.IN3
+d[3] => Equal7.IN0
+d[3] => Equal8.IN0
+d[3] => Equal9.IN0
+d[3] => Equal10.IN0
+d[3] => Equal11.IN0
+d[3] => Equal12.IN0
+d[3] => Equal13.IN0
+d[3] => Equal14.IN0
+dOut[0] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[1] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[2] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[3] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[4] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[5] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[6] <= dOut.DB_MAX_OUTPUT_PORT_TYPE
+dOut[7] <= <VCC>
 
 

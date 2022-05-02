@@ -1,5 +1,5 @@
 Analysis & Synthesis report for projeto_lic
-Wed Apr 06 15:27:02 2022
+Mon May 02 12:38:54 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -13,33 +13,11 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |IOS|dispatcher:u_dispatcher|CS
-  9. State Machine - |IOS|serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Port Connectivity Checks: "dispatcher:u_dispatcher"
- 15. Port Connectivity Checks: "serial_receiver:u_serial_receiver|serial_control:u_serial_control"
- 16. Port Connectivity Checks: "serial_receiver:u_serial_receiver|parity_check:u_parity_check|FFD:u_ffd0"
- 17. Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|adder:u_adder"
- 18. Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD3"
- 19. Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD2"
- 20. Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD1"
- 21. Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD0"
- 22. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd9"
- 23. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd8"
- 24. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd7"
- 25. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd6"
- 26. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd5"
- 27. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd4"
- 28. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd3"
- 29. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd2"
- 30. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd1"
- 31. Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd0"
- 32. Post-Synthesis Netlist Statistics for Top Partition
- 33. Elapsed Time Per Partition
- 34. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Port Connectivity Checks: "decoderHex:UdecoderHex2"
+ 10. Post-Synthesis Netlist Statistics for Top Partition
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -66,16 +44,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 06 15:27:02 2022       ;
+; Analysis & Synthesis Status        ; Successful - Mon May 02 12:38:54 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; projeto_lic                                 ;
-; Top-level Entity Name              ; IOS                                         ;
+; Top-level Entity Name              ; ticket_dispenser                            ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 0                                           ;
-;     Total combinational functions  ; 0                                           ;
+; Total logic elements               ; 31                                          ;
+;     Total combinational functions  ; 31                                          ;
 ;     Dedicated logic registers      ; 0                                           ;
 ; Total registers                    ; 0                                           ;
-; Total pins                         ; 16                                          ;
+; Total pins                         ; 38                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -91,7 +69,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; 10M50DAF484C6GES   ;                    ;
-; Top-level entity name                                            ; IOS                ; projeto_lic        ;
+; Top-level entity name                                            ; ticket_dispenser   ; projeto_lic        ;
 ; Family name                                                      ; MAX 10             ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -187,146 +165,62 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                     ;
-+----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                              ; Library ;
-+----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------+---------+
-; IOS.vhd                          ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd             ;         ;
-; shift_register.vhd               ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd  ;         ;
-; FFD.vhd                          ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/FFD.vhd             ;         ;
-; counter.vhd                      ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd         ;         ;
-; parity_check.vhd                 ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/parity_check.vhd    ;         ;
-; adder.vhd                        ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd           ;         ;
-; fulladder.vhd                    ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/fulladder.vhd       ;         ;
-; register.vhd                     ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/register.vhd        ;         ;
-; serial_control.vhd               ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_control.vhd  ;         ;
-; serial_receiver.vhd              ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_receiver.vhd ;         ;
-; dispatcher.vhd                   ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd      ;         ;
-+----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                      ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                               ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+---------+
+; decoderHex.vhd                   ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/decoderHex.vhd       ;         ;
+; int7seg.vhd                      ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/int7seg.vhd          ;         ;
+; ticket_dispenser.vhd             ; yes             ; User VHDL File  ; C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-;                                             ;       ;
-; Total combinational functions               ; 0     ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 16    ;
-;                                             ;       ;
-; Embedded Multiplier 9-bit elements          ; 0     ;
-;                                             ;       ;
-; Maximum fan-out node                        ; Fsh   ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 16    ;
-; Average fan-out                             ; 0.50  ;
-+---------------------------------------------+-------+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 31          ;
+;                                             ;             ;
+; Total combinational functions               ; 31          ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 16          ;
+;     -- 3 input functions                    ; 6           ;
+;     -- <=2 input functions                  ; 9           ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 31          ;
+;     -- arithmetic mode                      ; 0           ;
+;                                             ;             ;
+; Total registers                             ; 0           ;
+;     -- Dedicated logic registers            ; 0           ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 38          ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; reset~input ;
+; Maximum fan-out                             ; 17          ;
+; Total fan-out                               ; 159         ;
+; Average fan-out                             ; 1.49        ;
++---------------------------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; |IOS                       ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 16   ; 0            ; 0          ; |IOS                ; IOS         ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                        ;
++------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------+------------------+--------------+
+; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                  ; Entity Name      ; Library Name ;
++------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------+------------------+--------------+
+; |ticket_dispenser            ; 31 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 38   ; 0            ; 0          ; |ticket_dispenser                                    ; ticket_dispenser ; work         ;
+;    |decoderHex:UdecoderHex1| ; 15 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ticket_dispenser|decoderHex:UdecoderHex1            ; decoderHex       ; work         ;
+;       |int7seg:U0|           ; 5 (5)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ticket_dispenser|decoderHex:UdecoderHex1|int7seg:U0 ; int7seg          ; work         ;
+;    |decoderHex:UdecoderHex2| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ticket_dispenser|decoderHex:UdecoderHex2            ; decoderHex       ; work         ;
+;    |decoderHex:UdecoderHex|  ; 15 (10)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ticket_dispenser|decoderHex:UdecoderHex             ; decoderHex       ; work         ;
+;       |int7seg:U0|           ; 5 (5)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |ticket_dispenser|decoderHex:UdecoderHex|int7seg:U0  ; int7seg          ; work         ;
++------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------+------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------------------------------------+
-; State Machine - |IOS|dispatcher:u_dispatcher|CS                                                              ;
-+-------------------------+--------------+----------------------+-------------------------+--------------------+
-; Name                    ; CS.STATE_END ; CS.STATE_SENDING_LCD ; CS.STATE_SENDING_TICKET ; CS.STATE_AVAILABLE ;
-+-------------------------+--------------+----------------------+-------------------------+--------------------+
-; CS.STATE_AVAILABLE      ; 0            ; 0                    ; 0                       ; 0                  ;
-; CS.STATE_SENDING_TICKET ; 0            ; 0                    ; 1                       ; 1                  ;
-; CS.STATE_SENDING_LCD    ; 0            ; 1                    ; 0                       ; 1                  ;
-; CS.STATE_END            ; 1            ; 0                    ; 0                       ; 1                  ;
-+-------------------------+--------------+----------------------+-------------------------+--------------------+
-
-
-Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------------+
-; State Machine - |IOS|serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS       ;
-+--------------------+--------------+-------------------+--------------------+--------------------+
-; Name               ; CS.STATE_END ; CS.STATE_RECEIVED ; CS.STATE_RECEIVING ; CS.STATE_AVAILABLE ;
-+--------------------+--------------+-------------------+--------------------+--------------------+
-; CS.STATE_AVAILABLE ; 0            ; 0                 ; 0                  ; 0                  ;
-; CS.STATE_RECEIVING ; 0            ; 0                 ; 1                  ; 1                  ;
-; CS.STATE_RECEIVED  ; 0            ; 1                 ; 0                  ; 1                  ;
-; CS.STATE_END       ; 1            ; 0                 ; 0                  ; 1                  ;
-+--------------------+--------------+-------------------+--------------------+--------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                          ;
-+--------------------------------------------------------------------------------------+--------------------------------------+
-; Register name                                                                        ; Reason for Removal                   ;
-+--------------------------------------------------------------------------------------+--------------------------------------+
-; dispatcher:u_dispatcher|CS.STATE_AVAILABLE                                           ; Stuck at GND due to stuck port clock ;
-; dispatcher:u_dispatcher|CS.STATE_SENDING_TICKET                                      ; Stuck at GND due to stuck port clock ;
-; dispatcher:u_dispatcher|CS.STATE_SENDING_LCD                                         ; Stuck at GND due to stuck port clock ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd9|Q       ; Lost fanout                          ;
-; dispatcher:u_dispatcher|CS.STATE_END                                                 ; Stuck at GND due to stuck port clock ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd8|Q       ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd7|Q       ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd6|Q       ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd5|Q       ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd4|Q       ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd3|Q       ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd2|Q       ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd1|Q       ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd0|Q       ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|parity_check:u_parity_check|FFD:u_ffd0|Q           ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD0|Q           ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD1|Q           ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD2|Q           ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD3|Q           ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS.STATE_AVAILABLE ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS.STATE_RECEIVING ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS.STATE_RECEIVED  ; Lost fanout                          ;
-; serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS.STATE_END       ; Lost fanout                          ;
-; Total Number of Removed Registers = 23                                               ;                                      ;
-+--------------------------------------------------------------------------------------+--------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                       ;
-+-------------------------------------------------+-------------------------+---------------------------------------------------------------------------------------+
-; Register name                                   ; Reason for Removal      ; Registers Removed due to This Register                                                ;
-+-------------------------------------------------+-------------------------+---------------------------------------------------------------------------------------+
-; dispatcher:u_dispatcher|CS.STATE_SENDING_TICKET ; Stuck at GND            ; dispatcher:u_dispatcher|CS.STATE_END,                                                 ;
-;                                                 ; due to stuck port clock ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd8|Q,       ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd7|Q,       ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd6|Q,       ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd5|Q,       ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd4|Q,       ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd3|Q,       ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd2|Q,       ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd1|Q,       ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd0|Q,       ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|parity_check:u_parity_check|FFD:u_ffd0|Q,           ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD0|Q,           ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS.STATE_AVAILABLE, ;
-;                                                 ;                         ; serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS.STATE_RECEIVING  ;
-; dispatcher:u_dispatcher|CS.STATE_AVAILABLE      ; Stuck at GND            ; serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd9|Q,       ;
-;                                                 ; due to stuck port clock ; serial_receiver:u_serial_receiver|serial_control:u_serial_control|CS.STATE_END        ;
-+-------------------------------------------------+-------------------------+---------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -344,195 +238,13 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |IOS|dispatcher:u_dispatcher|NS.STATE_SENDING_TICKET ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "dispatcher:u_dispatcher"                                                                                                                     ;
-+-------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                                                                                      ;
-+-------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; reset ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-; clk   ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-+-------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|serial_control:u_serial_control"                   ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; Port  ; Type   ; Severity ; Details                                                                             ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; reset ; Input  ; Info     ; Stuck at GND                                                                        ;
-; busy  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|parity_check:u_parity_check|FFD:u_ffd0" ;
-+------+-------+----------+----------------------------------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                                                    ;
-+------+-------+----------+----------------------------------------------------------------------------+
-; set  ; Input ; Info     ; Stuck at GND                                                               ;
-; en   ; Input ; Info     ; Stuck at VCC                                                               ;
-+------+-------+----------+----------------------------------------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|adder:u_adder"                     ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; Port    ; Type   ; Severity ; Details                                                                             ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-; b[3..1] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; b[0]    ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; cin     ; Input  ; Info     ; Stuck at GND                                                                        ;
-; cout    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD3" ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                   ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-; set   ; Input ; Info     ; Stuck at GND                                                              ;
-; reset ; Input ; Info     ; Stuck at GND                                                              ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD2" ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                   ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-; set   ; Input ; Info     ; Stuck at GND                                                              ;
-; reset ; Input ; Info     ; Stuck at GND                                                              ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD1" ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                   ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-; set   ; Input ; Info     ; Stuck at GND                                                              ;
-; reset ; Input ; Info     ; Stuck at GND                                                              ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg|FFD:u_FFD0" ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                   ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-; set   ; Input ; Info     ; Stuck at GND                                                              ;
-; reset ; Input ; Info     ; Stuck at GND                                                              ;
-+-------+-------+----------+---------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd9" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd8" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd7" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd6" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd5" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd4" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd3" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd2" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd1" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd0" ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; Port  ; Type  ; Severity ; Details                                                                       ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
-; reset ; Input ; Info     ; Stuck at GND                                                                  ;
-; set   ; Input ; Info     ; Stuck at GND                                                                  ;
-+-------+-------+----------+-------------------------------------------------------------------------------+
++-----------------------------------------------------+
+; Port Connectivity Checks: "decoderHex:UdecoderHex2" ;
++---------+-------+----------+------------------------+
+; Port    ; Type  ; Severity ; Details                ;
++---------+-------+----------+------------------------+
+; a[3..1] ; Input ; Info     ; Stuck at GND           ;
++---------+-------+----------+------------------------+
 
 
 +-----------------------------------------------------+
@@ -540,13 +252,16 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 16                          ;
-; cycloneiii_lcell_comb ; 1                           ;
-;     normal            ; 1                           ;
+; boundary_port         ; 38                          ;
+; cycloneiii_lcell_comb ; 32                          ;
+;     normal            ; 32                          ;
 ;         0 data inputs ; 1                           ;
+;         2 data inputs ; 9                           ;
+;         3 data inputs ; 6                           ;
+;         4 data inputs ; 16                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 0.00                        ;
-; Average LUT depth     ; 0.00                        ;
+; Max LUT depth         ; 2.00                        ;
+; Average LUT depth     ; 1.84                        ;
 +-----------------------+-----------------------------+
 
 
@@ -565,7 +280,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed Apr 06 15:26:47 2022
+    Info: Processing started: Mon May 02 12:38:39 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off projeto_lic -c projeto_lic
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -623,54 +338,39 @@ Info (12021): Found 2 design units, including 1 entities, in source file dispatc
 Info (12021): Found 2 design units, including 1 entities, in source file dispatcher_tb.vhd
     Info (12022): Found design unit 1: dispatcher_tb-arqui File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd Line: 9
     Info (12023): Found entity 1: dispatcher_tb File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd Line: 6
-Info (12127): Elaborating entity "IOS" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at IOS.vhd(43): used implicit default value for signal "s_Fn" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 43
-Info (12128): Elaborating entity "serial_receiver" for hierarchy "serial_receiver:u_serial_receiver" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 49
-Warning (10541): VHDL Signal Declaration warning at serial_receiver.vhd(14): used implicit default value for signal "busy" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_receiver.vhd Line: 14
-Info (12128): Elaborating entity "shift_register" for hierarchy "serial_receiver:u_serial_receiver|shift_register:u_shift_register" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_receiver.vhd Line: 63
-Info (12128): Elaborating entity "FFD" for hierarchy "serial_receiver:u_serial_receiver|shift_register:u_shift_register|FFD:u_ffd0" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/shift_register.vhd Line: 31
-Info (12128): Elaborating entity "counter" for hierarchy "serial_receiver:u_serial_receiver|counter:u_counter" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_receiver.vhd Line: 71
-Info (12128): Elaborating entity "reg" for hierarchy "serial_receiver:u_serial_receiver|counter:u_counter|reg:u_reg" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 40
-Info (12128): Elaborating entity "adder" for hierarchy "serial_receiver:u_serial_receiver|counter:u_counter|adder:u_adder" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/counter.vhd Line: 48
-Info (12128): Elaborating entity "fulladder" for hierarchy "serial_receiver:u_serial_receiver|counter:u_counter|adder:u_adder|fulladder:u_full_adder0" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/adder.vhd Line: 30
-Info (12128): Elaborating entity "parity_check" for hierarchy "serial_receiver:u_serial_receiver|parity_check:u_parity_check" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_receiver.vhd Line: 79
-Info (12128): Elaborating entity "serial_control" for hierarchy "serial_receiver:u_serial_receiver|serial_control:u_serial_control" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/serial_receiver.vhd Line: 87
-Info (12128): Elaborating entity "dispatcher" for hierarchy "dispatcher:u_dispatcher" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 60
-Warning (10631): VHDL Process Statement warning at dispatcher.vhd(37): inferring latch(es) for signal or variable "NS", which holds its previous value in one or more paths through the process File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd Line: 37
-Info (10041): Inferred latch for "NS.STATE_END" at dispatcher.vhd(37) File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd Line: 37
-Info (10041): Inferred latch for "NS.STATE_SENDING_LCD" at dispatcher.vhd(37) File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd Line: 37
-Info (10041): Inferred latch for "NS.STATE_SENDING_TICKET" at dispatcher.vhd(37) File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd Line: 37
-Info (10041): Inferred latch for "NS.STATE_AVAILABLE" at dispatcher.vhd(37) File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd Line: 37
-Warning (14026): LATCH primitive "dispatcher:u_dispatcher|NS.STATE_END_118" is permanently enabled File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd Line: 37
-Warning (14026): LATCH primitive "dispatcher:u_dispatcher|NS.STATE_AVAILABLE_151" is permanently enabled File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd Line: 37
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12021): Found 2 design units, including 1 entities, in source file decoderhex.vhd
+    Info (12022): Found design unit 1: decoderHex-logicFuntion File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/decoderHex.vhd Line: 10
+    Info (12023): Found entity 1: decoderHex File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/decoderHex.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file int7seg.vhd
+    Info (12022): Found design unit 1: int7seg-logicFunction File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/int7seg.vhd Line: 10
+    Info (12023): Found entity 1: int7seg File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/int7seg.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ticket_dispenser_tb.vhd
+    Info (12022): Found design unit 1: ticket_dispenser_tb-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser_tb.vhd Line: 9
+    Info (12023): Found entity 1: ticket_dispenser_tb File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser_tb.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file ticket_dispenser.vhd
+    Info (12022): Found design unit 1: ticket_dispenser-arq File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd Line: 21
+    Info (12023): Found entity 1: ticket_dispenser File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd Line: 6
+Info (12127): Elaborating entity "ticket_dispenser" for the top level hierarchy
+Info (12128): Elaborating entity "decoderHex" for hierarchy "decoderHex:UdecoderHex" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd Line: 32
+Info (12128): Elaborating entity "int7seg" for hierarchy "decoderHex:UdecoderHex|int7seg:U0" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/decoderHex.vhd Line: 26
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "WrT" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 12
-    Warning (13410): Pin "Dout[0]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 13
-    Warning (13410): Pin "Dout[1]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 13
-    Warning (13410): Pin "Dout[2]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 13
-    Warning (13410): Pin "Dout[3]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 13
-    Warning (13410): Pin "Dout[4]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 13
-    Warning (13410): Pin "Dout[5]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 13
-    Warning (13410): Pin "Dout[6]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 13
-    Warning (13410): Pin "Dout[7]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 13
-    Warning (13410): Pin "Dout[8]" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 13
-    Warning (13410): Pin "WrL" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 14
-    Warning (13410): Pin "busy" is stuck at GND File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 15
-Info (17049): 19 registers lost all their fanouts during netlist optimizations.
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd Line: 12
+    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd Line: 12
+    Warning (13410): Pin "HEX2[6]" is stuck at VCC File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd Line: 12
+    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd Line: 12
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 4 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "Fsh" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 11
-    Warning (15610): No output dependent on input pin "not_SS" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 10
-    Warning (15610): No output dependent on input pin "SCLK" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 8
-    Warning (15610): No output dependent on input pin "SDX" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/IOS.vhd Line: 9
-Info (21057): Implemented 16 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 12 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 25 warnings
-    Info: Peak virtual memory: 4785 megabytes
-    Info: Processing ended: Wed Apr 06 15:27:02 2022
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "MCLK" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd Line: 8
+    Warning (15610): No output dependent on input pin "Prt" File: C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd Line: 14
+Info (21057): Implemented 69 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 25 output pins
+    Info (21061): Implemented 31 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 4784 megabytes
+    Info: Processing ended: Mon May 02 12:38:54 2022
     Info: Elapsed time: 00:00:15
     Info: Total CPU time (on all processors): 00:00:34
 

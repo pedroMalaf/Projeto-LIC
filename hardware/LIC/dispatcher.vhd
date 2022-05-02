@@ -50,6 +50,7 @@ generate_next_state: process (CS, Dval, Din, Fsh)
 														NS <= STATE_SENDING_TICKET;
 													elsif (Fsh = '1') then
 														NS <= STATE_END;
+													end if;
 													
 			when STATE_SENDING_LCD => NS <= STATE_END;
 			

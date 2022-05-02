@@ -9,37 +9,37 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/simulation/modelsim
-Edispatcher
-Z1 w1649251575
+Edecoderhex
+Z1 w1651488714
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 !i122 0
 R0
-Z4 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd
-Z5 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd
+Z4 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/decoderHex.vhd
+Z5 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/decoderHex.vhd
 l0
-L6 1
-VckSKBjBhf:8[Yk<6nVDa;3
-!s100 VD;H=UIc1V13k0T9d@2fO1
+L4 1
+VVP0MH9SS__Df8o@095odC1
+!s100 AX_HhmKjc[f<03e<ULWS^2
 Z6 OV;C;2020.1;71
 31
-Z7 !s110 1649255086
+Z7 !s110 1651491570
 !i10b 1
-Z8 !s108 1649255086.000000
-Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd|
-Z10 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher.vhd|
+Z8 !s108 1651491570.000000
+Z9 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/decoderHex.vhd|
+Z10 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/decoderHex.vhd|
 !i113 1
 Z11 o-93 -work work
 Z12 tExplicit 1 CvgOpt 0
-Aarq
+Alogicfuntion
 R2
 R3
-DEx4 work 10 dispatcher 0 22 ckSKBjBhf:8[Yk<6nVDa;3
+DEx4 work 10 decoderhex 0 22 VP0MH9SS__Df8o@095odC1
 !i122 0
-l31
-L19 60
-ViT;nF1:P^Z@Jg1Z6m41di0
-!s100 EQ<EZB<O@MB?7S67O]3Z?3
+l21
+L10 20
+VzgAAVJPiF6RZBiAMgn@To2
+!s100 N;V]gecEa>5Bm5KBA4H^@3
 R6
 31
 R7
@@ -50,44 +50,126 @@ R10
 !i113 1
 R11
 R12
-Edispatcher_tb
-Z13 w1649254277
+Eint7seg
+Z13 w1651488726
 R2
 R3
 !i122 1
 R0
-Z14 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd
-Z15 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd
+Z14 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/int7seg.vhd
+Z15 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/int7seg.vhd
 l0
-L6 1
-VK1BdIgAQ]0KRFWeDo4i221
-!s100 GX`>keLSSRk^EfbhJP>k`0
+L4 1
+VJg9:^[`Fz[^9g0DaDUB<d1
+!s100 `Pjz7i?]GB<AdE:ElX6_Q1
 R6
 31
 R7
 !i10b 1
 R8
-Z16 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd|
-!s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd|
+Z16 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/int7seg.vhd|
+Z17 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/int7seg.vhd|
 !i113 1
 R11
 R12
-Aarqui
+Alogicfunction
 R2
 R3
-DEx4 work 13 dispatcher_tb 0 22 K1BdIgAQ]0KRFWeDo4i221
+DEx4 work 7 int7seg 0 22 Jg9:^[`Fz[^9g0DaDUB<d1
 !i122 1
-l32
-L9 70
-VISf=mWeJ]f=FK`zNFV>bH2
-!s100 CL0>JAL[a>?LTO80mFgJB3
+l14
+L10 24
+VOZgz7jh:T@kV8Zh^N`b=F1
+!s100 CY]3fWdCP;YT2S4TbP`fm2
 R6
 31
 R7
 !i10b 1
 R8
 R16
-Z17 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/dispatcher_tb.vhd|
+R17
+!i113 1
+R11
+R12
+Eticket_dispenser
+Z18 w1651491516
+R2
+R3
+!i122 2
+R0
+Z19 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd
+Z20 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd
+l0
+L6 1
+VF_i8H`gWU>QJeL1O1H6li1
+!s100 6?d>[Mc@DG4]hV916cIMj2
+R6
+31
+Z21 !s110 1651491571
+!i10b 1
+R8
+Z22 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd|
+Z23 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser.vhd|
+!i113 1
+R11
+R12
+Aarq
+R2
+R3
+DEx4 work 16 ticket_dispenser 0 22 F_i8H`gWU>QJeL1O1H6li1
+!i122 2
+l30
+L21 35
+VYbQ6GLDeg_4gYLV]zo:@I2
+!s100 ;9f2iOZkg==54HzK;0^XV2
+R6
+31
+R21
+!i10b 1
+R8
+R22
+R23
+!i113 1
+R11
+R12
+Eticket_dispenser_tb
+Z24 w1651491297
+R2
+R3
+!i122 3
+R0
+Z25 8C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser_tb.vhd
+Z26 FC:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser_tb.vhd
+l0
+L6 1
+Vgz]OGQ>@B[V:[zk^=7mOR0
+!s100 ]<Y251?f>K0zBVEbJbC983
+R6
+31
+R21
+!i10b 1
+Z27 !s108 1651491571.000000
+Z28 !s90 -reportprogress|300|-93|-work|work|C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser_tb.vhd|
+!s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser_tb.vhd|
+!i113 1
+R11
+R12
+Aarq
+R2
+R3
+DEx4 work 19 ticket_dispenser_tb 0 22 gz]OGQ>@B[V:[zk^=7mOR0
+!i122 3
+l40
+L9 72
+V@CE6lEZzedfC^[IaPDfkK1
+!s100 ]4N0Ne8@WkOgbi[O7FFFd1
+R6
+31
+R21
+!i10b 1
+R27
+R28
+Z29 !s107 C:/Users/roby/Documents/ISEL/Projeto-LIC/hardware/LIC/ticket_dispenser_tb.vhd|
 !i113 1
 R11
 R12
