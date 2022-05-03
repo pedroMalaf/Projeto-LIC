@@ -40,7 +40,6 @@ ARCHITECTURE arq OF IOS IS
 		);
 	END COMPONENT;
  
-	SIGNAL s_Fn : std_logic;
 	SIGNAL s_done : std_logic; -- dispatcher::done -> serial_receiver::accept
 	SIGNAL s_Dval : std_logic; -- serial_receiver::DXval -> dispatcher::Dval
 	SIGNAL s_din : std_logic_vector(9 DOWNTO 0); -- serial_receiver::D -> dispatcher::Din
@@ -59,7 +58,7 @@ BEGIN
 
 	u_dispatcher : dispatcher
 	PORT MAP(
-		Fsh => s_Fn, 
+		Fsh => Fsh, 
 		Dval => s_Dval, 
 		done => s_done, 
 		WrT => WrT, 
