@@ -68,7 +68,7 @@ BEGIN
 			o_id_tb <= "0010"; -- 2
 			d_id_tb <= "0011"; -- 3
 			Rt_tb <= '1';
-			collet_tb <= '0';
+			collect_tb <= '0';
 			WAIT FOR MCLK_PERIOD;
 			
 			-- TODO: testar collet e reset		
