@@ -1,4 +1,4 @@
--- Shift Register Testbench
+-- Shift Register
 
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
