@@ -52,6 +52,50 @@ BEGIN
 	-- Stimulus Generator
 	stimulus : PROCESS
 	BEGIN
+
+		notSS_tb <= '1';
+		busy_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		notSS_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		SDX_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+
+		SDX_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+
+		SDX_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+
+		SDX_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+ 
+		SDX_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+
+		SDX_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+
+		SDX_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		SDX_tb <= '1';		
+		WAIT FOR MCLK_PERIOD;	
+		
+		SDX_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
+		SDX_tb <= '1';
+		WAIT FOR MCLK_PERIOD;	
+		
+		notSS_tb <= '1';
+		busy_tb <= '1';
+		--240ns
+		
+		
+		WAIT;
 	END PROCESS;
  
 END arq;
