@@ -95,7 +95,8 @@ BEGIN
 		init => s_init, 
 		DXval => DXval, 
 		reset => reset, 
-		clk => MCLK
+		clk => MCLK,
+		busy => busy
 	);
 
 END arq;
