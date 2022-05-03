@@ -6,7 +6,7 @@ USE IEEE.std_logic_1164.ALL;
 ENTITY serial_receiver IS
 	PORT (
 		SDX : IN STD_LOGIC;
-		SCLK : IN STD_LOGIC;
+		SCLK, MCLK, reset : IN STD_LOGIC;
 		not_SS : IN STD_LOGIC;
 		accept : IN STD_LOGIC;
 		D : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -94,8 +94,8 @@ BEGIN
 		wr => s_wr, 
 		init => s_init, 
 		DXval => DXval, 
-		reset => '0', 
-		clk => SCLK
+		reset => reset, 
+		clk => MCLK
 	);
 
 END arq;
