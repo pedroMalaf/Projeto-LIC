@@ -5,7 +5,7 @@ fun main() {
 }
 
 /**
- * HAL
+ * HAL - Hardware Abstraction Layer
  *
  * Virtualiza o acesso ao sistema UsbPort
  */

@@ -12,13 +12,13 @@ ARCHITECTURE arq OF ticket_dispenser_tb IS
         PORT (
 		MCLK: IN STD_LOGIC;
 		reset: IN STD_LOGIC;
-		collect: IN STD_LOGIC; -- collect ticker: tirar o bilhete, simular com meter um switch a 1 e dps 0
+		collect: IN STD_LOGIC;
 		
 		HEX0, HEX1, HEX2: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 		
 		Prt : IN STD_LOGIC;
 		Rt : IN STD_LOGIC;
-		d_id, o_id: STD_LOGIC_VECTOR(3 DOWNTO 0); -- destination & origin
+		d_id, o_id: STD_LOGIC_VECTOR(3 DOWNTO 0);
 		Fn : OUT STD_LOGIC -- busy
 	);
     END COMPONENT;
