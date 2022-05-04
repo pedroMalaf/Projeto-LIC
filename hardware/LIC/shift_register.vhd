@@ -128,15 +128,15 @@ BEGIN
 		Q => q(9)
 	);
 
-	D(0) <= q(0) AND NOT(enable);
-	D(1) <= q(1) AND NOT(enable);
-	D(2) <= q(2) AND NOT(enable);
-	D(3) <= q(3) AND NOT(enable);
-	D(4) <= q(4) AND NOT(enable);
-	D(5) <= q(5) AND NOT(enable);
-	D(6) <= q(6) AND NOT(enable);
-	D(7) <= q(7) AND NOT(enable);
-	D(8) <= q(8) AND NOT(enable);
-	D(9) <= q(9) AND NOT(enable);
+	D(0) <= q(0); -- AND NOT(enable);
+	D(1) <= q(1); -- AND NOT(enable);
+	D(2) <= q(2); -- AND NOT(enable);
+	D(3) <= q(3); -- AND NOT(enable);
+	D(4) <= q(4); -- AND NOT(enable);
+	D(5) <= q(5); -- AND NOT(enable);
+	D(6) <= q(6); -- AND NOT(enable);
+	D(7) <= q(7); -- AND NOT(enable);
+	D(8) <= q(8); -- AND NOT(enable);
+	D(9) <= q(9); -- AND NOT(enable);
 	
 END arq;

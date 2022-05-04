@@ -42,7 +42,7 @@ BEGIN
 	PORT MAP(
 		F => s_add, 
 		CLK => clk,
-		RESET => reset
+		RESET => reset,
 		CE => ce,
 		Q => s_counter
 	);
