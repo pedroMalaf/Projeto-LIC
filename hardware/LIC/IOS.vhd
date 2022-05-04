@@ -7,7 +7,7 @@ ENTITY IOS IS
 	PORT (
 		SCLK : IN STD_LOGIC;
 		SDX : IN STD_LOGIC;
-		not_SS : IN STD_LOGIC;
+		not_SS, reset: IN STD_LOGIC;
 		Fsh : IN STD_LOGIC; --> Fn -> fsh
 		WrT : OUT STD_LOGIC; --> Wrt -> Prt
 		Dout : OUT STD_LOGIC_VECTOR(8 DOWNTO 0); --> Dout -> DId; Dout -> D
@@ -32,6 +32,7 @@ ARCHITECTURE arq OF IOS IS
 
 	COMPONENT dispatcher IS
 		PORT (
+			reset, clk: IN STD_LOGIC;
 			Fsh, Dval : IN STD_LOGIC;
 			Din : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
 			Dout : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
@@ -64,7 +65,9 @@ BEGIN
 		WrT => WrT, 
 		Din => s_din, 
 		Dout => Dout, 
-		WrL => WrL
+		WrL => WrL,
+		clk => SCLK,
+		reset => reset
 	);
  
 END arq;

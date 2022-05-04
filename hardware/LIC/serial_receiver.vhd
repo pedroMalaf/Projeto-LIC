@@ -27,9 +27,18 @@ ARCHITECTURE arq OF serial_receiver IS
 
 	COMPONENT counter IS
 		PORT (
-			clr : IN STD_LOGIC;
-			clk : IN STD_LOGIC;
-			d_flag, p_flag : OUT STD_LOGIC
+			reset : in STD_LOGIC;
+			ce : in std_logic;
+			clk : in STD_LOGIC;
+			flags: out std_logic_vector(3 downto 0)
+		);
+	END COMPONENT;
+	
+	COMPONENT counter_tc IS
+		PORT (
+			D : in std_logic_vector(3 downto 0);
+			TC10 : out std_logic;
+			TC11 : out std_logic
 		);
 	END COMPONENT;
  
@@ -58,22 +67,32 @@ ARCHITECTURE arq OF serial_receiver IS
 	END COMPONENT;
  
 	SIGNAL s_wr, s_init, s_pflag, s_dflag, s_err : STD_LOGIC;
+	SIGNAL d_s : STD_LOGIC_VECTOR(3 downto 0);
+	SIGNAL tc10_s, tc11_s: STD_LOGIC;
+
  
 BEGIN
+	u_tc : counter_tc
+	PORT MAP(
+		D => d_s,
+		TC10 => tc10_s,
+		TC11 => tc11_s
+	);
+	
+	u_counter : counter
+	PORT MAP(
+		clk => SCLK, 
+		ce => '1', 
+		reset => s_init,
+		flags => d_s
+	);
+
 	u_shift_register : shift_register
 	PORT MAP(
 		Sin => SDX, 
 		clk => SCLK, 
 		enable => s_wr, 
 		D => D
-	);
- 
-	u_counter : counter
-	PORT MAP(
-		clk => SCLK, 
-		clr => s_init, 
-		p_flag => s_pflag, 
-		d_flag => s_dflag
 	);
  
 	u_parity_check : parity_check
@@ -89,14 +108,14 @@ BEGIN
 		not_SS => not_SS, 
 		accept => accept, 
 		RXerror => s_err, 
-		pFlag => s_pflag, 
-		dFlag => s_dflag, 
+		pFlag => tc10_s, 
+		dFlag => tc11_s, 
 		wr => s_wr, 
 		init => s_init, 
 		DXval => DXval, 
 		reset => reset, 
 		clk => MCLK,
-		busy => busy
+		busy => busy 
 	);
 
 END arq;

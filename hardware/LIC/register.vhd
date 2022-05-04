@@ -6,7 +6,7 @@ USE ieee.std_logic_1164.ALL;
 ENTITY reg IS
 	PORT (
 		F : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-		CE : IN STD_LOGIC;
+		CE, RESET : IN STD_LOGIC;
 		CLK : IN STD_LOGIC;
 		Q : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 	);
@@ -29,7 +29,7 @@ BEGIN
 		CLK => CLK, 
 		Q => Q(0), 
 		SET => '0', 
-		RESET => '0'
+		RESET => RESET
 	);
 
 	u_FFD1 : FFD
@@ -39,7 +39,7 @@ BEGIN
 		CLK => CLK, 
 		Q => Q(1), 
 		SET => '0', 
-		RESET => '0'
+		RESET => RESET
 	);
 
 	u_FFD2 : FFD
@@ -49,7 +49,7 @@ BEGIN
 		CLK => CLK, 
 		Q => Q(2), 
 		SET => '0', 
-		RESET => '0'
+		RESET => RESET
 	);
 
 	u_FFD3 : FFD
@@ -59,7 +59,7 @@ BEGIN
 		CLK => CLK, 
 		Q => Q(3), 
 		SET => '0', 
-		RESET => '0'
+		RESET => RESET
 	);
 
 END arq;

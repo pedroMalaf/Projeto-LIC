@@ -5,9 +5,10 @@ USE ieee.std_logic_1164.ALL;
 
 ENTITY counter IS
 	PORT (
-		clr : IN STD_LOGIC;
-		clk : IN STD_LOGIC;
-		d_flag, p_flag : OUT STD_LOGIC
+		reset : in STD_LOGIC;
+		ce : in std_logic;
+		clk : in STD_LOGIC;
+		flags: out std_logic_vector(3 downto 0)
 	);
 END counter;
 
@@ -17,7 +18,7 @@ ARCHITECTURE arq OF counter IS
 	COMPONENT reg
 		PORT (
 			F : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-			CE : IN STD_LOGIC;
+			CE, RESET : IN STD_LOGIC;
 			CLK : IN STD_LOGIC;
 			Q : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 		);
@@ -40,8 +41,9 @@ BEGIN
 	u_reg : reg
 	PORT MAP(
 		F => s_add, 
-		CLK => clk, 
-		CE => clr, 
+		CLK => clk,
+		RESET => reset
+		CE => ce,
 		Q => s_counter
 	);
 
@@ -54,7 +56,5 @@ BEGIN
 		S => s_add
 	);
 	
-	d_flag <= s_add(3) AND NOT(s_add(2)) AND s_add(1) AND NOT(s_add(0)); --10
-	p_flag <= s_add(3) AND NOT(s_add(2)) AND s_add(1) AND s_add(0); --11
- 
+	flags <= s_counter;
 END arq;
