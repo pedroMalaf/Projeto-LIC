@@ -1,4 +1,4 @@
--- Serial Receiver (top entity) TODO
+-- Serial Receiver (top entity)
 
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
@@ -108,8 +108,8 @@ BEGIN
 		not_SS => not_SS, 
 		accept => accept, 
 		RXerror => s_err, 
-		pFlag => tc10_s, 
-		dFlag => tc11_s, 
+		pFlag => tc11_s, 
+		dFlag => tc10_s, 
 		wr => s_wr, 
 		init => s_init, 
 		DXval => DXval, 

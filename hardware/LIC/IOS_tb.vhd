@@ -55,6 +55,8 @@ BEGIN
     BEGIN
 	 
 		reset_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+		
 		reset_tb <= '0';
       notSS_tb <= '1';
       busy_tb <= '0';

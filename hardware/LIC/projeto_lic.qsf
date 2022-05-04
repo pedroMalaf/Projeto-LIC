@@ -483,9 +483,6 @@ set_global_assignment -name VHDL_FILE counter_tc_tb.vhd
 set_global_assignment -name EDA_TEST_BENCH_NAME counter_tc_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id counter_tc_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME counter_tc_tb -section_id counter_tc_tb
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE shift_register_tb.vhd -section_id shift_register_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE parity_check_tb.vhd -section_id parity_check_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE counter_tb.vhd -section_id counter_tb
@@ -496,4 +493,7 @@ set_global_assignment -name EDA_TEST_BENCH_FILE dispatcher_tb.vhd -section_id di
 set_global_assignment -name EDA_TEST_BENCH_FILE ticket_dispenser_tb.vhd -section_id ticket_dispenser_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE ticket_machine_tb.vhd -section_id ticket_machine_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE counter_tc_tb.vhd -section_id counter_tc_tb
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

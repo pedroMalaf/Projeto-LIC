@@ -133,67 +133,92 @@ BEGIN
 		wait for MCLK_PERIOD;
 		wait for MCLK_PERIOD;
 		-- 434 ns
-
-	
-		-- uma entrada incompleta e de seguida outra entrada para ver se aquilo começava de novo
+		
+		
+		-- 
+		reset_tb <= '1';
+		wait for MCLK_PERIOD;
+		reset_tb <= '0';
 		not_ss_tb <= '0';
 		SDX_tb <= '1';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb <= '0';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb <= '0';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb <= '1';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb <= '0';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb <= '1';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb<= '1';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb <= '0';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb <= '1';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb <= '1';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
+		
 		SDX_tb <= '0';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
+
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
 		not_ss_tb <= '1';
-		wait; 
+		
+		wait for MCLK_PERIOD*2;
 		
 		
 		-- uma entrada com o bit de paridade errado
