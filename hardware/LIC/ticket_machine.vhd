@@ -16,6 +16,13 @@ END ticket_machine;
 
 ARCHITECTURE arq OF ticket_machine IS
 
+	COMPONENT UsbPort
+	PORT (
+		inputPort:  IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+		outputPort :  OUT  STD_LOGIC_VECTOR(7 DOWNTO 0)
+	);
+	END COMPONENT;
+
 	COMPONENT ticket_dispenser
 	PORT (
 		MCLK: IN STD_LOGIC;
@@ -44,10 +51,19 @@ ARCHITECTURE arq OF ticket_machine IS
 	);	
 	END COMPONENT;
 	
-	signal prt_s, rt_s, fn_s, sdx_s, not_ss_s: STD_LOGIC;
+	signal prt_s, rt_s, fn_s, sdx_s, not_ss_s, busy_s, clk_s: STD_LOGIC;
 	signal di_s, oi_s: STD_LOGIC_VECTOR(3 DOWNTO 0);
 	
 BEGIN 
+
+	u_usbport : UsbPort
+	PORT MAP(
+		inputPort(0) => busy_s,
+		outputPort(1) => not_ss_s,
+		outputPort(2) => clk_s,
+		outputPort(3) => sdx_s
+	);
+
 	u_ios : IOS
 	PORT MAP(
 		SCLK => MCLK, 
@@ -63,6 +79,7 @@ BEGIN
 		DouT(7) => oi_s(2),
 		DouT(8) => oi_s(3),
 		Fsh => fn_s,
+		busy => busy_s,
 		SDX => sdx_s
 	);
 	
@@ -81,6 +98,7 @@ BEGIN
 		collect => collect
 	);
 	Prt <= prt_s;
+	clk_s <= MCLK;
 END arq;
 
 
