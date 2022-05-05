@@ -53,7 +53,7 @@ BEGIN
 	BEGIN
 		WAIT FOR MCLK_PERIOD;
 		
-		-- entrada normal, 
+		-- Trama invalida
 		reset_tb <= '1';
 		wait for MCLK_PERIOD;
 		
@@ -129,13 +129,13 @@ BEGIN
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
 		
-		not_ss_tb <= '1';
+		not_ss_tb <= '1'; -- TEM QUE IR PARA STATE_AVAILABLE DNV
 		wait for MCLK_PERIOD;
 		wait for MCLK_PERIOD;
-		-- 434 ns
+		-- TIME RANGE: 434 ns
 		
 		
-		-- 
+		-- TRAMA VALIDA MAS VERIFICAR BIT PARIDADE MAIS ABAIXO
 		reset_tb <= '1';
 		wait for MCLK_PERIOD;
 		reset_tb <= '0';
@@ -205,23 +205,21 @@ BEGIN
 		
 		SDX_tb <= '1';
 		SCLK_tb <= '0';
+		not_ss_tb <= '1'; -- so we can go to state_end
 		wait for MCLK_PERIOD;
 		
 		SCLK_tb <= '1';
 		wait for MCLK_PERIOD;
 		
+		-- README: MUDAR PARA 1 PARA TESTAR TRAMA INVALIDA (BIT PARIDADE INVALIDO)
 		SDX_tb <= '0';
 		SCLK_tb <= '0';
 		wait for MCLK_PERIOD;
-
+		
 		SCLK_tb <= '1';
-		wait for MCLK_PERIOD;
 		not_ss_tb <= '1';
 		
-		wait for MCLK_PERIOD*2;
-		
-		
-		-- uma entrada com o bit de paridade errado
+		wait for MCLK_PERIOD;
  
 		WAIT;
 	END PROCESS;

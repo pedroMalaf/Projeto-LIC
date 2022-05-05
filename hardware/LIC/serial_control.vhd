@@ -50,6 +50,8 @@ BEGIN
 					NS <= STATE_RECEIVED;
 				ELSIF (pFlag = '1' AND RXerror = '0') THEN
 					NS <= STATE_END;
+				ELSIF (pFlag = '0' AND RXerror = '0') THEN
+                    NS <= STATE_RECEIVED;
 				ELSE
 					NS <= STATE_AVAILABLE; -- pFlag = '1' and RXerror = '1'
 				END IF;
