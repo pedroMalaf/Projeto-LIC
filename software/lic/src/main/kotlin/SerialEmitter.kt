@@ -40,7 +40,7 @@ object SerialEmitter {
         // iterar e variar/enviar SCLK e SDX (um de cada vez)
         HAL.clrBits(NOTSS_MASK)
         for (i in 0 until 9) {
-            println("data inteiro: ${printNum(fullSdx)}")
+            println("Serial Emitter sending: ${printNum(fullSdx)}")
             // sclk = 0
             HAL.clrBits(SCLK_MASK)
 
@@ -52,8 +52,6 @@ object SerialEmitter {
             // sdx
             val sdx = fullSdx and 1
             if (sdx == 1) HAL.setBits(SDX_MASK) else HAL.clrBits(SDX_MASK)
-
-            println("a enviar bit individual: $sdx")
 
             fullSdx = fullSdx.shr(1)
             Time.sleep(SLEEP_DEBUG)
