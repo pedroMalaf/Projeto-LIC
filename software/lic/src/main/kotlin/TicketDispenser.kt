@@ -5,7 +5,11 @@ fun main() {
     TestbenchTicketDispenser(1, 2, true)
 }
 
-// Cria uma trama (bilhete) com o destino, origem e round trip
+/**
+ * TicketDispenser
+ *
+ * Cria uma trama (bilhete) com o destino, origem e round trip
+ */
 object TicketDispenser {
     fun init() {
         SerialEmitter.init()

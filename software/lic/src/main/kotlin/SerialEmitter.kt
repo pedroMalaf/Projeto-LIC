@@ -4,7 +4,11 @@ fun main() {
     SerialEmitterTestbench(0b001000011)
 }
 
-// Envia tramas para os diferentes módulos Serial Receiver
+/**
+ * Serial Emitter
+ *
+ * Envia tramas para os diferentes módulos Serial Receiver
+ */
 object SerialEmitter {
     enum class Destination { LCD, TICKER_DISPENSER }
 
@@ -15,7 +19,7 @@ object SerialEmitter {
     private const val SDX_MASK = 0x8 // 3
 
     const val SCLK = 5L
-    const val SLEEP_DEBUG = 1000L
+    const val SLEEP_DEBUG = 500L
 
     fun init() {
         // busy = 0
@@ -36,6 +40,7 @@ object SerialEmitter {
         // iterar e variar/enviar SCLK e SDX (um de cada vez)
         HAL.clrBits(NOTSS_MASK)
         for (i in 0 until 9) {
+            println("data inteiro: ${printNum(fullSdx)}")
             // sclk = 0
             HAL.clrBits(SCLK_MASK)
 
@@ -47,6 +52,8 @@ object SerialEmitter {
             // sdx
             val sdx = fullSdx and 1
             if (sdx == 1) HAL.setBits(SDX_MASK) else HAL.clrBits(SDX_MASK)
+
+            println("a enviar bit individual: $sdx")
 
             fullSdx = fullSdx.shr(1)
             Time.sleep(SLEEP_DEBUG)
