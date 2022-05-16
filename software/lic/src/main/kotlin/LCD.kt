@@ -49,7 +49,7 @@ object LCD {
         writeCMD(0b0011_1000)
         writeCMD(0b0011_1000) // Display off
         writeCMD(0b0011_0001) // Display clear
-        writeCMD(0b0011_0101) // Entry mode set FIXME: I/D?
+        writeCMD(0b0011_0110) // Entry mode set
     }
 
     // Escreve um char na posição corrente
