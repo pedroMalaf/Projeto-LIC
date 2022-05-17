@@ -38,7 +38,7 @@
 
 
 set_global_assignment -name FAMILY "MAX 10"
-set_global_assignment -name DEVICE AUTO
+set_global_assignment -name DEVICE 10M50DAF484C6GES
 set_global_assignment -name TOP_LEVEL_ENTITY ticket_machine
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 15.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:45:13 JUNE 17,2016"
@@ -98,5 +98,28 @@ set_global_assignment -name VHDL_FILE UsbPort.vhd
 set_location_assignment PIN_C10 -to collect
 set_location_assignment PIN_C11 -to Reset
 set_location_assignment PIN_A8 -to Prt
-set_location_assignment PIN_A9 -to P[1]
 set_location_assignment PIN_P11 -to MCLK
+set_location_assignment PIN_W8 -to LCD_RS
+set_location_assignment PIN_V5 -to LCD_EN
+set_location_assignment PIN_AA15 -to LCD_DATA[0]
+set_location_assignment PIN_W13 -to LCD_DATA[1]
+set_location_assignment PIN_AB13 -to LCD_DATA[2]
+set_location_assignment PIN_Y11 -to LCD_DATA[3]
+set_location_assignment PIN_W11 -to LCD_DATA[4]
+set_location_assignment PIN_AA10 -to LCD_DATA[5]
+set_location_assignment PIN_Y8 -to LCD_DATA[6]
+set_location_assignment PIN_Y7 -to LCD_DATA[7]
+set_location_assignment PIN_W5 -to KEYPAD_LIN[0]
+set_location_assignment PIN_AA14 -to KEYPAD_LIN[1]
+set_location_assignment PIN_W12 -to KEYPAD_LIN[2]
+set_location_assignment PIN_AB12 -to KEYPAD_LIN[3]
+set_location_assignment PIN_AB11 -to KEYPAD_COL[0]
+set_location_assignment PIN_AB10 -to KEYPAD_COL[1]
+set_location_assignment PIN_AA9 -to KEYPAD_COL[2]
+set_location_assignment PIN_AA8 -to KEYPAD_COL[3]
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name BOARD "MAX 10 DE10 - Lite"
+set_global_assignment -name VHDL_FILE clk_div.vhd
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

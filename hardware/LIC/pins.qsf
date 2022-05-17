@@ -11,6 +11,27 @@ set_location_assignment PIN_A8 -to Prt
 #CLOCK
 set_location_assignment PIN_P11 -to MCLK
 
+set_location_assignment PIN_W8     -to LCD_RS
+set_location_assignment PIN_V5     -to LCD_EN
+
+set_location_assignment PIN_AA15   -to LCD_DATA[0]
+set_location_assignment PIN_W13    -to LCD_DATA[1]
+set_location_assignment PIN_AB13   -to LCD_DATA[2]
+set_location_assignment PIN_Y11    -to LCD_DATA[3]
+set_location_assignment PIN_W11    -to LCD_DATA[4]
+set_location_assignment PIN_AA10   -to LCD_DATA[5]
+set_location_assignment PIN_Y8     -to LCD_DATA[6]
+set_location_assignment PIN_Y7     -to LCD_DATA[7]
+
+set_location_assignment PIN_W5     -to KEYPAD_LIN[0]
+set_location_assignment PIN_AA14   -to	KEYPAD_LIN[1]
+set_location_assignment PIN_W12    -to KEYPAD_LIN[2]
+set_location_assignment PIN_AB12   -to	KEYPAD_LIN[3]
+set_location_assignment PIN_AB11   -to	KEYPAD_COL[0]
+set_location_assignment PIN_AB10   -to	KEYPAD_COL[1]
+set_location_assignment PIN_AA9    -to	KEYPAD_COL[2]
+set_location_assignment PIN_AA8    -to	KEYPAD_COL[3]
+
 #hex digits screen
 set_location_assignment PIN_C14 -to HEX0[0]
 set_location_assignment PIN_E15 -to HEX0[1]

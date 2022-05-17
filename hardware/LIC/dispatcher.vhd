@@ -23,15 +23,30 @@ ARCHITECTURE arq OF dispatcher IS
 -- STATE_SENDING_LCD: Sending bits to LCD
 -- STATE_END: Ticket is issued 
 
+COMPONENT CLKDIV
+        GENERIC (div : NATURAL := 625000000);
+        PORT (
+            clk_in : IN STD_LOGIC;
+            clk_out : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
+
 type STATE_TYPE is (STATE_AVAILABLE, STATE_SENDING_TICKET, STATE_SENDING_LCD, STATE_END);
 
 signal CS, NS: STATE_TYPE; -- Current & Next State 
 signal din_s: STD_LOGIC_VECTOR(8 downto 0); -- Remove indicator bit (LCD ou TD)
+signal s_clk: STD_LOGIC;
 
 BEGIN
 
+    u_CLKDIV : CLKDIV PORT MAP(
+        clk_in => clk,
+        clk_out => s_clk
+    );
+
 -- Store current state 
-CS <= STATE_AVAILABLE when reset = '1' else NS when rising_edge(clk);
+CS <= STATE_AVAILABLE when reset = '1' else NS when rising_edge(s_clk);
 
 -- Generate next state
 generate_next_state: process (CS, Dval, Din, Fsh)

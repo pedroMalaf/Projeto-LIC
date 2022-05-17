@@ -9,7 +9,10 @@ ENTITY ticket_machine IS
 		MCLK : IN STD_LOGIC;
 		Reset : IN STD_LOGIC;
 		Prt : OUT STD_LOGIC; 
-		HEX0, HEX1, HEX2: OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+		HEX0, HEX1, HEX2: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		LCD_RS : OUT STD_LOGIC;
+		LCD_EN : OUT STD_LOGIC;
+		LCD_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 	);
 END ticket_machine;
 
@@ -51,8 +54,11 @@ ARCHITECTURE arq OF ticket_machine IS
 	);	
 	END COMPONENT;
 	
+	
 	signal prt_s, rt_s, fn_s, sdx_s, not_ss_s, busy_s, clk_s: STD_LOGIC;
 	signal di_s, oi_s: STD_LOGIC_VECTOR(3 DOWNTO 0);
+	signal do_s: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	signal WrL_s: STD_LOGIC;
 	
 BEGIN 
 
@@ -70,17 +76,18 @@ BEGIN
 		WrT => prt_s,
 		not_SS => not_ss_s,
 		Dout(0) => rt_s,
-		DouT(1) => di_s(0),
-		DouT(2) => di_s(1),
-		DouT(3) => di_s(2),
-		DouT(4) => di_s(3),
-		DouT(5) => oi_s(0),
-		DouT(6) => oi_s(1),
-		DouT(7) => oi_s(2),
-		DouT(8) => oi_s(3),
+		Dout(1) => di_s(0),
+		Dout(2) => di_s(1),
+		Dout(3) => di_s(2),
+		Dout(4) => di_s(3),
+		Dout(5) => oi_s(0),
+		Dout(6) => oi_s(1),
+		Dout(7) => oi_s(2),
+		Dout(8) => oi_s(3),
 		Fsh => fn_s,
 		busy => busy_s,
-		SDX => sdx_s
+		SDX => sdx_s,
+		WrL => WrL_s
 	);
 	
 	u_td : ticket_dispenser
@@ -99,6 +106,18 @@ BEGIN
 	);
 	Prt <= prt_s;
 	clk_s <= MCLK;
+
+	LCD_EN <= WrL_s;
+	LCD_RS <= rt_s; --rs 
+	LCD_DATA(0) <= di_s(0);
+	LCD_DATA(1) <= di_s(1);
+	LCD_DATA(2) <= di_s(2);
+	LCD_DATA(3) <= di_s(3);
+	LCD_DATA(4) <= oi_s(0);
+	LCD_DATA(5) <= oi_s(1);
+	LCD_DATA(6) <= oi_s(2);
+	LCD_DATA(7) <= oi_s(3);
+	
 END arq;
 
 
