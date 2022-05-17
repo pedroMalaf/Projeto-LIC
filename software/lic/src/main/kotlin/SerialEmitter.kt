@@ -31,12 +31,17 @@ object SerialEmitter {
 
     // Envia uma trama para o SerielReceiver identificado o destino em addr e os bits de dados em data
     fun send(addr: Destination, data: Int) {
+        while(SerialEmitter.isBusy()){
+            println("Não é possível enviar uma trama. Tenta novamente em 3 segundos")
+            Time.sleep(3000)
+        }
+
         // data = origem destino rt (ex: 67 = 0010 0001 1)
         val d = if (addr == Destination.TICKER_DISPENSER) 1 else 0
 
         // adicionar bit de destination (lcd ou td) ao data (bit de maior peso)
-        var fullSdx = d.shl(9) or data
-
+        //var fullSdx = d.shl(9) or data
+        var fullSdx = data.shl(1) or d
         // iterar e variar/enviar SCLK e SDX (um de cada vez)
         HAL.clrBits(NOTSS_MASK)
         for (i in 0 until 9) {
