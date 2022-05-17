@@ -1,3 +1,5 @@
+import java.io.File
+
 // Some utilities
 
 /**
@@ -6,7 +8,34 @@
 fun isPowerOfTwo(n: Int) = (n and (n-1)) == 0
 
 /**
- * Prints [n] in decimal, hex and binary.
+ * Returns [n] in decimal, hex and binary.
  */
 fun printNum(n: Int) =
     "%d (0x%x) (0b%s)".format(n, n, n.toString(2))
+
+/**
+ * Returns [n] in binary.
+ */
+fun AS_BINARY(n: Int) =
+    "0b%s".format(n.toString(2))
+
+var DEBUG_MODE = -1
+/**
+ * Debugs aKa prints [s] to console if debug mode is set.
+ * You can set/unset debug mode in debug.txt.
+ */
+fun DEBUG(s: String) {
+    when(DEBUG_MODE) {
+        0 -> return
+        1 -> println(s)
+        else -> {
+            val l = File("debug.txt").readLines(Charsets.UTF_8)[0]
+            if (!l.contains("debug = ") || !l.last().isDigit()) {
+                throw Exception("debug.txt invalid configuration! Make sure it contains \"debug = 0/1\" ")
+            }
+            DEBUG_MODE = l.last().toString().toInt()
+            DEBUG_MODE = if (DEBUG_MODE == 0) 0 else 1 // avoid stack overflow
+            DEBUG(s)
+        }
+    }
+}

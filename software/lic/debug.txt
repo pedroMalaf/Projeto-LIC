@@ -1,0 +1,6 @@
+debug = 2
+// enable/disable debug messages
+// 1 = debug messages are enabled
+// 0 = debug messages are disabled
+// CONFIGURATION:
+// first line of this file should only contain "debug = x" where x is 0/1
