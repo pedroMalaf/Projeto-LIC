@@ -43,7 +43,7 @@ ARCHITECTURE arq OF ticket_machine IS
 
 	COMPONENT IOS IS
 	PORT (
-		SCLK : IN STD_LOGIC;
+		SCLK, MCLK : IN STD_LOGIC;
 		SDX : IN STD_LOGIC;
 		not_SS : IN STD_LOGIC;
 		Fsh : IN STD_LOGIC; --> Fn -> fsh
@@ -72,7 +72,8 @@ BEGIN
 
 	u_ios : IOS
 	PORT MAP(
-		SCLK => MCLK, 
+		MCLK => MCLK,
+		SCLK => clk_s, 
 		WrT => prt_s,
 		not_SS => not_ss_s,
 		Dout(0) => rt_s,
@@ -105,7 +106,6 @@ BEGIN
 		collect => collect
 	);
 	Prt <= prt_s;
-	clk_s <= MCLK;
 
 	LCD_EN <= WrL_s;
 	LCD_RS <= rt_s; --rs 

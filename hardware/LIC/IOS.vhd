@@ -5,7 +5,7 @@ USE IEEE.std_logic_1164.ALL;
 
 ENTITY IOS IS
 	PORT (
-		SCLK : IN STD_LOGIC;
+		SCLK, MCLK : IN STD_LOGIC;
 		SDX : IN STD_LOGIC;
 		not_SS, reset: IN STD_LOGIC;
 		Fsh : IN STD_LOGIC; --> Fn -> fsh
@@ -21,7 +21,7 @@ ARCHITECTURE arq OF IOS IS
 	COMPONENT serial_receiver
 		PORT (
 			SDX : IN STD_LOGIC;
-			SCLK : IN STD_LOGIC;
+			SCLK, MCLK, reset : IN STD_LOGIC;
 			not_SS : IN STD_LOGIC;
 			accept : IN STD_LOGIC;
 			D : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -48,6 +48,8 @@ ARCHITECTURE arq OF IOS IS
 BEGIN
 	u_serial_receiver : serial_receiver
 	PORT MAP(
+		reset => reset,
+		MCLK => MCLK,
 		SCLK => SCLK, 
 		SDX => SDX, 
 		not_SS => not_SS, 
@@ -66,7 +68,7 @@ BEGIN
 		Din => s_din, 
 		Dout => Dout, 
 		WrL => WrL,
-		clk => SCLK,
+		clk => MCLK,
 		reset => reset
 	);
  
