@@ -31,13 +31,13 @@ begin
 	
 	UdecoderHex : decoderHex PORT MAP(
         A => o_id,
-        clear => reset,
+        clear => not(Prt),
         HEX0 => HEX0
     );
 	 
 	 UdecoderHex1 : decoderHex PORT MAP(
         A => d_id,
-        clear => reset,
+        clear => not(Prt),
         HEX0 => HEX1
     );
 	 
@@ -46,7 +46,7 @@ begin
 		  A(1) => '0',
 		  A(2) => '0',
 		  A(3) => '0',
-        clear => reset,
+        clear => not(Prt),
         HEX0 => HEX2
     );
 	
