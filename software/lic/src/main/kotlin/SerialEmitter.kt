@@ -68,8 +68,10 @@ object SerialEmitter {
             parityBit = parityBit xor sdx
             DEBUG("[SerialEmitter::send] sdx: $sdx (parityBit = $parityBit)")
             frame = frame.shr(1)
+
             Time.sleep(SCLK)
             HAL.setBits(SCLK_MASK) // sclk = 1
+
             Time.sleep(SLEEP_DEBUG)
         }
 

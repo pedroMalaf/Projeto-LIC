@@ -1,6 +1,6 @@
 fun main() {
     //hex rt | origem | destino
-    TestbenchTicketDispenser(0b0010, 0b0010, true)
+    TestbenchTicketDispenser(0b0110, 0b0101, true)
     //TestbenchTicketDispenser(0b0011, 0b1100, false)
 }
 
