@@ -21,6 +21,7 @@ object LCD {
     private fun writeByteSerial(rs: Boolean, data: Int) {
         val RS = if (rs) 1 else 0
         val fullData = RS.shl(8) or data
+        DEBUG("[LCD:: writeByteSerial] fullData = ${AS_BINARY(fullData)}")
         SerialEmitter.send(SerialEmitter.Destination.LCD, fullData)
     }
 

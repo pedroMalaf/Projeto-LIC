@@ -1,6 +1,7 @@
 fun main() {
-    TestbenchTicketDispenser(0b0001, 0b0010, true)
-    TestbenchTicketDispenser(0b0011, 0b1100, false)
+    //hex rt | origem | destino
+    TestbenchTicketDispenser(0b0010, 0b0010, true)
+    //TestbenchTicketDispenser(0b0011, 0b1100, false)
 }
 
 /**
@@ -10,6 +11,9 @@ fun main() {
  */
 object TicketDispenser {
 
+    fun init(){
+        SerialEmitter.init()
+    }
     /**
      * Prints the ticket by sending it with information required to SerialEmitter
      */
@@ -20,12 +24,12 @@ object TicketDispenser {
         DEBUG("[TicketDispenser::print] originID = ${AS_BINARY(originID)}")
         DEBUG("[TicketDispenser::print] roundTrip = ${AS_BINARY(RT)}")
         DEBUG("[TicketDispenser::print] printing: ${AS_BINARY(data)}")
-        SerialEmitter.init()
         SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data)
     }
 }
 
 fun TestbenchTicketDispenser(d: Int, o: Int, rt: Boolean) {
+    TicketDispenser.init()
     TicketDispenser.print(d, o, rt)
 }
 

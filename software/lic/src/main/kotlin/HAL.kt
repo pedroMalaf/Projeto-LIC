@@ -1,4 +1,5 @@
 import isel.leic.UsbPort
+import isel.leic.utils.Time
 
 fun main() {
     HALTestbench()
@@ -82,14 +83,17 @@ fun HALTestbench() {
     HAL.lastState = 128
     HAL.setBits(0b00001111)
     println("running HAL.setBits")
+    Time.sleep(1000)
 
     // clrBits
     // state = 143 (1000 1111) ; mask = 3 (0000 0011) ; output leds = 140 (1000 1100)
     HAL.clrBits(0b00000011)
     println("running HAL.clrBits")
+    Time.sleep(1000)
 
     // writeBits
     // state = 140 (1000 1100) ; mask = 15 (0000 1111) ; value = 9 (0000 1001) ; LEDS = 137 (1000 1001)
     HAL.writeBits(0b00001111, 0b00001001)
     println("running HAL.writeBits")
+    Time.sleep(1000)
 }

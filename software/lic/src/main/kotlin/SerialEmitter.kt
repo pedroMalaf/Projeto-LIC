@@ -22,7 +22,7 @@ object SerialEmitter {
     private const val SDX_MASK = 0x8 // 3
 
     //
-    private const val SCLK = 5L
+    private const val SCLK = 10L
     private const val SLEEP_DEBUG = 500L
 
     /**
@@ -31,7 +31,8 @@ object SerialEmitter {
     fun init() {
         DEBUG("[SerialEmitter::init]")
 
-        HAL.clrBits(BUSY_MASK) // busy = 0
+        HAL.init(0)
+        //HAL.clrBits(BUSY_MASK) // busy = 0
         HAL.setBits(NOTSS_MASK) // not_ss = 1
     }
 
@@ -60,8 +61,6 @@ object SerialEmitter {
         HAL.clrBits(NOTSS_MASK)
         repeat(10) {
             HAL.clrBits(SCLK_MASK) // sclk = 0
-            Time.sleep(SCLK)
-            HAL.setBits(SCLK_MASK) // sclk = 1
 
             // sdx and parity
             val sdx = frame and 1
@@ -69,18 +68,20 @@ object SerialEmitter {
             parityBit = parityBit xor sdx
             DEBUG("[SerialEmitter::send] sdx: $sdx (parityBit = $parityBit)")
             frame = frame.shr(1)
-
+            Time.sleep(SCLK)
+            HAL.setBits(SCLK_MASK) // sclk = 1
             Time.sleep(SLEEP_DEBUG)
         }
 
         // send last bit (parity)
         HAL.clrBits(SCLK_MASK) // sclk = 0
         Time.sleep(SCLK)
+        if (parityBit == 1) HAL.setBits(SDX_MASK) else HAL.clrBits(SDX_MASK)
         HAL.setBits(SCLK_MASK) // sclk = 1
         DEBUG("[SerialEmitter::send] sending last sdx (parity bit): $parityBit")
 
         Time.sleep(SCLK)
-        HAL.setBits(BUSY_MASK)
+        //HAL.setBits(BUSY_MASK)
         HAL.setBits(NOTSS_MASK)
         HAL.clrBits(SCLK_MASK)
         DEBUG("[SerialEmitter::send] end frame")
