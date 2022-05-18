@@ -8,36 +8,46 @@ fun main() {
 /**
  * LCD
  *
- * Escreve no LCD utilizando a interface a 8 bits
+ * Writes to the LCD using the 8bit interface
  */
 object LCD {
-    // Dimensão do display
+    // Display size
     private val LINES = 2
     private val COLS = 16
 
-    // Escreve um byte de comando/dados no LCD em série
+    /**
+     * Write command/data byte to LCD
+     */
     private fun writeByteSerial(rs: Boolean, data: Int) {
         val RS = if (rs) 1 else 0
         val fullData = RS.shl(8) or data
         SerialEmitter.send(SerialEmitter.Destination.LCD, fullData)
     }
 
-    // Escreve um byte de comando/dados no LCD
+    /**
+     * Write command/data byte to LCD
+     */
     fun writeByte(rs: Boolean, data: Int) {
         writeByteSerial(rs, data)
     }
 
-    // Escreve um comando no lcd
+    /**
+     * Write command to LCD
+     */
     private fun writeCMD(data: Int) {
         writeByte(false, data)
     }
 
-    // Escreve um dado no LCD
+    /**
+     * Write data to LCD
+     */
     private fun writeDATA(data: Int) {
         writeByte(true, data)
     }
 
-    // Envia uma sequência de iniciação para comunicação a 8 bits
+    /**
+     * Sets up LCD by sending the init sequence from the docs
+     */
     fun init() {
         Time.sleep(16)
         writeCMD(0b0011_0000)
@@ -52,23 +62,31 @@ object LCD {
         writeCMD(0b0011_0110) // Entry mode set
     }
 
-    // Escreve um char na posição corrente
+    /**
+     * Writes a char [c] to the current position
+     */
     fun write(c: Char) {
 
     }
 
-    // Escreve uma string na posição corrente
+    /**
+     * Writes a string ([text]) to the current position
+     */
     fun write(text: String) {
 
     }
 
-    // Envia um comando para posicionar cursor ('line':0..LINES-1, 'column':0..COLS-1)
+    /**
+     * Sends a command to change cursor position ('line':0..LINES-1, 'column':0..COLS-1)
+     */
     fun cursor(line: Int, column: Int) {
         // 0000010?--
         //writeCMD(0b0000010100)
     }
 
-    // Envia um comando para limpar o ecrã e posicionar o cursor em (0,0)
+    /**
+     * Cleans the display and sets cursor position to (0,0)
+     */
     fun clear() {
         writeDATA(0b1)
         cursor(0, 0)

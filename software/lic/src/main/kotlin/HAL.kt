@@ -7,46 +7,55 @@ fun main() {
 /**
  * HAL - Hardware Abstraction Layer
  *
- * Virtualiza o acesso ao sistema UsbPort
+ * Virtualization access to the UsbPort system
  */
 object HAL {
     var lastState = 255  // all pins ON by default
 
-    // Muda o estado dos output leds para [newState]
+    /**
+     * Changes output leds state to [newState]
+     */
     private fun changeState(newState: Int) {
         UsbPort.write(newState)
         lastState = newState
     }
 
-    // Inicia a classe, começando com os bits a [state]
+    /**
+     * Constructs the class, by settings bits to [state]
+     */
     fun init(state: Int) {
         changeState(state)
     }
 
-    // Retorna true se o bit tiver o valor lógico ‘1’
-    fun isBit(mask: Int): Boolean {
-        if (!isPowerOfTwo(mask) || mask == 0) {
-            throw Exception("ERRO isBit($mask) @ Mais do que um bit ativo em $mask OU mask = 0")
-        }
-        return readBits(mask) == mask
-    }
+    /**
+     * Returns true if [mask] bit is 1
+     */
+    fun isBit(mask: Int) = readBits(mask) == mask
 
-    // Retorna os valores dos bits representados por mask presentes no UsbPort
+    /**
+     * Returns the values of the [mask]ed bits present in the UsbPort system
+     */
     fun readBits(mask: Int) = mask and UsbPort.read()
 
-    // Escreve nos bits representados por mask o valor de value
+    /**
+     * Writes [value] [mask]ed bits in the UsbPort system
+     */
     fun writeBits(mask: Int, value: Int) {
         val num = mask and value
         val numMask = mask.inv() and lastState
         changeState(numMask or num)
     }
 
-    // Coloca os bits representados por mask no valor lógico ‘1’
+    /**
+     * Sets all [mask]ed bits in the UsbPort system to 1
+     */
     fun setBits(mask: Int) {
         changeState(mask or lastState)
     }
 
-    // Coloca os bits representados por mask no valor lógico ‘0’
+    /**
+     * Sets all [mask]ed bits in the UsbPort system to 0
+     */
     fun clrBits(mask: Int) {
         changeState(mask.inv() and lastState)
     }
