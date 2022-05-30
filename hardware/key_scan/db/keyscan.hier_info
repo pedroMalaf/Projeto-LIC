@@ -1,0 +1,180 @@
+|keyscan
+Ksc => counter:u_counter.ce
+clk => counter:u_counter.clk
+reset => counter:u_counter.reset
+L[0] => mux:u_mux.A[0]
+L[1] => mux:u_mux.A[1]
+L[2] => mux:u_mux.A[2]
+L[3] => mux:u_mux.A[3]
+K[0] <= counter:u_counter.Q[0]
+K[1] <= counter:u_counter.Q[1]
+K[2] <= counter:u_counter.Q[2]
+K[3] <= counter:u_counter.Q[3]
+C[0] <= dec:u_dec.CL[0]
+C[1] <= dec:u_dec.CL[1]
+C[2] <= dec:u_dec.CL[2]
+Kpress <= mux:u_mux.Y
+
+
+|keyscan|mux:u_mux
+S[0] => Y.IN0
+S[0] => Y.IN0
+S[0] => Y.IN0
+S[0] => Y.IN0
+S[1] => Y.IN1
+S[1] => Y.IN1
+S[1] => Y.IN1
+S[1] => Y.IN1
+A[0] => ~NO_FANOUT~
+A[1] => Y.IN1
+A[2] => Y.IN1
+A[3] => Y.IN1
+Y <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|counter:u_counter
+ce => reg:u_reg.CE
+clk => reg:u_reg.CLK
+reset => reg:u_reg.RESET
+Q[0] <= comb.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2].DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|counter:u_counter|reg:u_reg
+F[0] => FFD:u_FFD0.D
+F[1] => FFD:u_FFD1.D
+F[2] => FFD:u_FFD2.D
+F[3] => FFD:u_FFD3.D
+CE => FFD:u_FFD0.EN
+CE => FFD:u_FFD1.EN
+CE => FFD:u_FFD2.EN
+CE => FFD:u_FFD3.EN
+RESET => FFD:u_FFD0.RESET
+RESET => FFD:u_FFD1.RESET
+RESET => FFD:u_FFD2.RESET
+RESET => FFD:u_FFD3.RESET
+CLK => FFD:u_FFD0.CLK
+CLK => FFD:u_FFD1.CLK
+CLK => FFD:u_FFD2.CLK
+CLK => FFD:u_FFD3.CLK
+Q[0] <= FFD:u_FFD0.Q
+Q[1] <= FFD:u_FFD1.Q
+Q[2] <= FFD:u_FFD2.Q
+Q[3] <= FFD:u_FFD3.Q
+
+
+|keyscan|counter:u_counter|reg:u_reg|FFD:u_FFD0
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|counter:u_counter|reg:u_reg|FFD:u_FFD1
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|counter:u_counter|reg:u_reg|FFD:u_FFD2
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|counter:u_counter|reg:u_reg|FFD:u_FFD3
+CLK => Q~reg0.CLK
+RESET => Q~reg0.ACLR
+RESET => Q.IN0
+SET => Q.IN1
+D => Q~reg0.DATAIN
+EN => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|counter:u_counter|adder:u_adder
+A[0] => fulladder:u_full_adder0.A
+A[1] => fulladder:u_full_adder1.A
+A[2] => fulladder:u_full_adder2.A
+A[3] => fulladder:u_full_adder3.A
+B[0] => fulladder:u_full_adder0.B
+B[1] => fulladder:u_full_adder1.B
+B[2] => fulladder:u_full_adder2.B
+B[3] => fulladder:u_full_adder3.B
+Cin => fulladder:u_full_adder0.Cin
+S[0] <= fulladder:u_full_adder0.S
+S[1] <= fulladder:u_full_adder1.S
+S[2] <= fulladder:u_full_adder2.S
+S[3] <= fulladder:u_full_adder3.S
+Cout <= fulladder:u_full_adder3.Cout
+
+
+|keyscan|counter:u_counter|adder:u_adder|fulladder:u_full_adder0
+A => S.IN0
+A => Cout.IN0
+B => S.IN1
+B => Cout.IN1
+Cin => S.IN1
+Cin => Cout.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|counter:u_counter|adder:u_adder|fulladder:u_full_adder1
+A => S.IN0
+A => Cout.IN0
+B => S.IN1
+B => Cout.IN1
+Cin => S.IN1
+Cin => Cout.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|counter:u_counter|adder:u_adder|fulladder:u_full_adder2
+A => S.IN0
+A => Cout.IN0
+B => S.IN1
+B => Cout.IN1
+Cin => S.IN1
+Cin => Cout.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|counter:u_counter|adder:u_adder|fulladder:u_full_adder3
+A => S.IN0
+A => Cout.IN0
+B => S.IN1
+B => Cout.IN1
+Cin => S.IN1
+Cin => Cout.IN1
+S <= S.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|keyscan|dec:u_dec
+S[0] => CL.IN0
+S[0] => CL.IN0
+S[0] => CL.IN0
+S[1] => CL.IN1
+S[1] => CL.IN1
+S[1] => CL.IN1
+CL[0] <= CL.DB_MAX_OUTPUT_PORT_TYPE
+CL[1] <= CL.DB_MAX_OUTPUT_PORT_TYPE
+CL[2] <= CL.DB_MAX_OUTPUT_PORT_TYPE
+
+

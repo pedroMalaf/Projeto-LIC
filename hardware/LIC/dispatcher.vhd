@@ -55,9 +55,9 @@ generate_next_state: process (CS, Dval, Din, Fsh)
 		
 			when STATE_AVAILABLE => if (Dval = '0') then 
 												NS <= STATE_AVAILABLE; 
-											elsif (Dval = '1' and Din(9) = '1') then
+											elsif (Dval = '1' and Din(0) = '1') then
 												NS <= STATE_SENDING_TICKET;  
-											elsif (Dval = '1' and Din(9) = '0') then
+											elsif (Dval = '1' and Din(0) = '0') then
 												NS <= STATE_SENDING_LCD;
 											end if;
 			
