@@ -27,9 +27,9 @@ BEGIN
 	-- Unit Under Test
 	UUT : shift_register
 	PORT MAP(
-		Sin => Sin_tb, 
-		clk => clk_tb, 
-		enable => enable_tb, 
+		Sin => Sin_tb,
+		clk => clk_tb,
+		enable => enable_tb,
 		D => D_tb
 	);
 
@@ -47,39 +47,39 @@ BEGIN
 	BEGIN
 		enable_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		Sin_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		Sin_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		Sin_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		Sin_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		Sin_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		Sin_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		Sin_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		Sin_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		Sin_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		Sin_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		enable_tb <= '0';
- 
+
 		WAIT;
 	END PROCESS;
 

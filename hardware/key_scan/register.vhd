@@ -24,41 +24,41 @@ ARCHITECTURE arq OF reg IS
 BEGIN
 	u_FFD0 : FFD
 	PORT MAP(
-		D => F(0), 
-		EN => CE, 
-		CLK => CLK, 
-		Q => Q(0), 
-		SET => '0', 
+		D => F(0),
+		EN => CE,
+		CLK => CLK,
+		Q => Q(0),
+		SET => '0',
 		RESET => RESET
 	);
 
 	u_FFD1 : FFD
 	PORT MAP(
-		D => F(1), 
-		EN => CE, 
-		CLK => CLK, 
-		Q => Q(1), 
-		SET => '0', 
+		D => F(1),
+		EN => CE,
+		CLK => CLK,
+		Q => Q(1),
+		SET => '0',
 		RESET => RESET
 	);
 
 	u_FFD2 : FFD
 	PORT MAP(
-		D => F(2), 
-		EN => CE, 
-		CLK => CLK, 
-		Q => Q(2), 
-		SET => '0', 
+		D => F(2),
+		EN => CE,
+		CLK => CLK,
+		Q => Q(2),
+		SET => '0',
 		RESET => RESET
 	);
 
 	u_FFD3 : FFD
 	PORT MAP(
-		D => F(3), 
-		EN => CE, 
-		CLK => CLK, 
-		Q => Q(3), 
-		SET => '0', 
+		D => F(3),
+		EN => CE,
+		CLK => CLK,
+		Q => Q(3),
+		SET => '0',
 		RESET => RESET
 	);
 

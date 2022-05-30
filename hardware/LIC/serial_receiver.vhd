@@ -27,21 +27,21 @@ ARCHITECTURE arq OF serial_receiver IS
 
 	COMPONENT counter IS
 		PORT (
-			reset : in STD_LOGIC;
-			ce : in std_logic;
-			clk : in STD_LOGIC;
-			flags: out std_logic_vector(3 downto 0)
+			reset : IN STD_LOGIC;
+			ce : IN STD_LOGIC;
+			clk : IN STD_LOGIC;
+			flags : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 		);
 	END COMPONENT;
-	
+
 	COMPONENT counter_tc IS
 		PORT (
-			D : in std_logic_vector(3 downto 0);
-			TC10 : out std_logic;
-			TC11 : out std_logic
+			D : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+			TC10 : OUT STD_LOGIC;
+			TC11 : OUT STD_LOGIC
 		);
 	END COMPONENT;
- 
+
 	COMPONENT parity_check IS
 		PORT (
 			data : IN STD_LOGIC;
@@ -50,7 +50,7 @@ ARCHITECTURE arq OF serial_receiver IS
 			err : OUT STD_LOGIC
 		);
 	END COMPONENT;
- 
+
 	COMPONENT serial_control IS
 		PORT (
 			not_SS : IN STD_LOGIC;
@@ -65,12 +65,10 @@ ARCHITECTURE arq OF serial_receiver IS
 			busy : OUT STD_LOGIC
 		);
 	END COMPONENT;
- 
-	SIGNAL s_wr, s_init, s_pflag, s_dflag, s_err : STD_LOGIC;
-	SIGNAL d_s : STD_LOGIC_VECTOR(3 downto 0);
-	SIGNAL tc10_s, tc11_s: STD_LOGIC;
 
- 
+	SIGNAL s_wr, s_init, s_pflag, s_dflag, s_err : STD_LOGIC;
+	SIGNAL d_s : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL tc10_s, tc11_s : STD_LOGIC;
 BEGIN
 	u_tc : counter_tc
 	PORT MAP(
@@ -78,44 +76,44 @@ BEGIN
 		TC10 => tc10_s,
 		TC11 => tc11_s
 	);
-	
+
 	u_counter : counter
 	PORT MAP(
-		clk => SCLK, 
-		ce => '1', 
+		clk => SCLK,
+		ce => '1',
 		reset => s_init,
 		flags => d_s
 	);
 
 	u_shift_register : shift_register
 	PORT MAP(
-		Sin => SDX, 
-		clk => SCLK, 
-		enable => s_wr, 
+		Sin => SDX,
+		clk => SCLK,
+		enable => s_wr,
 		D => D
 	);
- 
+
 	u_parity_check : parity_check
 	PORT MAP(
-		clk => SCLK, 
-		data => SDX, 
-		init => s_init, 
+		clk => SCLK,
+		data => SDX,
+		init => s_init,
 		err => s_err
 	);
- 
+
 	u_serial_control : serial_control
 	PORT MAP(
-		not_SS => not_SS, 
-		accept => accept, 
-		RXerror => s_err, 
-		pFlag => tc11_s, 
-		dFlag => tc10_s, 
-		wr => s_wr, 
-		init => s_init, 
-		DXval => DXval, 
-		reset => reset, 
+		not_SS => not_SS,
+		accept => accept,
+		RXerror => s_err,
+		pFlag => tc11_s,
+		dFlag => tc10_s,
+		wr => s_wr,
+		init => s_init,
+		DXval => DXval,
+		reset => reset,
 		clk => MCLK,
-		busy => busy 
+		busy => busy
 	);
 
 END arq;

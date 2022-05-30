@@ -25,12 +25,12 @@ ARCHITECTURE arq OF parity_check_tb IS
 BEGIN
 	UUT : parity_check
 	PORT MAP(
-		data => data_tb, 
-		clk => clk_tb, 
-		init => init_tb, 
+		data => data_tb,
+		clk => clk_tb,
+		init => init_tb,
 		err => err_tb
 	);
- 
+
 	clk_gen : PROCESS
 	BEGIN
 		clk_tb <= '0';
@@ -43,11 +43,17 @@ BEGIN
 	BEGIN
 		init_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		init_tb <= '1';
 		--WAIT FOR MCLK_PERIOD; -- ?
- 
+
 		data_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+
+		data_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+
+		data_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
 
 		data_tb <= '1';
@@ -58,16 +64,10 @@ BEGIN
 
 		data_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
- 
-		data_tb <= '0';
-		WAIT FOR MCLK_PERIOD;
-
-		data_tb <= '1';
-		WAIT FOR MCLK_PERIOD;
 
 		data_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		init_tb <= '0';
 		WAIT;
 	END PROCESS;

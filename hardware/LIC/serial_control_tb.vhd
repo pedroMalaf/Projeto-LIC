@@ -26,16 +26,16 @@ ARCHITECTURE arq OF serial_control_tb IS
 BEGIN
 	UUT : serial_control
 	PORT MAP(
-		not_SS => not_SS_tb, 
-		accept => accept_tb, 
-		pFlag => pFlag_tb, 
-		dFlag => dFlag_tb, 
-		RXerror => RXerror_tb, 
-		reset => reset_tb, 
-		clk => clk_tb, 
-		wr => wr_tb, 
-		init => init_tb, 
-		DXval => DXval_tb, 
+		not_SS => not_SS_tb,
+		accept => accept_tb,
+		pFlag => pFlag_tb,
+		dFlag => dFlag_tb,
+		RXerror => RXerror_tb,
+		reset => reset_tb,
+		clk => clk_tb,
+		wr => wr_tb,
+		init => init_tb,
+		DXval => DXval_tb,
 		busy => busy_tb
 	);
 
@@ -49,56 +49,56 @@ BEGIN
 
 	stimulus : PROCESS
 	BEGIN
-		
+
 		-- input: not_SS, accept, pFlag, dFlag, RXerror
 		-- statebefore -> stateafter
 		reset_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		-- 00 -> 00
 		not_SS_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		-- 00 -> 01
 		not_SS_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		-- 01 -> 01
 		not_SS_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		-- 01 -> 01
 		not_SS_tb <= '1';
 		dFlag_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		-- 01 -> 10
 		not_SS_tb <= '1';
 		dFlag_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		-- 10 -> 10
 		pFlag_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		-- TO TEST: RXerror = 1 (10 -> 00)
-		
+
 		-- 10 -> 11
 		pFlag_tb <= '1';
 		RXerror_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		-- 11 -> 11
 		accept_tb <= '0';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		-- 11 -> 00
 		accept_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		reset_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
-		
+
 		WAIT;
 	END PROCESS;
 

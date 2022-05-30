@@ -18,6 +18,6 @@ ARCHITECTURE arq OF FFD IS
 
 BEGIN
 	Q <= '0' WHEN RESET = '1' ELSE
-	     '1' WHEN SET = '1' ELSE
-	     D WHEN rising_edge(clk) AND EN = '1';
+		'1' WHEN SET = '1' ELSE
+		D WHEN rising_edge(clk) AND EN = '1';
 END arq;

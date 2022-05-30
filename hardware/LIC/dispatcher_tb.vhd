@@ -1,4 +1,4 @@
-  -- IOS Dispatcher Testbench TODO
+-- IOS Dispatcher Testbench TODO
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -10,12 +10,12 @@ ARCHITECTURE arqui OF dispatcher_tb IS
 
     COMPONENT dispatcher IS
         PORT (
-            reset, clk: IN STD_LOGIC;
-				Fsh, Dval: IN STD_LOGIC;
-				Din: IN STD_LOGIC_VECTOR(9 downto 0);
-				WrT, WrL: OUT STD_LOGIC;
-				Dout: OUT STD_LOGIC_VECTOR(8 downto 0);
-				done: OUT STD_LOGIC
+            reset, clk : IN STD_LOGIC;
+            Fsh, Dval : IN STD_LOGIC;
+            Din : IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+            WrT, WrL : OUT STD_LOGIC;
+            Dout : OUT STD_LOGIC_VECTOR(8 DOWNTO 0);
+            done : OUT STD_LOGIC
         );
     END COMPONENT;
 
@@ -23,11 +23,11 @@ ARCHITECTURE arqui OF dispatcher_tb IS
     CONSTANT MCLK_HALF_PERIOD : TIME := MCLK_PERIOD / 2;
 
     SIGNAL Fsh_tb, Dval_tb : STD_LOGIC;
-    SIGNAL Din_tb: STD_LOGIC_VECTOR(9 downto 0);
-    SIGNAL Dout_tb: STD_LOGIC_VECTOR(8 downto 0);
-    SIGNAL WrT_tb, WrL_tb: STD_LOGIC;
-    SIGNAL done_tb: STD_LOGIC;
-    SIGNAL clk_tb, reset_tb: STD_LOGIC; 
+    SIGNAL Din_tb : STD_LOGIC_VECTOR(9 DOWNTO 0);
+    SIGNAL Dout_tb : STD_LOGIC_VECTOR(8 DOWNTO 0);
+    SIGNAL WrT_tb, WrL_tb : STD_LOGIC;
+    SIGNAL done_tb : STD_LOGIC;
+    SIGNAL clk_tb, reset_tb : STD_LOGIC;
 
 BEGIN
     UUT : dispatcher
@@ -39,10 +39,10 @@ BEGIN
         WrT => WrT_tb,
         WrL => WrL_tb,
         done => done_tb,
-		  reset => reset_tb,
-		  clk => clk_tb
+        reset => reset_tb,
+        clk => clk_tb
     );
- 
+
     clk_gen : PROCESS
     BEGIN
         clk_tb <= '0';
@@ -56,22 +56,22 @@ BEGIN
         -- 00 -> 00
         Dval_tb <= '0';
         WAIT FOR MCLK_PERIOD;
-        
+
         -- 00 -> 01 wrT 1!
         Dval_tb <= '1';
         Din_tb <= "1000011110";
         WAIT FOR MCLK_PERIOD;
-        
+
         -- 11 -> 00
         Fsh_tb <= '1';
         WAIT FOR MCLK_PERIOD;
-        
+
         -- 00 -> 10 wrL 1!
         Dval_tb <= '1';
         Din_tb <= "0000011110";
-		  Fsh_tb <= '0'; -- Test if goes back to 11
+        Fsh_tb <= '0'; -- Test if goes back to 11
         WAIT FOR MCLK_PERIOD;
- 
+
         WAIT;
     END PROCESS;
 

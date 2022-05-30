@@ -5,10 +5,10 @@ USE ieee.std_logic_1164.ALL;
 
 ENTITY counter IS
 	PORT (
-		reset : in STD_LOGIC;
-		ce : in std_logic;
-		clk : in STD_LOGIC;
-		flags: out std_logic_vector(3 downto 0)
+		reset : IN STD_LOGIC;
+		ce : IN STD_LOGIC;
+		clk : IN STD_LOGIC;
+		flags : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 	);
 END counter;
 
@@ -23,7 +23,7 @@ ARCHITECTURE arq OF counter IS
 			Q : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 		);
 	END COMPONENT;
- 
+
 	-- Adder (4 bits)
 	COMPONENT adder
 		PORT (
@@ -34,13 +34,13 @@ ARCHITECTURE arq OF counter IS
 			Cout : OUT STD_LOGIC
 		);
 	END COMPONENT;
- 
+
 	SIGNAL s_add, s_counter : STD_LOGIC_VECTOR(3 DOWNTO 0);
- 
+
 BEGIN
 	u_reg : reg
 	PORT MAP(
-		F => s_add, 
+		F => s_add,
 		CLK => clk,
 		RESET => reset,
 		CE => ce,
@@ -49,12 +49,12 @@ BEGIN
 
 	u_adder : adder
 	PORT MAP(
-		A => s_counter, 
-		B => "0001", 
-		Cin => '0', 
-		Cout => OPEN, 
+		A => s_counter,
+		B => "0001",
+		Cin => '0',
+		Cout => OPEN,
 		S => s_add
 	);
-	
+
 	flags <= s_counter;
 END arq;

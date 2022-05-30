@@ -32,11 +32,11 @@ BEGIN
 
 	u_ffd0 : FFD
 	PORT MAP(
-		EN => '1', 
-		RESET => init, 
-		SET => '0', 
-		CLK => clk, 
-		D => d, 
+		EN => '1',
+		RESET => init,
+		SET => '0',
+		CLK => clk,
+		D => d,
 		Q => q
 	);
 

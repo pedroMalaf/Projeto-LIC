@@ -5,9 +5,9 @@ USE ieee.std_logic_1164.ALL;
 
 ENTITY counter_tc IS
 	PORT (
-		D : in std_logic_vector(3 downto 0);
-		TC10 : out std_logic;
-		TC11 : out std_logic
+		D : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+		TC10 : OUT STD_LOGIC;
+		TC11 : OUT STD_LOGIC
 	);
 END counter_tc;
 

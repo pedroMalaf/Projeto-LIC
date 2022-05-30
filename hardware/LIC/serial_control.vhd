@@ -24,45 +24,46 @@ ARCHITECTURE arq OF serial_control IS
 
 BEGIN
 	-- Store current state
-	CS <= STATE_AVAILABLE WHEN reset = '1' ELSE NS WHEN rising_edge(clk);
+	CS <= STATE_AVAILABLE WHEN reset = '1' ELSE
+		NS WHEN rising_edge(clk);
 
 	-- Generate next state
 	generate_next_state : PROCESS (CS, not_SS, dFlag, pFlag, RXerror, accept)
 	BEGIN
 		CASE CS IS
- 
-			WHEN STATE_AVAILABLE => 
+
+			WHEN STATE_AVAILABLE =>
 				IF (not_SS = '0') THEN
 					NS <= STATE_RECEIVING;
 				ELSE
 					NS <= STATE_AVAILABLE;
 				END IF;
- 
-			WHEN STATE_RECEIVING => 
+
+			WHEN STATE_RECEIVING =>
 				IF (not_SS = '1' AND dFlag = '1') THEN
 					NS <= STATE_RECEIVED;
 				ELSE
 					NS <= STATE_RECEIVING;
 				END IF;
- 
-			WHEN STATE_RECEIVED => 
+
+			WHEN STATE_RECEIVED =>
 				IF (pFlag = '0') THEN
 					NS <= STATE_RECEIVED;
 				ELSIF (pFlag = '1' AND RXerror = '0') THEN
 					NS <= STATE_END;
 				ELSIF (pFlag = '0' AND RXerror = '0') THEN
-                    NS <= STATE_RECEIVED;
+					NS <= STATE_RECEIVED;
 				ELSE
 					NS <= STATE_AVAILABLE; -- pFlag = '1' and RXerror = '1'
 				END IF;
- 
-			WHEN STATE_END => 
+
+			WHEN STATE_END =>
 				IF (accept = '1') THEN
 					NS <= STATE_AVAILABLE;
 				ELSE
 					NS <= STATE_END;
-				END IF; 
- 
+				END IF;
+
 		END CASE;
 	END PROCESS;
 

@@ -25,12 +25,12 @@ ARCHITECTURE arq OF counter_tb IS
 BEGIN
 	UUT : counter
 	PORT MAP(
-		clr => clr_tb, 
-		clk => clk_tb, 
+		clr => clr_tb,
+		clk => clk_tb,
 		d_flag => d_flag_tb,
 		p_flag => p_flag_tb
 	);
- 
+
 	clk_gen : PROCESS
 	BEGIN
 		clk_tb <= '0';
@@ -43,10 +43,10 @@ BEGIN
 	BEGIN
 		clr_tb <= '1';
 		WAIT FOR MCLK_PERIOD;
- 
+
 		clr_tb <= '0';
 		WAIT FOR MCLK_PERIOD * 5;
- 
+
 		WAIT;
 	END PROCESS;
 

@@ -29,37 +29,37 @@ ARCHITECTURE arq OF adder IS
 BEGIN
 	u_full_adder0 : fulladder
 	PORT MAP(
-		A => A(0), 
-		B => B(0), 
-		Cin => Cin, 
-		S => S(0), 
+		A => A(0),
+		B => B(0),
+		Cin => Cin,
+		S => S(0),
 		Cout => c1
 	);
 
 	u_full_adder1 : fulladder
 	PORT MAP(
-		A => A(1), 
-		B => B(1), 
-		Cin => c1, 
-		S => S(1), 
+		A => A(1),
+		B => B(1),
+		Cin => c1,
+		S => S(1),
 		Cout => c2
 	);
 
 	u_full_adder2 : fulladder
 	PORT MAP(
-		A => A(2), 
-		B => B(2), 
-		Cin => c2, 
-		S => S(2), 
+		A => A(2),
+		B => B(2),
+		Cin => c2,
+		S => S(2),
 		Cout => c3
 	);
 
 	u_full_adder3 : fulladder
 	PORT MAP(
-		A => A(3), 
-		B => B(3), 
-		Cin => c3, 
-		S => S(3), 
+		A => A(3),
+		B => B(3),
+		Cin => c3,
+		S => S(3),
 		Cout => Cout
 	);
 END arq;
