@@ -1,9 +1,5 @@
 import isel.leic.utils.Time
 
-fun main() {
-    SerialEmitterTestbench(0b001000011)
-}
-
 /**
  * SerialEmitter
  *
@@ -57,7 +53,7 @@ object SerialEmitter {
 
         var parityBit = 0
 
-        // send frame (bit by bit individually)
+        // send frame (bit by bit)
         HAL.clrBits(NOTSS_MASK)
         repeat(10) {
             HAL.clrBits(SCLK_MASK) // sclk = 0
@@ -86,17 +82,11 @@ object SerialEmitter {
         //HAL.setBits(BUSY_MASK)
         HAL.setBits(NOTSS_MASK)
         HAL.clrBits(SCLK_MASK)
-        DEBUG("[SerialEmitter::send] end frame")
+        DEBUG("[SerialEmitter::send] full frame sent")
     }
 
     /**
      * Returns true if busy channel is ON
      */
     fun isBusy() = HAL.isBit(BUSY_MASK)
-}
-
-fun SerialEmitterTestbench(data: Int) {
-    // README: if testing on real board, make sure to manipulate switches (?)
-    SerialEmitter.init()
-    SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data)
 }

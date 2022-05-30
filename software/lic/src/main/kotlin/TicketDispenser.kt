@@ -1,9 +1,3 @@
-fun main() {
-    //hex rt | origem | destino
-    TestbenchTicketDispenser(0b0110, 0b0101, true)
-    //TestbenchTicketDispenser(0b0011, 0b1100, false)
-}
-
 /**
  * TicketDispenser
  *
@@ -11,9 +5,10 @@ fun main() {
  */
 object TicketDispenser {
 
-    fun init(){
+    fun init() {
         SerialEmitter.init()
     }
+
     /**
      * Prints the ticket by sending it with information required to SerialEmitter
      */
@@ -26,11 +21,6 @@ object TicketDispenser {
         DEBUG("[TicketDispenser::print] printing: ${AS_BINARY(data)}")
         SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data)
     }
-}
-
-fun TestbenchTicketDispenser(d: Int, o: Int, rt: Boolean) {
-    TicketDispenser.init()
-    TicketDispenser.print(d, o, rt)
 }
 
 

@@ -1,10 +1,5 @@
 import isel.leic.utils.Time
 
-fun main() {
-    LCD.init()
-    LCD.writeByte(true, 0b1101_0110)
-}
-
 /**
  * LCD
  *
