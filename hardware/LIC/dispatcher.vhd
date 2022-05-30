@@ -87,7 +87,7 @@ din_s(8) <= Din(8);
 -- Generate outputs
 WrT <= '1' when (CS = STATE_SENDING_TICKET) else '0';
 WrL <= '1' when (CS = STATE_SENDING_LCD) else '0';
-Dout <= din_s;  
+Dout <= din_s;
 DONE <= '1' when (CS = STATE_END) else '0';
  
 END arq;
