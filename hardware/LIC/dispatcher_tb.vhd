@@ -53,20 +53,26 @@ BEGIN
 
     stimulus : PROCESS
     BEGIN
+		-- idk 
+		reset_tb <= '1';
+		WAIT FOR MCLK_PERIOD;
+		reset_tb <= '0';
+		WAIT FOR MCLK_PERIOD;
+		
         -- 00 -> 00
         Dval_tb <= '0';
         WAIT FOR MCLK_PERIOD;
 
         -- 00 -> 01 wrT 1!
         Dval_tb <= '1';
-        Din_tb <= "1000011110";
+        Din_tb <= "1000011111";
         WAIT FOR MCLK_PERIOD;
 
         -- 11 -> 00
         Fsh_tb <= '1';
-        WAIT FOR MCLK_PERIOD;
+        WAIT FOR MCLK_PERIOD*10;
 
-        -- 00 -> 10 wrL 1!
+        -- 00 -> 10 wrL 0!
         Dval_tb <= '1';
         Din_tb <= "0000011110";
         Fsh_tb <= '0'; -- Test if goes back to 11

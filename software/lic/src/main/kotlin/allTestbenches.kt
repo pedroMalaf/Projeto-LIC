@@ -13,13 +13,15 @@ fun main() {
     //SerialEmitter_Testbench(0b001000011)
 
     /* hex: rt | origem | destino */
-    //TicketDispenser_Testbench(0b0110, 0b0101, true)
-    //TestbenchTicketDispenser(0b0011, 0b1100, false)
+    TicketDispenser_Testbench(0b0110, 0b0101, true)
+    //TicketDispenser_Testbench(0b0011, 0b1100, false)
 
+    //LCD_Testbench()
 }
 
 // Testbench (RUN THIS WITH BREAKPOINTS TO DEBUG LEDS)
 fun HAL_Testbench() {
+    DEBUG("HAL_TESTBENCH")
     // README: turn switches on if testing on real board
     HAL.init(146)
 
@@ -55,17 +57,33 @@ fun HAL_Testbench() {
 }
 
 fun LCD_Testbench() {
+    DEBUG("LCD_Testbench")
+
     LCD.init()
     LCD.writeByte(true, 0b1101_0110)
+    Time.sleep(2000)
+
+    LCD.clear()
+    LCD.write("hello world")
+    Time.sleep(2000)
+
+    LCD.clear()
+    LCD.cursor(0, 0)
+    LCD.write('a')
+    Time.sleep(5000)
 }
 
 fun SerialEmitter_Testbench(data: Int) {
+    DEBUG("SerialEmitter_Testbench")
+
     // README: if testing on real board, make sure to manipulate switches (?)
     SerialEmitter.init()
     SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data)
 }
 
 fun TicketDispenser_Testbench(d: Int, o: Int, rt: Boolean) {
+    DEBUG("TicketDispenser_Testbench")
+
     TicketDispenser.init()
     TicketDispenser.print(d, o, rt)
 }

@@ -10,9 +10,9 @@ object LCD {
     private val LINES = 2
     private val COLS = 16
 
-    private const val CMD_DISPLAY_OFF = 0b0011_1000
-    private const val CMD_DISPLAY_CLEAR = 0b0011_0001
-    private const val CMD_DISPLAY_ENTRY_MODE_SET = 0b0011_0110
+    private const val CMD_DISPLAY_OFF = 0b0000_1000
+    private const val CMD_DISPLAY_CLEAR = 0b0000_0001
+    private const val CMD_DISPLAY_ENTRY_MODE_SET = 0b0000_0110
 
 
     /**
@@ -23,7 +23,7 @@ object LCD {
         val fullData = RS.shl(8) or data
         DEBUG("[LCD::writeByteSerial] fullData = ${AS_BINARY(fullData)}")
         SerialEmitter.init()
-        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData)
+        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 10)
     }
 
     /**
@@ -62,6 +62,7 @@ object LCD {
         writeCMD(CMD_DISPLAY_OFF)
         writeCMD(CMD_DISPLAY_CLEAR)
         writeCMD(CMD_DISPLAY_ENTRY_MODE_SET)
+        writeCMD(0b0000_1111)
     }
 
     /**
@@ -82,7 +83,8 @@ object LCD {
      * Sends a command to change cursor position ('line':0..LINES-1, 'column':0..COLS-1)
      */
     fun cursor(line: Int, column: Int) {
-        // TODO
+        val ADD = (39 * line + column) and 0b000_1111_111
+        writeCMD(ADD or 0b1_0000_000)
     }
 
     /**

@@ -24,7 +24,7 @@ ARCHITECTURE arq OF dispatcher IS
 	-- STATE_END: Ticket is issued 
 
 	COMPONENT CLKDIV
-		GENERIC (div : NATURAL := 625000000);
+		GENERIC (div : NATURAL := 32); -- FIXME: Change value when testing on board (25 - 50)
 		PORT (
 			clk_in : IN STD_LOGIC;
 			clk_out : OUT STD_LOGIC
@@ -55,9 +55,9 @@ BEGIN
 			WHEN STATE_AVAILABLE =>
 				IF (Dval = '0') THEN
 					NS <= STATE_AVAILABLE;
-				ELSIF (Dval = '1' AND Din(0) = '1') THEN
+				ELSIF (Dval = '1' AND Din(9) = '1') THEN -- FIXME: din 0 ou 9
 					NS <= STATE_SENDING_TICKET;
-				ELSIF (Dval = '1' AND Din(0) = '0') THEN
+				ELSIF (Dval = '1' AND Din(9) = '0') THEN -- FIXME: din 0 ou 9
 					NS <= STATE_SENDING_LCD;
 				END IF;
 

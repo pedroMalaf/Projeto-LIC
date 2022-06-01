@@ -19,7 +19,6 @@ object SerialEmitter {
 
     //
     private const val SCLK = 10L
-    private const val SLEEP_DEBUG = 500L
 
     /**
      * Sets up bit channels
@@ -41,7 +40,7 @@ object SerialEmitter {
      * @param addr Where to send the frame to (LCD or TICKET_DISPENSER)
      * @param data originID[5..8] destinyID[1..4] rt[0]
      */
-    fun send(addr: Destination, data: Int) {
+    fun send(addr: Destination, data: Int, SLEEP_DEBUG: Long = 500L) {
         while (isBusy()) {
             DEBUG("Cant send frame (busy = 1). Trying again in 3 sec ...")
             Time.sleep(3000)

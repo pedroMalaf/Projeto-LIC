@@ -44,7 +44,7 @@ ARCHITECTURE arq OF ticket_machine IS
 		PORT (
 			SCLK, MCLK : IN STD_LOGIC;
 			SDX : IN STD_LOGIC;
-			not_SS : IN STD_LOGIC;
+			not_SS, reset : IN STD_LOGIC;
 			Fsh : IN STD_LOGIC; --> Fn -> fsh
 			WrT : OUT STD_LOGIC; --> Wrt -> Prt
 			Dout : OUT STD_LOGIC_VECTOR(8 DOWNTO 0); --> Dout -> DId; Dout -> D
@@ -85,7 +85,8 @@ BEGIN
 		Fsh => fn_s,
 		busy => busy_s,
 		SDX => sdx_s,
-		WrL => WrL_s
+		WrL => WrL_s,
+		reset => Reset
 	);
 
 	u_td : ticket_dispenser
