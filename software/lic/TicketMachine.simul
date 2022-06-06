@@ -43,11 +43,11 @@ ca.cid[0-2] -> UsbPort.I[0-2]
 # IOS (Integrated Output System)
 # --------------------------------------
 # Serial
-UsbPort.O3 -> sr.SDX
-UsbPort.O2-> sr.SCLK
-UsbPort.O1-> sr.nSS
+UsbPort.O3 -> sr.SDX # o1
+UsbPort.O2-> sr.SCLK # o2
+UsbPort.O1-> sr.nSS # o3
 dp.done -> sr.accept
-sr.busy -> UsbPort.I0
+sr.busy -> UsbPort.I0 # i6
 
 # Dispatcher
 sr.DXval -> dp.Dval

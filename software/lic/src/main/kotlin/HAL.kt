@@ -19,7 +19,7 @@ object HAL {
     /**
      * Constructs the class, by settings bits to [state]
      */
-    fun init(state: Int) {
+    fun init(state: Int = lastState) {
         changeState(state)
     }
 

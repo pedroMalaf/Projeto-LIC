@@ -14,7 +14,6 @@ object LCD {
     private const val CMD_DISPLAY_CLEAR = 0b0000_0001
     private const val CMD_DISPLAY_ENTRY_MODE_SET = 0b0000_0110
 
-
     /**
      * Write command/data byte to LCD
      */
