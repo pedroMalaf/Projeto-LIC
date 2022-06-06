@@ -52,6 +52,18 @@ ARCHITECTURE arq OF ticket_machine IS
 			busy : OUT STD_LOGIC
 		);
 	END COMPONENT;
+	
+	COMPONENT keyboard_reader IS 
+		PORT (
+			clk : IN STD_LOGIC;
+			reset : IN STD_LOGIC;
+			Kack : IN STD_LOGIC;
+			Kpress : IN STD_LOGIC;
+			Kval : out STD_LOGIC;
+			Kscan : OUT STD_LOGIC
+		);
+	END COMPONENT;
+	
 	SIGNAL prt_s, rt_s, fn_s, sdx_s, not_ss_s, busy_s, clk_s : STD_LOGIC;
 	SIGNAL di_s, oi_s : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL do_s : STD_LOGIC_VECTOR(7 DOWNTO 0);

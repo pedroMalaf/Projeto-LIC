@@ -3,16 +3,16 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
-ENTITY counter IS
+ENTITY counter_keyscan IS
 	PORT (
 		ce : IN STD_LOGIC;
 		clk : IN STD_LOGIC;
 		reset : IN STD_LOGIC;
 		Q : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 	);
-END counter;
+END counter_keyscan;
 
-ARCHITECTURE arq OF counter IS
+ARCHITECTURE arq OF counter_keyscan IS
 
 	COMPONENT reg
 		PORT (
