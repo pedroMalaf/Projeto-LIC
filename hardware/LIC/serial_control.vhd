@@ -49,16 +49,11 @@ BEGIN
 				END IF;
 
 			WHEN STATE_RECEIVED =>
-				IF (pFlag = '0') THEN
+				IF (not_SS = '0') THEN
 					NS <= STATE_RECEIVED;
 				ELSIF (pFlag = '1' AND RXerror = '0') THEN
 					NS <= STATE_END;
-				ELSIF (pFlag = '0') THEN
-					NS <= STATE_RECEIVED;
-				ELSIF (not_SS = '1' AND RXerror = '1') THEN
-					NS <= STATE_AVAILABLE;
-				ELSE
-					NS <= STATE_AVAILABLE; -- pFlag = '1' and RXerror = '1'
+				ELSE NS <= STATE_AVAILABLE;
 				END IF;
 
 			WHEN STATE_END =>

@@ -23,7 +23,7 @@ object LCD {
         val fullData = RS.shl(8) or data
         DEBUG("[LCD::writeByteSerial] fullData = ${AS_BINARY(fullData)}")
         SerialEmitter.init()
-        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 10)
+        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 100)
     }
 
     /**

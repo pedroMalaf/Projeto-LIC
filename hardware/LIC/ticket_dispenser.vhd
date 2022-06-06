@@ -13,7 +13,7 @@ ENTITY ticket_dispenser IS
 
 		Prt : IN STD_LOGIC;
 		Rt : IN STD_LOGIC;
-		d_id, o_id : STD_LOGIC_VECTOR(3 DOWNTO 0); -- destination & origin
+		d_id, o_id : IN STD_LOGIC_VECTOR(3 DOWNTO 0); -- destination & origin
 		Fn : OUT STD_LOGIC -- busy
 	);
 END ticket_dispenser;

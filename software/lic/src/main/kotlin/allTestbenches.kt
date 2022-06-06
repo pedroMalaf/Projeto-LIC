@@ -13,10 +13,10 @@ fun main() {
     //SerialEmitter_Testbench(0b001000011)
 
     /* hex: rt | origem | destino */
-    TicketDispenser_Testbench(0b0110, 0b0101, true)
+    //TicketDispenser_Testbench(0b0111, 0b1110, false)
     //TicketDispenser_Testbench(0b0011, 0b1100, false)
 
-    //LCD_Testbench()
+    LCD_Testbench()
 }
 
 // Testbench (RUN THIS WITH BREAKPOINTS TO DEBUG LEDS)
