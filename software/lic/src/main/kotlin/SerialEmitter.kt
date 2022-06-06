@@ -27,9 +27,7 @@ object SerialEmitter {
      */
     fun init() {
         DEBUG("[SerialEmitter::init]")
-
         HAL.init(0)
-        //HAL.clrBits(BUSY_MASK) // busy = 0
         HAL.setBits(NOTSS_MASK) // not_ss = 1
     }
 
@@ -97,9 +95,11 @@ fun main() {
 }
 
 fun SerialEmitter_Testbench(data: Int) {
-    DEBUG("[SerialEmitter::TESTBENCH]")
+    DEBUG("[SerialEmitter::TESTBENCH] Starting")
 
     // README: if testing on real board, make sure to manipulate switches (?)
     SerialEmitter.init()
     SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data)
+
+    DEBUG("[SerialEmitter::TESTBENCH] Done")
 }

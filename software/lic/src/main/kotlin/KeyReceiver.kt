@@ -4,14 +4,14 @@
 object KeyReceiver {
 
     fun init() {
-
+        TODO()
     }
 
     /**
      * Receives a frame and returns a key code on success.
      */
-    fun rcv() {
-
+    fun rcv(): Int {
+        TODO()
     }
 }
 

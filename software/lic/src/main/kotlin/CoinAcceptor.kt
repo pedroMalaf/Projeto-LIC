@@ -89,7 +89,7 @@ object CoinAcceptor {
 }
 
 fun main() {
-    DEBUG("[CoinAcceptor::TESTBENCH]")
+    DEBUG("[CoinAcceptor::TESTBENCH] Starting")
     DEBUG("[CoinAcceptor::TESTBENCH] Put ${AS_BINARY(CoinAcceptor.COIN_MASK)} to 0")
     CoinAcceptor.init()
     Time.sleep(5000)
@@ -122,6 +122,6 @@ fun main() {
     DEBUG("[CoinAcceptor::TESTBENCH] coins ejected")
     Time.sleep(2000)
 
-    DEBUG("[CoinAcceptor::TESTBENCH] Done.")
+    DEBUG("[CoinAcceptor::TESTBENCH] Done")
 
 }

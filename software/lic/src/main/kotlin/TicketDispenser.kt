@@ -30,8 +30,10 @@ fun main() {
 }
 
 fun TicketDispenser_Testbench(d: Int, o: Int, rt: Boolean) {
-    DEBUG("[TicketDispenser::TESTBENCH]")
+    DEBUG("[TicketDispenser::TESTBENCH] Starting")
 
     TicketDispenser.init()
     TicketDispenser.print(d, o, rt)
+
+    DEBUG("[TicketDispenser::TESTBENCH] Done")
 }

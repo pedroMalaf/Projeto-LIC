@@ -100,7 +100,7 @@ fun main() {
 }
 
 fun LCD_Testbench() {
-    DEBUG("[LCD::TESTBENCH]")
+    DEBUG("[LCD::TESTBENCH] Starting")
 
     LCD.init()
     LCD.writeByte(true, 0b1101_0110)
@@ -114,4 +114,6 @@ fun LCD_Testbench() {
     LCD.cursor(0, 0)
     LCD.write('a')
     Time.sleep(5000)
+
+    DEBUG("[LCD::TESTBENCH] Done")
 }
