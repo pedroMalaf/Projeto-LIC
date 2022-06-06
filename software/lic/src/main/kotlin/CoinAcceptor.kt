@@ -17,7 +17,15 @@ object CoinAcceptor {
     const val RETURN_MASK = 0x40 // 6
 
     // NOTE: cid -> coin value
-    private val codification = hashMapOf<Int, Int>() // TODO: static CID
+    private val codification = hashMapOf<Int, Int>(
+        0 to 5,
+        1 to 10,
+        2 to 20,
+        3 to 50,
+        4 to 100,
+        5 to 200
+
+    )
 
     fun init() {
         File("CoinsDeposit.txt").readLines().forEach {
@@ -55,6 +63,8 @@ object CoinAcceptor {
             DEBUG("[CoinAcceptor::acceptCoin] waiting for COIN disable")
             Time.sleep(2000)
         }
+        Time.sleep(1000)
+        HAL.clrBits(ACCEPT_MASK)
     }
 
     /**
@@ -63,6 +73,8 @@ object CoinAcceptor {
     fun ejectCoins() {
         HAL.setBits(RETURN_MASK)
         Time.sleep(2100)
+        HAL.clrBits(RETURN_MASK)
+
     }
 
     /**
@@ -71,6 +83,7 @@ object CoinAcceptor {
     fun collectCoins() {
         HAL.setBits(COLLECT_MASK)
         Time.sleep(2100)
+        HAL.clrBits(COLLECT_MASK)
     }
 
 }

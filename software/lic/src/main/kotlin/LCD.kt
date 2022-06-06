@@ -94,3 +94,24 @@ object LCD {
         cursor(0, 0)
     }
 }
+
+fun main() {
+    LCD_Testbench()
+}
+
+fun LCD_Testbench() {
+    DEBUG("[LCD::TESTBENCH]")
+
+    LCD.init()
+    LCD.writeByte(true, 0b1101_0110)
+    Time.sleep(2000)
+
+    LCD.clear()
+    LCD.write("hello world")
+    Time.sleep(2000)
+
+    LCD.clear()
+    LCD.cursor(0, 0)
+    LCD.write('a')
+    Time.sleep(5000)
+}

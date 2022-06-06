@@ -91,3 +91,15 @@ object SerialEmitter {
      */
     fun isBusy() = HAL.isBit(BUSY_MASK)
 }
+
+fun main() {
+    SerialEmitter_Testbench(0b001000011)
+}
+
+fun SerialEmitter_Testbench(data: Int) {
+    DEBUG("[SerialEmitter::TESTBENCH]")
+
+    // README: if testing on real board, make sure to manipulate switches (?)
+    SerialEmitter.init()
+    SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data)
+}
