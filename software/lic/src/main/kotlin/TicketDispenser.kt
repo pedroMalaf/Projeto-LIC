@@ -23,4 +23,17 @@ object TicketDispenser {
     }
 }
 
+fun main() {
+    /* hex: rt | origem | destino */
+    TicketDispenser_Testbench(0b0111, 0b1110, false)
+    //TicketDispenser_Testbench(0b0011, 0b1100, false)
+}
 
+fun TicketDispenser_Testbench(d: Int, o: Int, rt: Boolean) {
+    DEBUG("[TicketDispenser::TESTBENCH] Starting")
+
+    TicketDispenser.init()
+    TicketDispenser.print(d, o, rt)
+
+    DEBUG("[TicketDispenser::TESTBENCH] Done")
+}

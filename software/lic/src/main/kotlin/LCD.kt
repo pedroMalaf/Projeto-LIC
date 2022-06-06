@@ -14,7 +14,6 @@ object LCD {
     private const val CMD_DISPLAY_CLEAR = 0b0000_0001
     private const val CMD_DISPLAY_ENTRY_MODE_SET = 0b0000_0110
 
-
     /**
      * Write command/data byte to LCD
      */
@@ -23,7 +22,7 @@ object LCD {
         val fullData = RS.shl(8) or data
         DEBUG("[LCD::writeByteSerial] fullData = ${AS_BINARY(fullData)}")
         SerialEmitter.init()
-        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 100)
+        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 10)
     }
 
     /**
@@ -94,4 +93,27 @@ object LCD {
         writeDATA(CMD_DISPLAY_CLEAR)
         cursor(0, 0)
     }
+}
+
+fun main() {
+    LCD_Testbench()
+}
+
+fun LCD_Testbench() {
+    DEBUG("[LCD::TESTBENCH] Starting")
+
+    LCD.init()
+    LCD.writeByte(true, 0b1101_0110)
+    Time.sleep(2000)
+
+    LCD.clear()
+    LCD.write("hello world")
+    Time.sleep(2000)
+
+    LCD.clear()
+    LCD.cursor(0, 0)
+    LCD.write('a')
+    Time.sleep(5000)
+
+    DEBUG("[LCD::TESTBENCH] Done")
 }

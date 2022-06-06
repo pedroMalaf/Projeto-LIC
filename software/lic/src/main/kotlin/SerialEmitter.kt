@@ -11,8 +11,10 @@ object SerialEmitter {
         TICKER_DISPENSER(1, "TICKET_DISPENSER")
     }
 
-    // bit channels
+    // INPUT PORT
     private const val BUSY_MASK = 0x1 // bit 0
+
+    // OUTPUT PORT
     private const val NOTSS_MASK = 0x2 // 1
     private const val SCLK_MASK = 0x4 // 2
     private const val SDX_MASK = 0x8 // 3
@@ -25,9 +27,7 @@ object SerialEmitter {
      */
     fun init() {
         DEBUG("[SerialEmitter::init]")
-
         HAL.init(0)
-        //HAL.clrBits(BUSY_MASK) // busy = 0
         HAL.setBits(NOTSS_MASK) // not_ss = 1
     }
 
@@ -88,4 +88,18 @@ object SerialEmitter {
      * Returns true if busy channel is ON
      */
     fun isBusy() = HAL.isBit(BUSY_MASK)
+}
+
+fun main() {
+    SerialEmitter_Testbench(0b001000011)
+}
+
+fun SerialEmitter_Testbench(data: Int) {
+    DEBUG("[SerialEmitter::TESTBENCH] Starting")
+
+    // README: if testing on real board, make sure to manipulate switches (?)
+    SerialEmitter.init()
+    SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data)
+
+    DEBUG("[SerialEmitter::TESTBENCH] Done")
 }
