@@ -7,17 +7,8 @@ import java.io.File
  */
 object CoinAcceptor {
 
-    // INPUT PORT
-    const val COIN_MASK = 0b10000
-    const val CID_MASK = 0b1110 // I3 I2 I1
-
-    // OUTPUT PORT
-    const val ACCEPT_MASK = 0x10 // 4
-    const val COLLECT_MASK = 0x20 // 5
-    const val RETURN_MASK = 0x40 // 6
-
     // NOTE: cid -> coin value
-    private val codification = hashMapOf<Int, Int>(
+    private val codification = hashMapOf(
         0 to 5,
         1 to 10,
         2 to 20,
@@ -90,15 +81,15 @@ object CoinAcceptor {
 
 fun main() {
     DEBUG("[CoinAcceptor::TESTBENCH] Starting")
-    DEBUG("[CoinAcceptor::TESTBENCH] Put ${AS_BINARY(CoinAcceptor.COIN_MASK)} to 0")
+    DEBUG("[CoinAcceptor::TESTBENCH] Put ${AS_BINARY(COIN_MASK)} to 0")
     CoinAcceptor.init()
     Time.sleep(5000)
 
     DEBUG("[CoinAcceptor::TESTBENCH] hasCoin = ${CoinAcceptor.hasCoin()}")
     DEBUG("[CoinAcceptor::TESTBENCH] getCoinValue = ${CoinAcceptor.getCoinValue()}")
 
-    DEBUG("[CoinAcceptor::TESTBENCH] Put ${AS_BINARY(CoinAcceptor.COIN_MASK)} to 1 (insert coin)")
-    DEBUG("[CoinAcceptor::TESTBENCH] Put ${AS_BINARY(CoinAcceptor.CID_MASK)} to 010 (0,20€)")
+    DEBUG("[CoinAcceptor::TESTBENCH] Put ${AS_BINARY(COIN_MASK)} to 1 (insert coin)")
+    DEBUG("[CoinAcceptor::TESTBENCH] Put ${AS_BINARY(CID_MASK)} to 010 (0,20€)")
     Time.sleep(5000)
 
     DEBUG("[CoinAcceptor::TESTBENCH] hasCoin = ${CoinAcceptor.hasCoin()}")

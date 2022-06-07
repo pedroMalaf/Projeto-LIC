@@ -11,14 +11,6 @@ object SerialEmitter {
         TICKER_DISPENSER(1, "TICKET_DISPENSER")
     }
 
-    // INPUT PORT
-    private const val BUSY_MASK = 0x1 // bit 0
-
-    // OUTPUT PORT
-    private const val NOTSS_MASK = 0x2 // 1
-    private const val SCLK_MASK = 0x4 // 2
-    private const val SDX_MASK = 0x8 // 3
-
     //
     private const val SCLK = 10L
 
