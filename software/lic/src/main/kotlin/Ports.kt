@@ -9,6 +9,7 @@ const val BUSY_MASK = 0x1 // I0
 const val CID_MASK = 0b1110 // I3 I2 I1
 const val COIN_MASK = 0b10000 // I4
 const val TXD_MASK = 0b100000 // I5
+const val M_MASK = 0b1000_0000 // I7
 
 // OUTPUT PORT
 const val TXCLK_MASK = 0x01 // O0
