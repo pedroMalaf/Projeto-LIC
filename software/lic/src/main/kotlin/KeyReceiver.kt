@@ -12,32 +12,23 @@ object KeyReceiver {
         HAL.clrBits(TXCLK_MASK)
     }
 
-
     /**
      * Receives a frame and returns a key code on success, otherwise -1.
      */
     fun rcv(): Int {
-        DEBUG("[KeyReceiver::rcv]")
-
         if (HAL.isBit(TXD_MASK)) {
-            DEBUG("[KeyReceiver::rcv] ERR: txd is 1, should be 0, returning -1")
             return -1
         }
 
         var frame = 0
         for (pos in 0 until FRAME_SIZE) {
             HAL.setBits(TXCLK_MASK) // TXCLK = 1
-            Time.sleep(1000)
             HAL.clrBits(TXCLK_MASK) // TXCLK = 0
 
             val TXD = if (HAL.isBit(TXD_MASK)) 1 else 0
             frame = frame or (TXD shl pos) // add bit to frame
-            DEBUG("[KeyReceiver::rcv] TXD = $TXD")
+            //DEBUG("[KeyReceiver::rcv] TXD = $TXD")
         }
-
-        HAL.setBits(TXCLK_MASK) // TXCLK = 1
-        Time.sleep(1000)
-        HAL.clrBits(TXCLK_MASK) // TXCLK = 0
 
         DEBUG("[KeyReceiver::rcv] frame = ${AS_BINARY(frame)}")
 
@@ -60,6 +51,14 @@ fun main() {
 fun KeyReceiver_Testbench() {
     DEBUG("[KeyReceiver::TESTBENCH] starting")
     KeyReceiver.init()
+    DEBUG("[KeyReceiver::TESTBENCH] put txd to 0")
+    Time.sleep(5000)
+    DEBUG("[KeyReceiver::TESTBENCH] put txd to 1 (start bit)")
+    Time.sleep(5000)
+    DEBUG("[KeyReceiver::TESTBENCH] press 1 key")
+    Time.sleep(5000)
+    DEBUG("[KeyReceiver::TESTBENCH] put txd to 0 (end bit)")
+    Time.sleep(5000)
     DEBUG("[KeyReceiver::TESTBENCH] rcv: ${KeyReceiver.rcv()}")
     DEBUG("[KeyReceiver::TESTBENCH] done")
 }

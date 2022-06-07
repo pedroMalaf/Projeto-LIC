@@ -39,10 +39,15 @@ object KBD {
     }
 
     /**
-     * Returns pressed key or [NONE]
+     * Returns pressed key or [NONE].
      */
     fun getKey(): Char {
-        TODO()
+        if(HAL.isBit((TXD_MASK))) {
+            return NONE.toChar()
+        }
+
+        val idx = KeyReceiver.rcv()
+        return if (idx in 0..11) keys[idx] else NONE.toChar()
     }
 
     /**
@@ -54,6 +59,8 @@ object KBD {
 
         while (end >= Time.getTimeInMillis()) {
             key = getKeyParallel()
+            if (key != NONE.toChar())
+                DEBUG("Pressed $key")
         }
 
         return key
@@ -65,14 +72,13 @@ fun main() {
 }
 
 fun KBD_Testbench() {
-    DEBUG("[KBD::TESTBENCH] Starting")
+    DEBUG("[KBD::TESTBENCH] starting")
     KBD.init()
     while (true) {
         val key = KBD.waitKey(1000*10)
         if (key == KBD.NONE.toChar()) {
             break
         }
-        DEBUG("[KBD::TESTBENCH] Pressed $key")
     }
-    DEBUG("[KBD::TESTBENCH] Done")
+    DEBUG("[KBD::TESTBENCH] done")
 }
