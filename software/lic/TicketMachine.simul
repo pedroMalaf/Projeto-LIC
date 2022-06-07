@@ -26,8 +26,8 @@ m.out -> UsbPort.I7
 1 -> kbd.oe
 kbd.K[0-3] -> kt.D[0-3]
 kbd.val -> kt.DAV
-kt.TXd-> UsbPort.I5
-UsbPort.O4-> kt.TXclk
+kt.TXd -> UsbPort.I5
+UsbPort.O0 -> kt.TXclk #o4
 kt.DAC -> kbd.ack
 
 # --------------------------------------
