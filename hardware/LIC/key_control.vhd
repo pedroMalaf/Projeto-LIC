@@ -9,7 +9,7 @@ ENTITY key_control IS
 		reset : IN STD_LOGIC;
 		Kack : IN STD_LOGIC;
 		Kpress : IN STD_LOGIC;
-		Kval : out STD_LOGIC;
+		Kval : OUT STD_LOGIC;
 		Kscan : OUT STD_LOGIC
 	);
 END key_control;

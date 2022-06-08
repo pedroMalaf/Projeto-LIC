@@ -6,6 +6,7 @@ USE ieee.std_logic_1164.ALL;
 
 ENTITY key_decode IS
 	PORT (
+		reset : IN STD_LOGIC;
 		Mclk : IN STD_LOGIC;
 		Kack : IN STD_LOGIC;
 		Lines : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -40,13 +41,13 @@ ARCHITECTURE arq OF key_decode IS
 		);
 	END COMPONENT;
 	
-	SIGNAL s_Kscan, s_Kpress, s_reset : STD_LOGIC;
+	SIGNAL s_Kscan, s_Kpress : STD_LOGIC;
 	
 BEGIN
 	u_keyscan : keyscan
 	PORT MAP(
 		Kscan => s_Kscan,
-		reset => s_reset,
+		reset => reset,
 		clk => Mclk,
 		L => Lines,
 		C => Columns,
@@ -59,7 +60,7 @@ BEGIN
 		clk => Mclk,
 		Kack => Kack,
 		Kpress => s_Kpress,
-		reset => s_reset,
+		reset => reset,
 		Kval => Kval,
 		Kscan => s_Kscan
 	); 
