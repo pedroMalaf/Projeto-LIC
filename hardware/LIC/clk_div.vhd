@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.numeric_std.ALL;
 
 ENTITY CLKDIV IS
-	GENERIC (div : NATURAL := 32); -- FIXME: Change value when testing on board (25 - 50)
+	GENERIC (div : NATURAL := 30); -- FIXME: Change value when testing on board (25 - 50)
 	PORT (
 		clk_in : IN STD_LOGIC;
 		clk_out : OUT STD_LOGIC);

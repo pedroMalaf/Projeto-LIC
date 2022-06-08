@@ -86,14 +86,14 @@ BEGIN
 		WrT => prt_s,
 		not_SS => not_ss_s,
 		Dout(8) => rt_s,
-		Dout(7) => di_s(3),
-		Dout(6) => di_s(2),
-		Dout(5) => di_s(1),
-		Dout(4) => di_s(0),
-		Dout(3) => oi_s(3),
-		Dout(2) => oi_s(2),
-		Dout(1) => oi_s(1),
-		Dout(0) => oi_s(0),
+		Dout(7) => di_s(0),
+		Dout(6) => di_s(1),
+		Dout(5) => di_s(2),
+		Dout(4) => di_s(3),
+		Dout(3) => oi_s(0),
+		Dout(2) => oi_s(1),
+		Dout(1) => oi_s(2),
+		Dout(0) => oi_s(3),
 		Fsh => fn_s,
 		busy => busy_s,
 		SDX => sdx_s,
@@ -115,17 +115,19 @@ BEGIN
 		HEX2 => HEX2,
 		collect => collect
 	);
+	
 	Prt <= prt_s;
 
 	LCD_EN <= WrL_s;
-	LCD_RS <= rt_s; --rs 
-	LCD_DATA(0) <= di_s(0);
-	LCD_DATA(1) <= di_s(1);
-	LCD_DATA(2) <= di_s(2);
-	LCD_DATA(3) <= di_s(3);
-	LCD_DATA(4) <= oi_s(0);
-	LCD_DATA(5) <= oi_s(1);
-	LCD_DATA(6) <= oi_s(2);
+	LCD_RS <= rt_s;
+	
 	LCD_DATA(7) <= oi_s(3);
+	LCD_DATA(6) <= oi_s(2);
+	LCD_DATA(5) <= oi_s(1);
+	LCD_DATA(4) <= oi_s(0);
+	LCD_DATA(3) <= di_s(3);
+	LCD_DATA(2) <= di_s(2);
+	LCD_DATA(1) <= di_s(1);
+	LCD_DATA(0) <= di_s(0);
 
 END arq;
