@@ -24,8 +24,8 @@ object TicketDispenser {
 }
 
 fun main() {
-    /* hex: rt | origem | destino */
-    TicketDispenser_Testbench(0b0111, 0b1110, false)
+    /* no hex display aparece desta ordem: rt | origem | destino */
+    TicketDispenser_Testbench(0xA, 0xE, false)
     //TicketDispenser_Testbench(0b0011, 0b1100, false)
 }
 
