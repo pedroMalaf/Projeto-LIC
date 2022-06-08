@@ -30,6 +30,9 @@ object KeyReceiver {
             //DEBUG("[KeyReceiver::rcv] TXD = $TXD")
         }
 
+        HAL.setBits(TXCLK_MASK) // TXCLK = 1
+        HAL.clrBits(TXCLK_MASK) // TXCLK = 0
+
         DEBUG("[KeyReceiver::rcv] frame = ${AS_BINARY(frame)}")
 
         // frame: start_bit[0], key[1..4], end_bit[5]
