@@ -6,6 +6,7 @@ USE IEEE.std_logic_1164.ALL;
 ENTITY ticket_machine IS
 	PORT (
 		collect : IN STD_LOGIC;
+		TX_D : IN STD_LOGIC;
 		MCLK : IN STD_LOGIC;
 		Reset : IN STD_LOGIC;
 		Prt : OUT STD_LOGIC;
@@ -56,11 +57,10 @@ ARCHITECTURE arq OF ticket_machine IS
 	COMPONENT keyboard_reader IS 
 		PORT (
 			clk : IN STD_LOGIC;
-			reset : IN STD_LOGIC;
-			Kack : IN STD_LOGIC;
-			Kpress : IN STD_LOGIC;
-			Kval : out STD_LOGIC;
-			Kscan : OUT STD_LOGIC
+			RXclk : IN STD_LOGIC;
+			LINES : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+			COLUMNS : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+			TXD : OUT STD_LOGIC
 		);
 	END COMPONENT;
 	
@@ -74,6 +74,7 @@ BEGIN
 	u_usbport : UsbPort
 	PORT MAP(
 		inputPort(0) => busy_s,
+		inputPort(5) => TX_D,
 		outputPort(1) => not_ss_s,
 		outputPort(2) => clk_s,
 		outputPort(3) => sdx_s

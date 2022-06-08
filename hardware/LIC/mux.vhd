@@ -13,8 +13,12 @@ END mux;
 
 ARCHITECTURE arq OF mux IS
 BEGIN
-    Y <= (NOT S(0) AND NOT S(1))
-        AND (s(0) AND NOT s(1) AND A(1))
-        AND (NOT s(0) AND s(1) AND A(2))
-        AND (s(0) AND s(1) AND A(3));
+	Y <= '1' WHEN (S(0) = '0' and S(1) = '0' and S(0) = '1')
+	OR
+	(S(0) = '0' and S(1) = '1' and S(1) = '1')
+	OR
+	(S(0) = '1' and S(1) = '0' and S(2) = '1')
+	OR
+	(S(0) = '1' and S(1) = '1' and S(3) = '1')
+	ELSE '0';
 END arq;
