@@ -13,7 +13,9 @@ ENTITY ticket_machine IS
 		HEX0, HEX1, HEX2 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 		LCD_RS : OUT STD_LOGIC;
 		LCD_EN : OUT STD_LOGIC;
-		LCD_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+		LCD_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		KEYPAD_LIN : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+		KEYPAD_COL : IN STD_LOGIC_VECTOR(2 DOWNTO 0)
 	);
 END ticket_machine;
 
@@ -67,14 +69,15 @@ ARCHITECTURE arq OF ticket_machine IS
 	SIGNAL prt_s, rt_s, fn_s, sdx_s, not_ss_s, busy_s, clk_s : STD_LOGIC;
 	SIGNAL di_s, oi_s : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL do_s : STD_LOGIC_VECTOR(7 DOWNTO 0);
-	SIGNAL WrL_s : STD_LOGIC;
-
+	SIGNAL WrL_s, TXCLK_s, TX_D_s : STD_LOGIC;
+	
 BEGIN
 
 	u_usbport : UsbPort
 	PORT MAP(
 		inputPort(0) => busy_s,
-		inputPort(5) => TX_D,
+		inputPort(5) => TX_D_s,
+		outputPort(0) => TXCLK_s,
 		outputPort(1) => not_ss_s,
 		outputPort(2) => clk_s,
 		outputPort(3) => sdx_s
@@ -117,11 +120,18 @@ BEGIN
 		collect => collect
 	);
 	
+	u_kbreader : keyboard_reader
+	PORT MAP(
+		clk => MCLK,
+		RXclk => TXCLK_s,
+		LINES => KEYPAD_LIN,
+		TXD => TX_D_s
+	);
+
 	Prt <= prt_s;
 
 	LCD_EN <= WrL_s;
 	LCD_RS <= rt_s;
-	
 	LCD_DATA(7) <= oi_s(3);
 	LCD_DATA(6) <= oi_s(2);
 	LCD_DATA(5) <= oi_s(1);

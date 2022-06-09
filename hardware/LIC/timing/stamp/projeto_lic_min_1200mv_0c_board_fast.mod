@@ -23,7 +23,7 @@ MODEL
 */
 MODEL_VERSION "1.0";
 DESIGN "projeto_lic";
-DATE "06/08/2022 17:57:30";
+DATE "06/09/2022 01:50:24";
 PROGRAM "Quartus Prime";
 
 
@@ -33,8 +33,15 @@ INPUT collect;
 INPUT altera_reserved_tdi;
 INPUT altera_reserved_tck;
 INPUT altera_reserved_tms;
-INPUT TX_D;
 INPUT Reset;
+INPUT TX_D;
+INPUT KEYPAD_COL[0];
+INPUT KEYPAD_COL[1];
+INPUT KEYPAD_COL[2];
+INPUT KEYPAD_LIN[3];
+INPUT KEYPAD_LIN[2];
+INPUT KEYPAD_LIN[1];
+INPUT KEYPAD_LIN[0];
 OUTPUT Prt;
 OUTPUT HEX0[0];
 OUTPUT HEX0[1];
@@ -73,10 +80,8 @@ OUTPUT LCD_DATA[7];
 OUTPUT altera_reserved_tdo;
 
 /*Arc definitions start here*/
-pos_TX_D__altera_reserved_tck__setup:		SETUP (POSEDGE) TX_D altera_reserved_tck ;
 pos_altera_reserved_tdi__altera_reserved_tck__setup:		SETUP (POSEDGE) altera_reserved_tdi altera_reserved_tck ;
 pos_altera_reserved_tms__altera_reserved_tck__setup:		SETUP (POSEDGE) altera_reserved_tms altera_reserved_tck ;
-pos_TX_D__altera_reserved_tck__hold:		HOLD (POSEDGE) TX_D altera_reserved_tck ;
 pos_altera_reserved_tdi__altera_reserved_tck__hold:		HOLD (POSEDGE) altera_reserved_tdi altera_reserved_tck ;
 pos_altera_reserved_tms__altera_reserved_tck__hold:		HOLD (POSEDGE) altera_reserved_tms altera_reserved_tck ;
 pos_altera_reserved_tck__altera_reserved_tdo__delay:		DELAY (POSEDGE) altera_reserved_tck altera_reserved_tdo ;
