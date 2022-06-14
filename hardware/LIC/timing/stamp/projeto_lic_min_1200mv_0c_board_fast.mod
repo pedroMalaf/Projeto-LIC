@@ -23,7 +23,7 @@ MODEL
 */
 MODEL_VERSION "1.0";
 DESIGN "projeto_lic";
-DATE "06/09/2022 01:50:24";
+DATE "06/14/2022 15:49:12";
 PROGRAM "Quartus Prime";
 
 

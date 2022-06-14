@@ -17,6 +17,7 @@ ARCHITECTURE arq OF keyboard_reader IS
 	
 	COMPONENT key_decode IS
 		PORT (
+			reset : IN STD_LOGIC;
 			Mclk : IN STD_LOGIC;
 			Kack : IN STD_LOGIC;
 			Lines : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -38,12 +39,13 @@ ARCHITECTURE arq OF keyboard_reader IS
 		);
 	END COMPONENT;
 	
-	SIGNAL s_Kval, s_DAC : STD_LOGIC;
+	SIGNAL s_Kval, s_DAC, s_reset : STD_LOGIC;
 	SIGNAL s_K : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	
 BEGIN
 	u_key_decode : key_decode
 	PORT MAP (
+		reset => s_reset,
 		Mclk => clk,
 		Lines => LINES,
 		Columns => COLUMNS,

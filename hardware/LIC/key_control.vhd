@@ -45,13 +45,15 @@ BEGIN
 			NS <= STATE_SENDING;
 		ELSIF (kack = '1' AND Kpress = '0') THEN 
 			NS <= STATE_SCANNING;
+		ELSE 
+			NS <= STATE_SENDING;
 		END IF;
 		
 		END CASE;
 	END PROCESS;
 	
 	-- Generate outputs
-	Kscan <= '1' WHEN (CS = STATE_SCANNING OR Kpress = '0') ELSE '0';
+	Kscan <= '1' WHEN (CS = STATE_SCANNING AND Kpress = '0') ELSE '0'; 
 	Kval <= '1' WHEN (CS = STATE_SENDING) ELSE '0';
 
 end arq;
