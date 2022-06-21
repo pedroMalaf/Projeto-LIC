@@ -9,7 +9,7 @@ object CoinDeposit {
     private const val FILENAME = "CoinDeposit.txt"
 
     // Coin -> Quantity
-    val coins = linkedMapOf<Int, Int>() // not hashmap because order is important
+    var coins = linkedMapOf<Int, Int>() // not hashmap because order is important
 
     /**
      * Inits the object.
@@ -23,16 +23,7 @@ object CoinDeposit {
      * Throws exception in case file does not exist
      */
     private fun readFile() {
-        val fp = File(FILENAME)
-
-        if (!fp.exists())
-            throw Exception("$FILENAME does not exist!")
-
-        fp.readLines().forEach { line ->
-            val v = line.split(";").map { it.toInt() } // Coin;Quantity
-            coins[v[0]] = v[1]
-        }
-
+        coins = openFile(FILENAME).readCoins()
         DEBUG("[CoinDeposit::readFile] coins = $coins")
     }
 
@@ -42,6 +33,7 @@ object CoinDeposit {
     fun insertCoin(coin: Int): Int? {
         if (coins[coin] == null)
             return null
+
         coins[coin] = coins[coin]!!.plus(1)
         return coins[coin]
     }
@@ -50,12 +42,7 @@ object CoinDeposit {
      * Saves coins and quantity from memory to file.
      */
     fun saveCoins() {
-        File(FILENAME).bufferedWriter().use {
-            for ((coin, quantity) in coins) {
-                it.write("$coin;$quantity\n")
-            }
-        }
-
+        openFile(FILENAME).saveCoins(coins)
         DEBUG("[CoinDeposit::saveCoins] saved coins = $coins")
     }
 

@@ -10,7 +10,7 @@ object Stations {
 
     // cities
     data class City(val price: Int, var sold: Int, val name: String)
-    val cities = mutableListOf<City>()
+    var cities = mutableListOf<City>()
 
     /**
      * Inits the object.
@@ -24,16 +24,7 @@ object Stations {
      * Throws exception in case file does not exist.
      */
     private fun readFile() {
-        val fp = File(FILENAME)
-
-        if (!fp.exists())
-            throw Exception("$FILENAME does not exist!")
-
-        fp.readLines().forEach { line ->
-            val v = line.split(";") // Price;TODO;Name
-            cities.add(City(v[0].toInt(), v[1].toInt(), v[2]))
-        }
-
+        cities = openFile(FILENAME).readCities()
         DEBUG("[Stations::readFile] cities = $cities")
     }
 
@@ -55,15 +46,9 @@ object Stations {
      * Saves from memory to file.
      */
     fun saveCities() {
-        File(FILENAME).bufferedWriter().use {
-            for (city in cities) {
-                it.write("${city.price};${city.sold};${city.name}\n")
-            }
-        }
-
+        openFile(FILENAME).saveCities(cities)
         DEBUG("[CoinDeposit::saveCoins] saved cities)")
     }
-
 
 }
 
