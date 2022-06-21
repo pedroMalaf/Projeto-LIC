@@ -20,7 +20,7 @@ object LCD {
         val fullData = data.shl(1) or RS
         DEBUG("[LCD::writeByteSerial] fullData = ${AS_BINARY(fullData)}")
         SerialEmitter.init()
-        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 1)
+        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 0)
     }
 
     /**
@@ -79,7 +79,7 @@ object LCD {
      * Sends a command to change cursor position ('line':0..LINES-1, 'column':0..COLS-1)
      */
     fun cursor(line: Int, column: Int) {
-        writeCMD((line * 0x40 + column) or 0b100_0000)
+        writeCMD((line * 0x40 + column) or 0x80)
     }
 
     /**

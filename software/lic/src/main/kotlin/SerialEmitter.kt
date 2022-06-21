@@ -12,7 +12,7 @@ object SerialEmitter {
     }
 
     //
-    private const val SCLK = 10L
+    private const val SCLK = 5L
 
     /**
      * Sets up bit channels

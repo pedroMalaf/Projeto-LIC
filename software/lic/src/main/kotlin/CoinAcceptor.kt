@@ -15,7 +15,6 @@ object CoinAcceptor {
         3 to 50,
         4 to 100,
         5 to 200
-
     )
 
     fun init() {
