@@ -19,13 +19,6 @@ object CoinAcceptor {
     )
 
     fun init() {
-        File("CoinsDeposit.txt").readLines().forEach {
-            val values = it.split(";").map { n -> n.toInt() }
-            val (coin, cid) = values[0] to values[1]
-            codification[cid] = coin
-        }
-
-        DEBUG("[CoinAcceptor::init] codification = $codification")
         HAL.init()
     }
 

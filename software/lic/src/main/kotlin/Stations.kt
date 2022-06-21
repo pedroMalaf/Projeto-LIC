@@ -1,7 +1,7 @@
 import java.io.File
 
 /**
- *
+ * Functions to work with station tickets (cities and prices)
  */
 object Stations {
 

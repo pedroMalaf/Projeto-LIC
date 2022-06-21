@@ -33,11 +33,11 @@ kt.DAC -> kbd.ack
 # --------------------------------------
 # Coin Acceptor
 # --------------------------------------
-UsbPort.O5 -> ca.accept
-UsbPort.O6 -> ca.collect
-UsbPort.O7 -> ca.eject
-ca.coin -> UsbPort.I3
-ca.cid[0-2] -> UsbPort.I[0-2]
+UsbPort.O4 -> ca.accept # 05
+UsbPort.O5 -> ca.collect # 06
+UsbPort.O6 -> ca.eject # 07
+ca.coin -> UsbPort.I4 # i3
+ca.cid[0-2] -> UsbPort.I[1-3]
 
 # --------------------------------------
 # IOS (Integrated Output System)
