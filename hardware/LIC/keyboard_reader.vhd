@@ -5,6 +5,7 @@ USE ieee.STD_LOGIC_1164.ALL;
 
 ENTITY keyboard_reader IS
 	PORT (
+		reset : IN STD_LOGIC;
 		clk : IN STD_LOGIC;
 		RXclk : IN STD_LOGIC;
 		LINES : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -43,6 +44,9 @@ ARCHITECTURE arq OF keyboard_reader IS
 	SIGNAL s_K : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	
 BEGIN
+
+	s_reset <= reset;
+
 	u_key_decode : key_decode
 	PORT MAP (
 		reset => s_reset,
