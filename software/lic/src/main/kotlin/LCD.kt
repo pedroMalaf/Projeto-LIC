@@ -20,7 +20,7 @@ object LCD {
         val fullData = data.shl(1) or RS
         DEBUG("[LCD::writeByteSerial] fullData = ${AS_BINARY(fullData)}")
         SerialEmitter.init()
-        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 10)
+        SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 1)
     }
 
     /**
@@ -79,9 +79,7 @@ object LCD {
      * Sends a command to change cursor position ('line':0..LINES-1, 'column':0..COLS-1)
      */
     fun cursor(line: Int, column: Int) {
-        val offset = if (line != 0) 1 else 0
-        val ADD = (39 * line + column + offset) and 0b000_1111_111
-        writeCMD(ADD or 0b1_0000_000)
+        writeCMD((line * 0x40 + column) or 0b100_0000)
     }
 
     /**
@@ -90,6 +88,13 @@ object LCD {
     fun clear() {
         writeCMD(0b0000_0001) // CMD_DISPLAY_CLEAR
         cursor(0, 0)
+    }
+
+    /**
+     * Places cursor at next line.
+     */
+    fun newLine() {
+        cursor(1, 0)
     }
 }
 
@@ -104,7 +109,7 @@ fun LCD_Testbench() {
     Time.sleep(2000)
 
     LCD.clear()
-    LCD.cursor(0, 0);
+    LCD.cursor(1, 1);
     DEBUG("writing \"hello world\" on LCD line 1")
     LCD.write("Now Playing:")
 
