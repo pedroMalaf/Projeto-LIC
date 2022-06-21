@@ -3,7 +3,7 @@
 ###########################################
 set_location_assignment PIN_C10 -to collect
 set_location_assignment PIN_C11 -to Reset
-
+set_location_assignment PIN_C12    -to Maintenance
 
 ###########################################
 # LEDS
@@ -30,6 +30,7 @@ set_location_assignment PIN_W11    -to LCD_DATA[4]
 set_location_assignment PIN_AA10   -to LCD_DATA[5]
 set_location_assignment PIN_Y8     -to LCD_DATA[6]
 set_location_assignment PIN_Y7     -to LCD_DATA[7]
+
 set_location_assignment PIN_W5     -to KEYPAD_LIN[0]
 set_location_assignment PIN_AA14   -to KEYPAD_LIN[1]
 set_location_assignment PIN_W12    -to KEYPAD_LIN[2]

@@ -5,17 +5,20 @@ USE IEEE.std_logic_1164.ALL;
 
 ENTITY ticket_machine IS
 	PORT (
-		collect : IN STD_LOGIC;
-		TX_D : IN STD_LOGIC;
 		MCLK : IN STD_LOGIC;
-		Reset : IN STD_LOGIC;
+		collect : IN STD_LOGIC;
+		-- ??? TX_D : IN STD_LOGIC;
+		Reset : IN STD_LOGIC; 
 		Prt : OUT STD_LOGIC;
 		HEX0, HEX1, HEX2 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 		LCD_RS : OUT STD_LOGIC;
 		LCD_EN : OUT STD_LOGIC;
 		LCD_DATA : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 		KEYPAD_LIN : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-		KEYPAD_COL : IN STD_LOGIC_VECTOR(2 DOWNTO 0)
+		KEYPAD_COL : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+		coins : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+		CoinInserted : IN STD_LOGIC;
+		Maintenance : IN STD_LOGIC
 	);
 END ticket_machine;
 
@@ -58,6 +61,7 @@ ARCHITECTURE arq OF ticket_machine IS
 	
 	COMPONENT keyboard_reader IS 
 		PORT (
+			reset : IN STD_LOGIC;
 			clk : IN STD_LOGIC;
 			RXclk : IN STD_LOGIC;
 			LINES : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -66,17 +70,24 @@ ARCHITECTURE arq OF ticket_machine IS
 		);
 	END COMPONENT;
 	
-	SIGNAL prt_s, rt_s, fn_s, sdx_s, not_ss_s, busy_s, clk_s : STD_LOGIC;
+	SIGNAL prt_s, rt_s, fn_s, sdx_s, not_ss_s, busy_s, clk_s, reset_s : STD_LOGIC;
 	SIGNAL di_s, oi_s : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL do_s : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	SIGNAL WrL_s, TXCLK_s, TX_D_s : STD_LOGIC;
 	
 BEGIN
 
+	reset_s <= reset;
+	
 	u_usbport : UsbPort
 	PORT MAP(
-		inputPort(0) => busy_s,
+		inputPort(0) => collect,
+		inputPort(1) => coins(0),
+		inputPort(2) => coins(1),
+		inputPort(3) => coins(2),
+		inputPort(4) => CoinInserted,
 		inputPort(5) => TX_D_s,
+		inputPort(7) => Maintenance,
 		outputPort(0) => TXCLK_s,
 		outputPort(1) => not_ss_s,
 		outputPort(2) => clk_s,
@@ -122,10 +133,12 @@ BEGIN
 	
 	u_kbreader : keyboard_reader
 	PORT MAP(
+		reset => reset_s,
 		clk => MCLK,
 		RXclk => TXCLK_s,
 		LINES => KEYPAD_LIN,
-		TXD => TX_D_s
+		TXD => TX_D_s,
+		COLUMNS => KEYPAD_COL
 	);
 
 	Prt <= prt_s;
