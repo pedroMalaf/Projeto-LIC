@@ -13,18 +13,8 @@ END mux;
 
 ARCHITECTURE arq OF mux IS
 BEGIN
-	process (A, S) is 
-	begin
-		if (S(0) = '0' and S(1) = '0' and A(0) = '1') then
-			Y <= '1';
-		elsif (S(0) = '1' and S(1) = '0' and A(1) = '1') then
-			Y <= '1';
-		elsif (S(0) = '0' and S(1) = '1' and A(2) = '1') then 
-			Y <= '1';
-		elsif (S(0) = '1' and S(1) = '1' and A(3) = '1') then 
-			Y <= '1';
-		else 
-			Y <= '0';
-		end if;
-	end process;
+	
+	Y <= ((NOT S(0) AND NOT S(1) AND NOT A(0)) OR (S(0) AND NOT S(1) AND A(1)) OR 
+			(NOT S(0) AND S(1) AND A(2)) OR (S(0) AND S(1) AND A(3)));
+	
 END arq;
