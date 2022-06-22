@@ -26,6 +26,8 @@ fun AS_BINARY(n: Int) =
     "0b%s".format(n.toString(2))
 
 var DEBUG_MODE = -1
+
+
 /**
  * Debugs aKa prints [s] to console if debug mode is set.
  * You can set/unset debug mode in debug.txt.
@@ -45,3 +47,8 @@ fun DEBUG(s: String) {
         }
     }
 }
+
+/**
+ * Turns [d] double into String with
+ */
+fun doubleToString(d: Double) = String.format("%.2f", d)
