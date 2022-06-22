@@ -8,6 +8,9 @@ object TUI {
     // Used to know when to redraw waiting message
     var waitingScreenDisplayed = false
 
+    // Our current city // TODO: perguntar ao stor se é assim que funciona
+    var origin = 0
+
     fun init() {
         KeyReceiver.init()
         LCD.init()
@@ -249,12 +252,13 @@ object TUI {
                         '*' -> {
                             clearAndWrite(city, true)
                             clearAndWrite("Collect Ticket", true, 1, 0, false)
-                            // TODO: origem (ultimo bilhete comprado)
-                            TicketDispenser.print(id, 0, rt)
-                            while (SerialEmitter.isBusy())
-                                clearAndWrite("Thank you", true)
+                            TicketDispenser.print(id, origin, rt)
+                            origin = id
+                            while (SerialEmitter.isBusy()) {
+                            }
+                            clearAndWrite("Thank you", true)
                             clearAndWrite("Have a nice trip", true, 1, 0, false)
-                            Time.sleep(2500)
+                            Time.sleep(1500)
                             return@handleCitySelection
                         }
                         '0' -> {
