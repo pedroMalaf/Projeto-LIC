@@ -34,8 +34,8 @@ object SerialEmitter {
      */
     fun send(addr: Destination, data: Int, SLEEP_DEBUG: Long = 500L) {
         while (isBusy()) {
-            DEBUG("Cant send frame (busy = 1). Trying again in 3 sec ...")
-            Time.sleep(3000)
+            DEBUG("Cant send frame (busy = 1). Trying again in 1 sec ...")
+            Time.sleep(1000)
         }
 
         // add destination bit (lcd or td) to frame (msb)

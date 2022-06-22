@@ -1,21 +1,7 @@
 import java.text.SimpleDateFormat
 import java.util.*
 
-val DATEFORMAT = SimpleDateFormat("dd/MM/yyyy HH:mm")
 
-var waitingScreenDisplayed = false
-
-fun showWaitingScreen() {
-    if (!waitingScreenDisplayed) {
-        LCD.clear()
-        LCD.cursor(0, 1)
-        LCD.write("Ticket to Ride")
-        LCD.newLine()
-        LCD.write(DATEFORMAT.format(Date()))
-        waitingScreenDisplayed = true
-    }
-
-}
 
 /**
  * Main app object
@@ -37,18 +23,22 @@ object TicketMachine {
 
     fun run() {
         var shutdown = false
-        showWaitingScreen()
+        TUI.showWaitingScreen()
 
         // main loop
         while (!shutdown) {
-            showWaitingScreen()
+            TUI.showWaitingScreen()
+
+            // maintenance mode
             if (M.verify()) {
-                waitingScreenDisplayed = false
+                TUI.waitingScreenDisplayed = false
                 shutdown = TUI.maintenanceMode()
             }
+
+            // normal mode
             if (KBD.getKey() == '2' || KBD.getKey() == '8') {
                 var i = 0
-                var cities = Stations.cities
+                val cities = Stations.cities
                 println("programa vai começar")
                 displayCity(i, cities)
                 when(KBD.getKey()){
@@ -74,6 +64,9 @@ object TicketMachine {
             }
         }
 
+        // save on shutdown
+        Stations.saveCities()
+        CoinDeposit.saveCoins()
         System.exit(1)
     }
 

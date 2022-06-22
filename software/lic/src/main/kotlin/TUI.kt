@@ -1,13 +1,16 @@
 import isel.leic.utils.Time
+import java.text.SimpleDateFormat
+import java.util.*
 
 object TUI {
+    private val DATEFORMAT = SimpleDateFormat("dd/MM/yyyy HH:mm")
+
+    // Used to know when to redraw waiting message
+    var waitingScreenDisplayed = false
+
     fun init() {
         KeyReceiver.init()
         LCD.init()
-    }
-
-    fun writeLCD() {
-        LCD.write(KBD.getKey())
     }
 
     /**
@@ -21,14 +24,99 @@ object TUI {
         return KBD.waitKey(time) == '5'
     }
 
-    fun clearAndWrite(s: String, l: Int = 0, c: Int = 0) {
-        LCD.clear()
-        LCD.cursor(l, c)
+    /**
+     * Clears and writes [s] on the LCD on cursor ([l], [c]) or centered instead
+     */
+    fun clearAndWrite(s: String, center: Boolean = false, l: Int = 0, c: Int = 0, clear: Boolean = true) {
+        if (clear) LCD.clear()
+        if (!center) LCD.cursor(l, c)
+        else {
+            val middle = 8
+            val start = middle - (s.length / 2)
+            LCD.cursor(l, start)
+        }
         LCD.write(s)
     }
 
     /**
-     * mMintenance mode screen
+     * Shows waiting screen on LCD
+     */
+    fun showWaitingScreen() {
+        if (!waitingScreenDisplayed) {
+            clearAndWrite("Ticket To Ride", true)
+            LCD.newLine()
+            LCD.write(DATEFORMAT.format(Date()))
+            waitingScreenDisplayed = true
+        }
+    }
+
+    /**
+     * Handles city selection and executes [fn] block.
+     * This can be useful to avoid duplicate code.
+     * Lambda char is key pressed, String is city name, Int is city ID
+     */
+    fun handleCitySelection(maintenance: Boolean, fn: (Char, String, Int) -> Unit) {
+        val cities = Stations.cities
+        var keyIdx = 0
+        var arrowMode = false
+
+        // Writes to LCD city correctly formatted
+        fun writeCity() {
+            clearAndWrite(cities[keyIdx].name, true)
+            LCD.newLine()
+            LCD.write(String.format("%02d${if (arrowMode) "a" else ":"}", keyIdx))
+            LCD.cursor(1, 14)
+            LCD.write(String.format("%02d", cities[keyIdx].sold))
+        }
+
+        // loop and show cities
+        writeCity()
+        while (true) {
+            val key = KBD.waitKey(5000)
+            if (key == KBD.NONE.toChar()) {
+                break
+            }
+
+            if (key == '#' && maintenance)
+                break
+
+            if (key == '*') {
+                arrowMode = !arrowMode
+                writeCity()
+                continue
+            }
+
+            // handle arrow mode
+            if ((key == '2' || key == '8') && arrowMode) {
+                val up = key == '2'
+                println("entrou e $up")
+                when {
+                    up && keyIdx != cities.size - 1 -> keyIdx++
+                    !up && keyIdx > 0 -> keyIdx--
+                    else -> continue
+                }
+                writeCity()
+                continue
+            }
+
+            // handle normal mode
+            if ((key - '0') < cities.size && key != '#') {
+                // check if we can "autocomplete" 2 digit
+                // i.e press 1 and then 2 gets us 12, but if 12 does not exist, gets 2
+                val n = String.format("%d%d", keyIdx, key - '0').toInt()
+                keyIdx = if (n < cities.size)
+                    n
+                else
+                    key - '0'
+                writeCity()
+            }
+
+            fn(key, cities[keyIdx].name, keyIdx)
+        }
+    }
+
+    /**
+     * Maintenance mode screen
      */
     fun maintenanceMode(): Boolean {
         val options = listOf(
@@ -41,13 +129,13 @@ object TUI {
         var idx = 0
         var timer = Time.getTimeInMillis()
 
-        clearAndWrite("Maintence mode", 0, 1)
+        clearAndWrite("Maintenance mode")
 
         do {
             if (elapsed(timer) > 2500) {
                 if (idx == options.size - 1) idx = 0
                 else idx++
-                clearAndWrite("Maintence mode", 0, 1)
+                clearAndWrite("Maintenance mode")
                 timer = Time.getTimeInMillis()
             }
 
@@ -55,9 +143,7 @@ object TUI {
             LCD.write(options[idx])
 
             when (KBD.getKey()) {
-                '1' -> { // print ticket
-
-                }
+                '1' -> testPrintTicket()
                 '2' -> maintenanceStationsScreen()
                 '3' -> maintenanceCoinsScreen()
                 '4' -> { // reset ?
@@ -67,9 +153,9 @@ object TUI {
                     }
                 }
                 '5' -> { // shutdown
-                    if (yesNoQuestion("Shutdown?", 5000L))
+                    if (yesNoQuestion("Shutdown?", 5000L)) {
                         return true
-                    else
+                    } else
                         continue
                 }
             }
@@ -93,9 +179,9 @@ object TUI {
         var arrowMode = false
         var keyIdx = 0
 
-        // Displays coins info in the correct format
+        // Display coins info in the correct format
         fun writeCoins() {
-            clearAndWrite("     ${toCent[coins[keyIdx]]}€")
+            clearAndWrite("${toCent[coins[keyIdx]]}€", true)
             LCD.newLine()
             LCD.write("$keyIdx${if (arrowMode) "a" else ":"}")
             LCD.cursor(1, 14)
@@ -115,6 +201,19 @@ object TUI {
                 continue
             }
 
+            // handle arrow mode
+            if ((key == '2' || key == '8') && arrowMode) {
+                val up = key == '2'
+                when {
+                    up && keyIdx < 5 -> keyIdx++
+                    !up && keyIdx > 0 -> keyIdx--
+                    else -> continue
+                }
+                writeCoins()
+                continue
+            }
+
+            // handle normal mode
             if (key in '0'..'5') {
                 keyIdx = key - '0'
                 writeCoins()
@@ -126,41 +225,44 @@ object TUI {
      * Maintenance stations screen
      */
     private fun maintenanceStationsScreen() {
-        val cities = Stations.cities
-        var keyIdx = 0
-        var arrowMode = false
+        handleCitySelection(true) { _, _, _ -> }
+    }
 
-        // Writes to LCD city correctly formatted
-        fun writeCity() {
-            clearAndWrite(cities[keyIdx].name)
-            LCD.newLine()
-            LCD.write(String.format("%02d${if (arrowMode) "a" else ":"}", keyIdx))
-            LCD.cursor(1, 14)
-            LCD.write(String.format("%02d", cities[keyIdx].sold))
-        }
+    /**
+     * Simulates ticket printing (maintenance mode)
+     */
+    private fun testPrintTicket() {
+        handleCitySelection(false) { key, city, id ->
+            if (key == '#') {
+                var rt = false
+                var update = true // used to redraw screen ONLY when needed (when rt is pressed)
 
-        writeCity()
-        while (true) {
-            val key = KBD.waitKey(5000)
-            if (key == KBD.NONE.toChar() || key == '#') {
-                break
-            }
+                while (true) {
+                    if (update) {
+                        clearAndWrite(city, true)
+                        LCD.newLine()
+                        LCD.write("${if (rt) 1 else 0}  * to Print")
+                        update = false
+                    }
 
-            if (key == '*') {
-                arrowMode = !arrowMode
-                writeCity()
-                continue
-            }
-
-            if ((key - '0') < cities.size) {
-                // check if we can "autocomplete" 2 digit
-                // i.e press 1 and then 2 gets us 12, but if 12 does not exist, gets 2
-                val n = String.format("%d%d", keyIdx, key - '0').toInt()
-                keyIdx = if (n < cities.size)
-                    n
-                else
-                    key - '0'
-                writeCity()
+                    when (KBD.getKey()) {
+                        '*' -> {
+                            clearAndWrite(city, true)
+                            clearAndWrite("Collect Ticket", true, 1, 0, false)
+                            // TODO: origem (ultimo bilhete comprado)
+                            TicketDispenser.print(id, 0, rt)
+                            while (SerialEmitter.isBusy())
+                                clearAndWrite("Thank you", true)
+                            clearAndWrite("Have a nice trip", true, 1, 0, false)
+                            Time.sleep(2500)
+                            return@handleCitySelection
+                        }
+                        '0' -> {
+                            rt = !rt
+                            update = true
+                        }
+                    }
+                }
             }
         }
     }

@@ -19,7 +19,7 @@ object TicketDispenser {
         DEBUG("[TicketDispenser::print] originID = ${AS_BINARY(originID)}")
         DEBUG("[TicketDispenser::print] roundTrip = ${AS_BINARY(RT)}")
         DEBUG("[TicketDispenser::print] printing: ${AS_BINARY(data)}")
-        SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data)
+        SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data, 0)
     }
 }
 
