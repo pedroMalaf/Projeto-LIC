@@ -1,5 +1,3 @@
-import java.io.File
-
 /**
  *
  */
@@ -39,6 +37,38 @@ object CoinDeposit {
     }
 
     /**
+     * Removes and exchanges coins inserted.
+     */
+    fun returnValue(total: Int) {
+        var resto = total
+
+        val dois_euros = 200 to resto / 200
+        resto %= 200
+
+        val euros = 100 to resto / 100
+        resto %= 100
+
+        val meio_euro = 50 to resto / 50
+        resto %= 50
+
+        val vinte_cent = 20 to resto / 20
+        resto %= 20
+
+        val dez_cent = 10 to resto / 10
+        resto %= 10
+
+        val cinco_cent = 5 to resto / 5
+        resto %= 5
+
+        coins[dois_euros.first] = coins[dois_euros.first]!!.minus(dois_euros.second)
+        coins[euros.first] = coins[euros.first]!!.minus(euros.second)
+        coins[meio_euro.first] = coins[meio_euro.first]!!.minus(meio_euro.second)
+        coins[vinte_cent.first] = coins[vinte_cent.first]!!.minus(vinte_cent.second)
+        coins[dez_cent.first] = coins[dez_cent.first]!!.minus(dez_cent.second)
+        coins[cinco_cent.first] = coins[cinco_cent.first]!!.minus(cinco_cent.second)
+    }
+
+    /**
      * Saves coins and quantity from memory to file.
      */
     fun saveCoins() {
@@ -73,6 +103,9 @@ fun CoinDeposit_Testbench() {
 
     println(CoinDeposit.insertCoin(200))
     DEBUG("[CoinDeposit::TESTBENCH] after insertCoin(200): ${CoinDeposit.coins}")
+
+    DEBUG("[CoinDeposit::TESTBENCH] return value(200): ")
+    println(CoinDeposit.returnValue(205))
 
     CoinDeposit.saveCoins()
 
