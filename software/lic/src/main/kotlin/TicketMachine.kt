@@ -1,8 +1,3 @@
-import java.text.SimpleDateFormat
-import java.util.*
-
-
-
 /**
  * Main app object
  */
@@ -35,6 +30,7 @@ object TicketMachine {
                 shutdown = TUI.maintenanceMode()
             }
 
+            // buy ticket
             if (KBD.getKey() == '#') {
                 TUI.normalMode()
                 TUI.waitingScreenDisplayed = false
@@ -49,6 +45,7 @@ object TicketMachine {
 }
 
 fun main() {
+    println("TicketMachine App by Pedro & Roberto")
     TicketMachine.init()
     TicketMachine.run()
 }

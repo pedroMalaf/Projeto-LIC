@@ -68,6 +68,8 @@ object TUI {
 
     /**
      * Handles city selection and executes [fn] block.
+     * The function returns if [returnIfHashtag] is true and '#' is pressed.
+     * [showPrice] will show the price in the right side, if false, shows how many tickets were sold.
      * This can be useful to avoid duplicate code.
      * Lambda char is key pressed, String is city object, Int is city ID
      */
@@ -87,9 +89,9 @@ object TUI {
                 LCD.cursor(1, 14)
                 LCD.write(String.format("%02d", cities[keyIdx].sold))
             } else {
-                LCD.cursor(1, 13)
-                // TODO: convert to euro
-                LCD.write("${cities[keyIdx].price}€")
+                LCD.cursor(1, 11)
+                val price = intToString(cities[keyIdx].price.toDouble())
+                LCD.write("$price€")
             }
         }
 
@@ -196,11 +198,11 @@ object TUI {
 
         // Display coins info in the correct format
         fun writeCoins() {
-            clearAndWrite("${toCent[coins[keyIdx]]}€", true)
+            clearAndWrite("${toCent[coins[keyIdx]]?.let { intToString(it.toDouble()) }}€", true)
             LCD.newLine()
             LCD.write("$keyIdx${if (arrowMode) "a" else ":"}")
             LCD.cursor(1, 14)
-            LCD.write(String.format("%02d", CoinDeposit.coins[coins[keyIdx]]))
+            LCD.write("${CoinDeposit.coins[coins[keyIdx]]}")
         }
 
         writeCoins()
@@ -304,7 +306,8 @@ object TUI {
                 while (true) {
                     if (update) {
                         clearAndWrite(city.name, true)
-                        clearAndWrite("${if (rt) 1 else 0}    ${city.price - credit}€", l = 1, clear = false)
+                        val price = intToString((city.price - credit).toDouble())
+                        clearAndWrite("${if (rt) 1 else 0}    $price€", l = 1, clear = false)
                         update = false
                     }
 
@@ -320,6 +323,7 @@ object TUI {
 
                         if (credit >= city.price) {
                             collectTicket(city.name, id, rt)
+                            CoinAcceptor.collectCoins()
                             return@handleCitySelection
                         }
                     }
@@ -333,8 +337,9 @@ object TUI {
                         '#' -> {
                             if (credit < city.price) {
                                 clearAndWrite("Vending aborted", true)
-                                clearAndWrite("Return $credit", true, l=1, clear=false)
+                                clearAndWrite("Return ${intToString(credit.toDouble())}", true, l=1, clear=false)
                                 CoinDeposit.returnValue(credit)
+                                CoinAcceptor.ejectCoins()
                                 Time.sleep(1000)
                                 return@handleCitySelection
                             }
@@ -352,6 +357,7 @@ fun main() {
 
 fun TUI_Testbench() {
     DEBUG("[TUI::TESTBENCH] starting")
-    TODO()
+    TUI.init()
+    //...
     DEBUG("[TUI::TESTBENCH] done")
 }

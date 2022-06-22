@@ -51,4 +51,4 @@ fun DEBUG(s: String) {
 /**
  * Turns [d] double into String with
  */
-fun doubleToString(d: Double) = String.format("%.2f", d)
+fun intToString(d: Double) = String.format("%.2f", d * 0.01)
