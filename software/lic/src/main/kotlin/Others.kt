@@ -1,6 +1,12 @@
+import isel.leic.utils.Time
 import java.io.File
 
 // Some utilities
+
+/**
+ * Returns time elapsed since [t].
+ */
+fun elapsed(t: Long) = Time.getTimeInMillis() - t
 
 /**
  * Returns true if [n] is power of 2.

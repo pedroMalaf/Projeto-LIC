@@ -59,8 +59,10 @@ object KBD {
 
         while (end >= Time.getTimeInMillis()) {
             key = getKeyParallel()
-            if (key != NONE.toChar())
+            if (key != NONE.toChar()) {
                 DEBUG("Pressed $key")
+                break
+            }
         }
 
         return key

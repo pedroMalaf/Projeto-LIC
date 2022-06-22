@@ -37,12 +37,12 @@ object TicketMachine {
     }
 
     fun run() {
-
         var shutdown = false
         showWaitingScreen()
 
         // main loop
         while (!shutdown) {
+            showWaitingScreen()
             if (M.verify()) {
                 waitingScreenDisplayed = false
                 shutdown = MaintenceMode()
@@ -50,8 +50,9 @@ object TicketMachine {
             if (KBD.getKey() == '#') {
                 println("# PRESSED")
             }
-            showWaitingScreen()
         }
+
+        System.exit(1)
     }
 
 }
@@ -65,40 +66,46 @@ fun MaintenceMode(): Boolean {
         "5-Shutdown"
     )
     var idx = 0
-    var timeNow = Time.getTimeInMillis()
+    var timer = Time.getTimeInMillis()
 
     LCD.clear()
     LCD.cursor(0, 1)
     LCD.write("Maintence mode")
 
     do {
-        if (elapsed(timeNow) > 2500) {
-            if (idx == options.size-1) idx = 0
+        if (elapsed(timer) > 2500) {
+            if (idx == options.size - 1) idx = 0
             else idx++
-            timeNow = Time.getTimeInMillis()
-            LCD.clear()
-            LCD.cursor(0, 1)
-            LCD.write("Maintence mode") // TODO: always clearing
+            TUI.clearAndWrite("Maintence mode", 0, 1)
+            timer = Time.getTimeInMillis()
         }
 
         LCD.cursor(1, 0)
         LCD.write(options[idx])
 
         when (KBD.getKey()) {
-            '1' -> {
+            '1' -> { // print ticket
 
             }
-            '2' -> println("2")
-            '3' -> println("3")
+            '2' -> { // station ?
+
+            }
+            '3' -> TUI.maintenceCoinsScreen()
+            '4' -> { // reset ?
+
+            }
+            '5' -> { // shutdown
+                if (TUI.yesNoQuestion("Shutdown?", 5000L))
+                    return true
+                else
+                    continue
+            }
         }
     } while (M.verify())
 
     return false
 }
 
-fun elapsed(t: Long): Long {
-    return Time.getTimeInMillis() - t
-}
 
 fun main() {
     TicketMachine.init()
