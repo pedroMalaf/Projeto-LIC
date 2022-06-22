@@ -18,7 +18,7 @@ object SerialEmitter {
      * Sets up bit channels
      */
     fun init() {
-        DEBUG("[SerialEmitter::init]")
+        //DEBUG("[SerialEmitter::init]")
         HAL.init(0)
         HAL.setBits(NOTSS_MASK) // not_ss = 1
     }
@@ -40,7 +40,7 @@ object SerialEmitter {
 
         // add destination bit (lcd or td) to frame (msb)
         var frame = data.shl(1) or addr.value
-        DEBUG("[SerialEmitter::send] sending frame ${AS_BINARY(frame)} (${addr.to})")
+        //DEBUG("[SerialEmitter::send] sending frame ${AS_BINARY(frame)} (${addr.to})")
 
         var parityBit = 0
 
@@ -53,7 +53,7 @@ object SerialEmitter {
             val sdx = frame and 1
             if (sdx == 1) HAL.setBits(SDX_MASK) else HAL.clrBits(SDX_MASK)
             parityBit = parityBit xor sdx
-            DEBUG("[SerialEmitter::send] sdx: $sdx (parityBit = $parityBit)")
+            //DEBUG("[SerialEmitter::send] sdx: $sdx (parityBit = $parityBit)")
             frame = frame.shr(1)
 
             Time.sleep(SCLK)
@@ -67,13 +67,12 @@ object SerialEmitter {
         Time.sleep(SCLK)
         if (parityBit == 1) HAL.setBits(SDX_MASK) else HAL.clrBits(SDX_MASK)
         HAL.setBits(SCLK_MASK) // sclk = 1
-        DEBUG("[SerialEmitter::send] sending last sdx (parity bit): $parityBit")
+        //DEBUG("[SerialEmitter::send] sending last sdx (parity bit): $parityBit")
 
         Time.sleep(SCLK)
-        //HAL.setBits(BUSY_MASK)
         HAL.setBits(NOTSS_MASK)
         HAL.clrBits(SCLK_MASK)
-        DEBUG("[SerialEmitter::send] full frame sent")
+        //DEBUG("[SerialEmitter::send] full frame sent")
     }
 
     /**

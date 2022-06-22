@@ -18,7 +18,7 @@ object LCD {
     private fun writeByteSerial(rs: Boolean, data: Int) {
         val RS = if (rs) 1 else 0
         val fullData = data.shl(1) or RS
-        DEBUG("[LCD::writeByteSerial] fullData = ${AS_BINARY(fullData)}")
+        //DEBUG("[LCD::writeByteSerial] fullData = ${AS_BINARY(fullData)}")
         SerialEmitter.init()
         SerialEmitter.send(SerialEmitter.Destination.LCD, fullData, 0)
     }
