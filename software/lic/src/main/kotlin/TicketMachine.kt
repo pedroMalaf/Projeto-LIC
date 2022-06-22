@@ -39,11 +39,48 @@ object TicketMachine {
             if (M.verify()) {
                 shutdown = MaintenceMode()
             }
-            if (KBD.getKey() == '#') {
-                println("# PRESSED")
+            if (KBD.getKey() == '2' || KBD.getKey() == '8') {
+                var i = 0
+                var cities = Stations.cities
+                println("programa vai começar")
+                displayCity(i, cities)
+                when(KBD.getKey()){
+                    '2' -> {
+                        i++
+                        displayCity(i, cities)
+                    }
+                    '8' -> {
+                        i--
+                        displayCity(i, cities)
+                    }
+                    '#' -> {
+                        println("iniciar a compra do bilhete - inserir moedas")
+                        paymentInitialized() // função que verifica as moedas e etc
+                        if (HAL.isBit(0x1)){
+                            println("o bilhete foi pago e retirado com sucesso")
+                            Stations.addSold("")
+                            Stations.saveCities()
+                        }
+                    }
+                }
             }
             showWaitingScreen()
         }
+    }
+
+    /**
+     * Displays current city [cities[i]] on the LCD
+     */
+    private fun displayCity(i: Int, cities: MutableList<Stations.City>){
+        LCD.clear()
+        LCD.cursor(0,0)
+        LCD.write("") // nome da próxima cidade
+        LCD.cursor(1,0)
+        LCD.write("") // preço da próxima cidade
+    }
+
+    private fun paymentInitialized(){
+
     }
 
 }
@@ -63,6 +100,7 @@ fun MaintenceMode(): Boolean {
 
     return false
 }
+
 
 fun main() {
     TicketMachine.init()
