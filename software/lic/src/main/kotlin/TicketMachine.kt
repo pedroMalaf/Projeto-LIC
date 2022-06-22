@@ -70,6 +70,7 @@ object TicketMachine {
                             Stations.saveCities()
                         }
                     }
+                    '*' -> 0 //ainda não percebi mt bem oqq o * vai fazer
                 }
             }
         }
