@@ -112,7 +112,6 @@ object TUI {
             // handle arrow mode
             if ((key == '2' || key == '8') && arrowMode) {
                 val up = key == '2'
-                println("entrou e $up")
                 when {
                     up && keyIdx != cities.size - 1 -> keyIdx++
                     !up && keyIdx > 0 -> keyIdx--
@@ -288,6 +287,13 @@ object TUI {
                 }
             }
         }
+    }
+
+    /**
+     * Normal mode buying ticket
+     */
+    fun normalMode() {
+
     }
 }
 
