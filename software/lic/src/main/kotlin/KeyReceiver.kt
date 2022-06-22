@@ -48,7 +48,7 @@ object KeyReceiver {
 }
 
 fun main() {
-    KeyReceiver_Testbench()
+    //KeyReceiver_Testbench()
 }
 
 fun KeyReceiver_Testbench() {

@@ -1,14 +1,16 @@
+import isel.leic.utils.Time
+
 /**
  * Main app object
  */
 object TicketMachine {
     fun init() {
         HAL.init()
+        LCD.init()
         KBD.init()
         KeyReceiver.init()
         SerialEmitter.init()
         TicketDispenser.init()
-        LCD.init()
         M.init()
         CoinDeposit.init()
         CoinAcceptor.init()
@@ -40,11 +42,23 @@ object TicketMachine {
         // save on shutdown
         Stations.saveCities()
         CoinDeposit.saveCoins()
+        LCD.clear()
         System.exit(1)
     }
 }
 
+
+fun tb_KeyReceiver(){
+    KeyReceiver.init()
+    while(true){
+        Time.sleep(200)
+        println(KeyReceiver.rcv())
+    }
+}
+
 fun main() {
+    tb_KeyReceiver()
+    return
     println("TicketMachine App by Pedro & Roberto")
     TicketMachine.init()
     TicketMachine.run()

@@ -34,7 +34,7 @@ ARCHITECTURE arq OF keyboard_reader IS
 			DAV: IN STD_LOGIC; -- (from K_val - "Key Decode")
 			D: IN STD_LOGIC_VECTOR(3 DOWNTO 0); -- (from K - "Key Decode")
 			TX_clk: IN STD_LOGIC; -- (from RX_clk - "Control")
-			
+			reset: IN STD_LOGIC;
 			DAC: OUT STD_LOGIC; -- data accepted (to K_ack - "Key Decode")
 			TX_D: OUT STD_LOGIC -- (to RX_D - "Control")
 		);
@@ -65,7 +65,8 @@ BEGIN
 		clk => clk,
 		D => s_K,
 		DAC => s_DAC,
-		TX_D => TXD
+		TX_D => TXD,
+		reset => reset
 	);
 
 END arq;

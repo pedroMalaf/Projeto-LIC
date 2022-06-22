@@ -11,6 +11,8 @@ object TUI {
     // Our current city // TODO: perguntar ao stor se é assim que funciona
     var origin = 0
 
+    var updatedDate = DATEFORMAT.format(Date())
+
     // Useful in some cases to convert from cents to euro
     val toCent = hashMapOf(
         5 to "0.05",
@@ -25,8 +27,13 @@ object TUI {
      *
      */
     fun init() {
-        KeyReceiver.init()
         LCD.init()
+        KeyReceiver.init()
+    }
+
+    fun writeLCD() {
+        println(KBD.waitKey(10000))
+
     }
 
     /**
@@ -58,10 +65,15 @@ object TUI {
      * Shows waiting screen on LCD
      */
     fun showWaitingScreen() {
+        val now = DATEFORMAT.format(Date())
+        if (now != updatedDate){
+            updatedDate = now
+            waitingScreenDisplayed = false
+        }
         if (!waitingScreenDisplayed) {
             clearAndWrite("Ticket To Ride", true)
             LCD.newLine()
-            LCD.write(DATEFORMAT.format(Date()))
+            LCD.write(updatedDate.toString())
             waitingScreenDisplayed = true
         }
     }
@@ -358,6 +370,7 @@ fun main() {
 fun TUI_Testbench() {
     DEBUG("[TUI::TESTBENCH] starting")
     TUI.init()
+    TUI.writeLCD()
     //...
     DEBUG("[TUI::TESTBENCH] done")
 }

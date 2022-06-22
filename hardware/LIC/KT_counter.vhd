@@ -7,8 +7,8 @@ USE ieee.std_logic_1164.ALL;
 ENTITY KT_counter IS
 	PORT(	
 		reset : IN STD_LOGIC;
-		CE, CLK, Clr: IN STD_LOGIC;
-		Tcount: OUT STD_LOGIC;
+		CE, CLK: IN STD_LOGIC;
+		TC: OUT STD_LOGIC;
 		Count : OUT STD_LOGIC_VECTOR(2 downto 0)
 	);
 END KT_counter;
@@ -40,7 +40,7 @@ BEGIN
 		PORT MAP(
 			CLK => CLK,
 			EN => CE,
-			RESET => Clr,
+			RESET => reset,
 			D => sD(0),
 			Q => Qout(0)
 		);
@@ -49,7 +49,7 @@ BEGIN
 		PORT MAP(
 			CLK => CLK,
 			EN => CE,
-			RESET => Clr,
+			RESET => reset,
 			D => sD(1),
 			Q => Qout(1)
 		);
@@ -58,13 +58,13 @@ BEGIN
 		PORT MAP(
 			CLK => CLK,
 			EN => CE,
-			RESET => Clr,
+			RESET => reset,
 			D => sD(2),
 			Q => Qout(2)
 		);
 		
 
-	Tcount <= Qout(0) AND Qout(1) AND Qout(2);
+	TC <= Qout(0) AND Qout(1) AND Qout(2);
 	Count	 <= Qout;
 	
 END arq;

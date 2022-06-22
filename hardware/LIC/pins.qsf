@@ -1,14 +1,19 @@
 ###########################################
 # INPUT 
 ###########################################
-set_location_assignment PIN_C10 -to collect
-set_location_assignment PIN_C11 -to Reset
-set_location_assignment PIN_C12    -to Maintenance
+set_location_assignment PIN_C10 -to collect     # SW[0]
+set_location_assignment PIN_C11 -to Reset       # SW[1]
+set_location_assignment PIN_F15 -to Maintenance # SW[9]
+set_location_assignment PIN_A13 -to coins[0] # SW[6]
+set_location_assignment PIN_A14 -to coins[1] # SW[7]
+set_location_assignment PIN_B14 -to coins[2] # SW[8]
+set_location_assignment PIN_B12 -to CoinInserted #SW[5]
+
 
 ###########################################
 # LEDS
 ###########################################
-set_location_assignment PIN_A8 -to Prt
+set_location_assignment PIN_A8 -to Prt  # LEDR[0]
 
 
 ###########################################

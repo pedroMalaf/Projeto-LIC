@@ -63,7 +63,7 @@ BEGIN
 	
 	-- Generate outputs
 	
-	Rcounter <= '1' WHEN (CS = STATE_WAITING_DATA) ELSE '0';
+	Rcounter <= '0' WHEN (CS = STATE_SEND_DATA) ELSE '1';
 	DAC <= '1' WHEN (CS = STATE_DATA_RECEIVED) ELSE '0';
 	Ereg <= '1' WHEN (CS = STATE_DATA_RECEIVED) ELSE '0';
 	Ecounter <= '1' WHEN (CS = STATE_SEND_DATA) ELSE '0';

@@ -24,7 +24,7 @@ BEGIN
 					when "101" => Data_Out <= D(5);
 					when "110" => Data_Out <= D(6);
 					when "111" => Data_Out <= D(7);
-					when others => Data_Out <= '0';
+					when others => Data_Out <= '1'; -- 0
 				end case;
 			end process;
 END arq;
