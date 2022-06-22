@@ -72,7 +72,7 @@ object LCD {
      * Writes a string ([text]) to the current position
      */
     fun write(text: String) {
-        text.forEach { write(it) }
+        for (c in text) { write(c) }
     }
 
     /**

@@ -43,6 +43,15 @@ object Stations {
     }
 
     /**
+     * Resets sold tickets to each city
+     */
+    fun resetStations() {
+        for (c in cities) {
+            c.sold = 0
+        }
+    }
+
+    /**
      * Saves from memory to file.
      */
     fun saveCities() {

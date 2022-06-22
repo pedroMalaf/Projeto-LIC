@@ -1,4 +1,3 @@
-import isel.leic.utils.Time
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -45,7 +44,7 @@ object TicketMachine {
             showWaitingScreen()
             if (M.verify()) {
                 waitingScreenDisplayed = false
-                shutdown = MaintenceMode()
+                shutdown = TUI.maintenanceMode()
             }
             if (KBD.getKey() == '#') {
                 println("# PRESSED")
@@ -56,56 +55,6 @@ object TicketMachine {
     }
 
 }
-
-fun MaintenceMode(): Boolean {
-    val options = listOf(
-        "1-Print Ticket",
-        "2-Station Cnt.",
-        "3-Coins Cnt.",
-        "4-Reset Cnt.",
-        "5-Shutdown"
-    )
-    var idx = 0
-    var timer = Time.getTimeInMillis()
-
-    LCD.clear()
-    LCD.cursor(0, 1)
-    LCD.write("Maintence mode")
-
-    do {
-        if (elapsed(timer) > 2500) {
-            if (idx == options.size - 1) idx = 0
-            else idx++
-            TUI.clearAndWrite("Maintence mode", 0, 1)
-            timer = Time.getTimeInMillis()
-        }
-
-        LCD.cursor(1, 0)
-        LCD.write(options[idx])
-
-        when (KBD.getKey()) {
-            '1' -> { // print ticket
-
-            }
-            '2' -> { // station ?
-
-            }
-            '3' -> TUI.maintenceCoinsScreen()
-            '4' -> { // reset ?
-
-            }
-            '5' -> { // shutdown
-                if (TUI.yesNoQuestion("Shutdown?", 5000L))
-                    return true
-                else
-                    continue
-            }
-        }
-    } while (M.verify())
-
-    return false
-}
-
 
 fun main() {
     TicketMachine.init()
