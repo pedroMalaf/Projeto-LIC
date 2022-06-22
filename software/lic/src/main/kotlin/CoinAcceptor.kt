@@ -41,12 +41,16 @@ object CoinAcceptor {
      * Accepts the introduced coin.
      */
     fun acceptCoin() {
+        if (!hasCoin())
+            return
+
         HAL.setBits(ACCEPT_MASK)
         while (HAL.isBit(COIN_MASK)) {
             DEBUG("[CoinAcceptor::acceptCoin] waiting for COIN disable")
-            Time.sleep(2000)
+            Time.sleep(1000)
         }
-        Time.sleep(1000)
+
+        Time.sleep(100)
         HAL.clrBits(ACCEPT_MASK)
     }
 

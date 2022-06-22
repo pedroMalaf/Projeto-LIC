@@ -69,9 +69,11 @@ object TUI {
     /**
      * Handles city selection and executes [fn] block.
      * This can be useful to avoid duplicate code.
-     * Lambda char is key pressed, String is city name, Int is city ID
+     * Lambda char is key pressed, String is city object, Int is city ID
      */
-    private fun handleCitySelection(maintenance: Boolean, showPrice: Boolean, fn: (Char, String, Int) -> Unit) {
+    private fun handleCitySelection(
+        returnIfHashtag: Boolean, showPrice: Boolean, fn: (Char, Stations.City, Int) -> Unit
+    ) {
         val cities = Stations.cities
         var keyIdx = 0
         var arrowMode = false
@@ -84,8 +86,7 @@ object TUI {
             if (!showPrice) {
                 LCD.cursor(1, 14)
                 LCD.write(String.format("%02d", cities[keyIdx].sold))
-            }
-            else {
+            } else {
                 LCD.cursor(1, 13)
                 // TODO: convert to euro
                 LCD.write("${cities[keyIdx].price}€")
@@ -100,7 +101,7 @@ object TUI {
                 break
             }
 
-            if (key == '#' && maintenance)
+            if (key == '#' && returnIfHashtag)
                 break
 
             if (key == '*') {
@@ -133,7 +134,7 @@ object TUI {
                 writeCity()
             }
 
-            fn(key, cities[keyIdx].name, keyIdx)
+            fn(key, cities[keyIdx], keyIdx)
         }
     }
 
@@ -245,10 +246,11 @@ object TUI {
     /**
      * Prints and waits for ticket collect.
      */
-    fun collectTicket(city: String, id: Int, rt: Boolean) {
-        clearAndWrite(city, true)
+    fun collectTicket(cityName: String, id: Int, rt: Boolean) {
+        clearAndWrite(cityName, true)
         clearAndWrite("Collect Ticket", true, 1, 0, false)
         TicketDispenser.print(id, origin, rt)
+        Stations.addSold(cityName)
         origin = id
         while (SerialEmitter.isBusy()) {
         }
@@ -268,7 +270,7 @@ object TUI {
 
                 while (true) {
                     if (update) {
-                        clearAndWrite(city, true)
+                        clearAndWrite(city.name, true)
                         LCD.newLine()
                         LCD.write("${if (rt) 1 else 0}  * to Print")
                         update = false
@@ -276,7 +278,7 @@ object TUI {
 
                     when (KBD.getKey()) {
                         '*' -> {
-                            collectTicket(city, id, rt)
+                            collectTicket(city.name, id, rt)
                             return@handleCitySelection
                         }
                         '0' -> {
@@ -290,10 +292,57 @@ object TUI {
     }
 
     /**
-     * Normal mode buying ticket
+     * Normal mode (buying ticket)
      */
     fun normalMode() {
+        handleCitySelection(false, true) { key, city, id ->
+            if (key == '#') {
+                var rt = false
+                var update = true // used to redraw screen ONLY when needed (when rt is pressed)
+                var credit = 0
 
+                while (true) {
+                    if (update) {
+                        clearAndWrite(city.name, true)
+                        clearAndWrite("${if (rt) 1 else 0}    ${city.price - credit}€", l = 1, clear = false)
+                        update = false
+                    }
+
+                    // if a coin is inserted
+                    if (CoinAcceptor.hasCoin()) {
+                        update = true
+
+                        // insert coin and check if we can already buy the ticket
+                        val coin = CoinAcceptor.getCoinValue()
+                        CoinDeposit.insertCoin(coin)
+                        credit += coin
+                        CoinAcceptor.acceptCoin()
+
+                        if (credit >= city.price) {
+                            collectTicket(city.name, id, rt)
+                            return@handleCitySelection
+                        }
+                    }
+
+                    // handle input
+                    when (KBD.getKey()) {
+                        '0' -> {
+                            rt = !rt
+                            update = true
+                        }
+                        '#' -> {
+                            if (credit < city.price) {
+                                clearAndWrite("Vending aborted", true)
+                                clearAndWrite("Return $credit", true, l=1, clear=false)
+                                CoinDeposit.returnValue(credit)
+                                Time.sleep(1000)
+                                return@handleCitySelection
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
