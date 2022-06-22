@@ -11,6 +11,19 @@ object TUI {
     // Our current city // TODO: perguntar ao stor se é assim que funciona
     var origin = 0
 
+    // Useful in some cases to convert from cents to euro
+    val toCent = hashMapOf(
+        5 to "0.05",
+        10 to "0.10",
+        20 to "0.20",
+        50 to "0.50",
+        100 to "1.00",
+        200 to "2.00"
+    )
+
+    /**
+     *
+     */
     fun init() {
         KeyReceiver.init()
         LCD.init()
@@ -58,7 +71,7 @@ object TUI {
      * This can be useful to avoid duplicate code.
      * Lambda char is key pressed, String is city name, Int is city ID
      */
-    fun handleCitySelection(maintenance: Boolean, fn: (Char, String, Int) -> Unit) {
+    private fun handleCitySelection(maintenance: Boolean, showPrice: Boolean, fn: (Char, String, Int) -> Unit) {
         val cities = Stations.cities
         var keyIdx = 0
         var arrowMode = false
@@ -68,8 +81,15 @@ object TUI {
             clearAndWrite(cities[keyIdx].name, true)
             LCD.newLine()
             LCD.write(String.format("%02d${if (arrowMode) "a" else ":"}", keyIdx))
-            LCD.cursor(1, 14)
-            LCD.write(String.format("%02d", cities[keyIdx].sold))
+            if (!showPrice) {
+                LCD.cursor(1, 14)
+                LCD.write(String.format("%02d", cities[keyIdx].sold))
+            }
+            else {
+                LCD.cursor(1, 13)
+                // TODO: convert to euro
+                LCD.write("${cities[keyIdx].price}€")
+            }
         }
 
         // loop and show cities
@@ -171,14 +191,6 @@ object TUI {
      */
     private fun maintenanceCoinsScreen() {
         val coins = CoinDeposit.coins.keys.toList()
-        val toCent = hashMapOf(
-            5 to "0.05",
-            10 to "0.10",
-            20 to "0.20",
-            50 to "0.50",
-            100 to "1.00",
-            200 to "2.00"
-        )
         var arrowMode = false
         var keyIdx = 0
 
@@ -228,14 +240,29 @@ object TUI {
      * Maintenance stations screen
      */
     private fun maintenanceStationsScreen() {
-        handleCitySelection(true) { _, _, _ -> }
+        handleCitySelection(true, false) { _, _, _ -> }
+    }
+
+    /**
+     * Prints and waits for ticket collect.
+     */
+    fun collectTicket(city: String, id: Int, rt: Boolean) {
+        clearAndWrite(city, true)
+        clearAndWrite("Collect Ticket", true, 1, 0, false)
+        TicketDispenser.print(id, origin, rt)
+        origin = id
+        while (SerialEmitter.isBusy()) {
+        }
+        clearAndWrite("Thank you", true)
+        clearAndWrite("Have a nice trip", true, 1, 0, false)
+        Time.sleep(1500)
     }
 
     /**
      * Simulates ticket printing (maintenance mode)
      */
     private fun testPrintTicket() {
-        handleCitySelection(false) { key, city, id ->
+        handleCitySelection(false, true) { key, city, id ->
             if (key == '#') {
                 var rt = false
                 var update = true // used to redraw screen ONLY when needed (when rt is pressed)
@@ -250,15 +277,7 @@ object TUI {
 
                     when (KBD.getKey()) {
                         '*' -> {
-                            clearAndWrite(city, true)
-                            clearAndWrite("Collect Ticket", true, 1, 0, false)
-                            TicketDispenser.print(id, origin, rt)
-                            origin = id
-                            while (SerialEmitter.isBusy()) {
-                            }
-                            clearAndWrite("Thank you", true)
-                            clearAndWrite("Have a nice trip", true, 1, 0, false)
-                            Time.sleep(1500)
+                            collectTicket(city, id, rt)
                             return@handleCitySelection
                         }
                         '0' -> {
