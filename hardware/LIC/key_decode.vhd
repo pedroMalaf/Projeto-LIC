@@ -22,7 +22,6 @@ ARCHITECTURE arq OF key_decode IS
 		PORT (
 			Kscan : IN STD_LOGIC;
 			clk : IN STD_LOGIC;
-			reset : IN STD_LOGIC;
 			L : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
 			K : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 			C : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -47,7 +46,6 @@ BEGIN
 	u_key_scan : key_scan
 	PORT MAP(
 		Kscan => s_Kscan,
-		reset => reset,
 		clk => Mclk,
 		L => Lines,
 		C => Columns,

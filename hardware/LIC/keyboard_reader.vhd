@@ -49,7 +49,7 @@ BEGIN
 
 	u_key_decode : key_decode
 	PORT MAP (
-		reset => s_reset,
+		reset => reset,
 		Mclk => clk,
 		Lines => LINES,
 		Columns => COLUMNS,
