@@ -3,7 +3,7 @@
 LIBRARY ieee;
 USE ieee.STD_LOGIC_1164.ALL;
 
-ENTITY keyscan IS
+ENTITY key_scan IS
 	PORT (
 		Kscan : IN STD_LOGIC;
 		clk : IN STD_LOGIC;
@@ -13,9 +13,9 @@ ENTITY keyscan IS
 		C : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
 		Kpress : OUT STD_LOGIC
 	);
-END keyscan;
+END key_scan;
 
-ARCHITECTURE arq OF keyscan IS
+ARCHITECTURE arq OF key_scan IS
 
 	COMPONENT mux
 		PORT (
@@ -46,15 +46,17 @@ ARCHITECTURE arq OF keyscan IS
 
 	SIGNAL Q_s : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL y_s : STD_LOGIC;
-
+	SIGNAL C_s : STD_LOGIC_VECTOR(2 DOWNTO 0);
+	
 BEGIN
 
 	K(0) <= Q_s(0);
 	K(1) <= Q_s(1);
 	K(2) <= Q_s(2);
 	K(3) <= Q_s(3);
-	Kpress <= y_s;
-
+	Kpress <= not y_s;
+	C <= not C_s;
+	
 	u_mux : mux
 	PORT MAP(
 		A => L,
@@ -78,7 +80,7 @@ BEGIN
 	PORT MAP(
 		S(0) => Q_s(2),
 		S(1) => Q_s(3),
-		CL => C
+		CL => C_s
 	);
 
 END arq;

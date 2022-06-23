@@ -12,7 +12,7 @@ END dec;
 
 ARCHITECTURE arq OF dec IS
 BEGIN
-	CL(0) <= '0' when S(0) = '0' and S(1) = '0' else '1';
-	CL(1) <= '0' when S(0) = '1' and S(1) = '0' else '1';
-	CL(2) <= '0' when S(0) = '0' and S(1) = '1' else '1';
+	CL(0) <= not S(0) and not S(1);
+	CL(1) <= not S(0) and S(1);
+	CL(2) <= S(0) and not S(1);
 END arq;

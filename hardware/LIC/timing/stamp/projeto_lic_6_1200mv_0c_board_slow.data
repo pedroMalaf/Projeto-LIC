@@ -30,66 +30,6 @@ TIMESCALE "1ns";
 
 TIMINGDATA
 
-ARCDATA
-pos_altera_reserved_tdi__altera_reserved_tck__setup:
-RISE_CONSTRAINT( scalar ) {
-VALUES ("2.387");
-}
-
-FALL_CONSTRAINT( scalar ) {
-VALUES ("2.387");
-}
-
-ENDARCDATA
-
-ARCDATA
-pos_altera_reserved_tms__altera_reserved_tck__setup:
-RISE_CONSTRAINT( scalar ) {
-VALUES ("4.421");
-}
-
-FALL_CONSTRAINT( scalar ) {
-VALUES ("4.421");
-}
-
-ENDARCDATA
-
-ARCDATA
-pos_altera_reserved_tdi__altera_reserved_tck__hold:
-RISE_CONSTRAINT( scalar ) {
-VALUES ("0.610");
-}
-
-FALL_CONSTRAINT( scalar ) {
-VALUES ("0.610");
-}
-
-ENDARCDATA
-
-ARCDATA
-pos_altera_reserved_tms__altera_reserved_tck__hold:
-RISE_CONSTRAINT( scalar ) {
-VALUES ("0.678");
-}
-
-FALL_CONSTRAINT( scalar ) {
-VALUES ("0.678");
-}
-
-ENDARCDATA
-
-ARCDATA
-pos_altera_reserved_tck__altera_reserved_tdo__delay:
-CELL_RISE( scalar ) {
-VALUES ("9.985");
-}
-
-CELL_FALL( scalar ) {
-VALUES ("9.985");
-}
-
-ENDARCDATA
-
 ENDTIMINGDATA
 
 ENDMODELDATA

@@ -49,7 +49,20 @@ BEGIN
 		reset_tb <= '1';	
 		
 		wait for MCLK_PERIOD;
-		reset_tb <= '0';	
+		reset_tb <= '0';
+		
+		wait for MCLK_PERIOD;
+		Kpress_tb <= '0';
+		
+		wait for MCLK_PERIOD;
+		Kpress_tb <= '1';
+		
+		wait for MCLK_PERIOD;
+		Kack_tb <= '1';		
+		
+		wait for MCLK_PERIOD;
+		Kpress_tb <= '0';
+		
 		
 		wait for MCLK_PERIOD;
 		Kpress_tb <= '1';
@@ -59,7 +72,6 @@ BEGIN
 		
 		wait for MCLK_PERIOD;
 		Kpress_tb <= '0';
-		
 		wait;
 		
    end process;

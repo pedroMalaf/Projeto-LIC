@@ -47,7 +47,7 @@ object TicketMachine {
     }
 }
 
-
+/*
 fun tb_KeyReceiver(){
     KeyReceiver.init()
     while(true){
@@ -55,10 +55,9 @@ fun tb_KeyReceiver(){
         println(KeyReceiver.rcv())
     }
 }
+ */
 
 fun main() {
-    tb_KeyReceiver()
-    return
     println("TicketMachine App by Pedro & Roberto")
     TicketMachine.init()
     TicketMachine.run()

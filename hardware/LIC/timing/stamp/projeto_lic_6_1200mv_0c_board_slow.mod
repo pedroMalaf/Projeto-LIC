@@ -23,67 +23,27 @@ MODEL
 */
 MODEL_VERSION "1.0";
 DESIGN "projeto_lic";
-DATE "06/14/2022 15:49:12";
+DATE "06/23/2022 13:13:49";
 PROGRAM "Quartus Prime";
 
 
 
-INPUT MCLK;
-INPUT collect;
-INPUT altera_reserved_tdi;
-INPUT altera_reserved_tck;
-INPUT altera_reserved_tms;
-INPUT Reset;
-INPUT TX_D;
-INPUT KEYPAD_COL[0];
-INPUT KEYPAD_COL[1];
-INPUT KEYPAD_COL[2];
-INPUT KEYPAD_LIN[3];
-INPUT KEYPAD_LIN[2];
-INPUT KEYPAD_LIN[1];
-INPUT KEYPAD_LIN[0];
-OUTPUT Prt;
-OUTPUT HEX0[0];
-OUTPUT HEX0[1];
-OUTPUT HEX0[2];
-OUTPUT HEX0[3];
-OUTPUT HEX0[4];
-OUTPUT HEX0[5];
-OUTPUT HEX0[6];
-OUTPUT HEX0[7];
-OUTPUT HEX1[0];
-OUTPUT HEX1[1];
-OUTPUT HEX1[2];
-OUTPUT HEX1[3];
-OUTPUT HEX1[4];
-OUTPUT HEX1[5];
-OUTPUT HEX1[6];
-OUTPUT HEX1[7];
-OUTPUT HEX2[0];
-OUTPUT HEX2[1];
-OUTPUT HEX2[2];
-OUTPUT HEX2[3];
-OUTPUT HEX2[4];
-OUTPUT HEX2[5];
-OUTPUT HEX2[6];
-OUTPUT HEX2[7];
-OUTPUT LCD_RS;
-OUTPUT LCD_EN;
-OUTPUT LCD_DATA[0];
-OUTPUT LCD_DATA[1];
-OUTPUT LCD_DATA[2];
-OUTPUT LCD_DATA[3];
-OUTPUT LCD_DATA[4];
-OUTPUT LCD_DATA[5];
-OUTPUT LCD_DATA[6];
-OUTPUT LCD_DATA[7];
-OUTPUT altera_reserved_tdo;
+INPUT Kscan;
+INPUT clk;
+INPUT reset;
+INPUT L[0];
+INPUT L[1];
+INPUT L[2];
+INPUT L[3];
+OUTPUT K[0];
+OUTPUT K[1];
+OUTPUT K[2];
+OUTPUT K[3];
+OUTPUT C[0];
+OUTPUT C[1];
+OUTPUT C[2];
+OUTPUT Kpress;
 
 /*Arc definitions start here*/
-pos_altera_reserved_tdi__altera_reserved_tck__setup:		SETUP (POSEDGE) altera_reserved_tdi altera_reserved_tck ;
-pos_altera_reserved_tms__altera_reserved_tck__setup:		SETUP (POSEDGE) altera_reserved_tms altera_reserved_tck ;
-pos_altera_reserved_tdi__altera_reserved_tck__hold:		HOLD (POSEDGE) altera_reserved_tdi altera_reserved_tck ;
-pos_altera_reserved_tms__altera_reserved_tck__hold:		HOLD (POSEDGE) altera_reserved_tms altera_reserved_tck ;
-pos_altera_reserved_tck__altera_reserved_tdo__delay:		DELAY (POSEDGE) altera_reserved_tck altera_reserved_tdo ;
 
 ENDMODEL
