@@ -7,7 +7,6 @@ ENTITY counter_keyscan IS
 	PORT (
 		ce : IN STD_LOGIC;
 		clk : IN STD_LOGIC;
-		reset : IN STD_LOGIC;
 		Q : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 	);
 END counter_keyscan;
@@ -17,7 +16,7 @@ ARCHITECTURE arq OF counter_keyscan IS
 	COMPONENT reg
 		PORT (
 			F : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-			CE, RESET : IN STD_LOGIC;
+			CE : IN STD_LOGIC;
 			CLK : IN STD_LOGIC;
 			Q : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 		);
@@ -35,12 +34,17 @@ ARCHITECTURE arq OF counter_keyscan IS
 
 	SIGNAL s_add, s_counter : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
+	
+
+	
 BEGIN
+
+	Q <= s_counter;
+
 	u_reg : reg
 	PORT MAP(
 		F => s_add,
 		clk => clk,
-		reset => reset,
 		CE => ce,
 		Q => s_counter
 	);

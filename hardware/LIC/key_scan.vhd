@@ -16,7 +16,15 @@ ENTITY key_scan IS
 END key_scan;
 
 ARCHITECTURE arq OF key_scan IS
-
+	
+	COMPONENT CLKDIV 
+	GENERIC (div : NATURAL := 50000000); 
+	PORT (
+		clk_in : IN STD_LOGIC;
+		clk_out : OUT STD_LOGIC);
+END component;
+	
+	
 	COMPONENT mux
 		PORT (
 			S : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -30,7 +38,6 @@ ARCHITECTURE arq OF key_scan IS
 		PORT (
 			ce : IN STD_LOGIC;
 			clk : IN STD_LOGIC;
-			reset : IN STD_LOGIC;
 			Q : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
 		);
 
@@ -47,8 +54,11 @@ ARCHITECTURE arq OF key_scan IS
 	SIGNAL Q_s : STD_LOGIC_VECTOR(3 DOWNTO 0);
 	SIGNAL y_s : STD_LOGIC;
 	SIGNAL C_s : STD_LOGIC_VECTOR(2 DOWNTO 0);
+	SIGNAL clk_s : STD_LOGIC;
 	
 BEGIN
+
+	u_CLKDIV: CLKDIV generic map(250000) port map(CLK_in => clk, clk_out=> clk_s);
 
 	K(0) <= Q_s(0);
 	K(1) <= Q_s(1);
@@ -68,8 +78,7 @@ BEGIN
 	u_counter : counter_keyscan
 	PORT MAP(
 		ce => Kscan,
-		reset => reset,
-		clk => clk,
+		clk => clk_s,
 		Q(0) => Q_s(0),
 		Q(1) => Q_s(1),
 		Q(2) => Q_s(2),

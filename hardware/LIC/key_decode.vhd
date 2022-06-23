@@ -18,7 +18,7 @@ END key_decode;
 
 ARCHITECTURE arq OF key_decode IS
 
-	COMPONENT keyscan IS
+	COMPONENT key_scan IS
 		PORT (
 			Kscan : IN STD_LOGIC;
 			clk : IN STD_LOGIC;
@@ -44,7 +44,7 @@ ARCHITECTURE arq OF key_decode IS
 	SIGNAL s_Kscan, s_Kpress : STD_LOGIC;
 	
 BEGIN
-	u_keyscan : keyscan
+	u_key_scan : key_scan
 	PORT MAP(
 		Kscan => s_Kscan,
 		reset => reset,

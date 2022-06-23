@@ -49,8 +49,10 @@ BEGIN
 	
 	stimulus : PROCESS
 	BEGIN
-		wait for MCLK_PERIOD;
+		wait for MCLK_PERIOD*2;
+		Kack_tb <= '0';
 		reset_tb <= '1';
+		Lines_tb <= "1111";
 		
 		wait for MCLK_PERIOD;
 		reset_tb <= '0';
@@ -58,29 +60,11 @@ BEGIN
 		wait for MCLK_PERIOD;
 		Lines_tb <= "0101";
 		
-		wait for 100 ns;
+		wait for MCLK_PERIOD;
 		Kack_tb <= '1';
+		Lines_tb <= "1111";
 		
-		wait for MCLK_PERIOD;
-		Kack_tb <= '0';
-		
-		
-		wait for MCLK_PERIOD;
-		reset_tb <= '1';
-		
-		wait for MCLK_PERIOD;
-		reset_tb <= '0';
-		
-		wait for 50 ns;
-		Lines_tb <= "0111";
-		
-		wait for 100ns;
-		kack_tb <= '1';
-		
-		wait for MCLK_PERIOD;
-		kack_tb <= '0';
 		wait;
-		
    end process;
 
 END arq;
