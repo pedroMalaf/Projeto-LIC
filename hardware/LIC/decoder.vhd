@@ -13,6 +13,6 @@ END dec;
 ARCHITECTURE arq OF dec IS
 BEGIN
 	CL(0) <= not S(0) and not S(1);
-	CL(1) <= not S(0) and S(1);
-	CL(2) <= S(0) and not S(1);
+	CL(1) <= S(0) and not S(1);
+	CL(2) <= not S(0) and S(1);
 END arq;
