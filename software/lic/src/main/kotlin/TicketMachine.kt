@@ -227,7 +227,7 @@ object TicketMachine {
 
                 while (true) {
                     if (update) {
-                        TUI.writeCityRtPrice(city.name, rt, finalPrice)
+                        TUI.writeCityRtPrice(city.name, rt, finalPrice - credit)
                         update = false
                     }
 
