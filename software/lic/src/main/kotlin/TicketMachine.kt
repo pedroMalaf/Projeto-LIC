@@ -189,6 +189,8 @@ object TicketMachine {
                 when {
                     up && keyIdx < 5 -> keyIdx++
                     !up && keyIdx > 0 -> keyIdx--
+                    up && keyIdx == 5 -> keyIdx = 0
+                    !up && keyIdx == 0 -> keyIdx = 5
                     else -> continue
                 }
                 TUI.writeCoins(toCent[keyIdx], CoinDeposit.coins[coins[keyIdx]] ?: 0, arrowMode, keyIdx)
@@ -328,6 +330,8 @@ object TicketMachine {
                 when {
                     up && keyIdx != cities.size - 1 -> keyIdx++
                     !up && keyIdx > 0 -> keyIdx--
+                    up && keyIdx == cities.size - 1 -> keyIdx = 0
+                    !up && keyIdx == 0 -> keyIdx = cities.size - 1
                     else -> continue
                 }
                 writeCity()
