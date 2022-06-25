@@ -1,9 +1,10 @@
-import isel.leic.utils.Time
-
 /**
  * Main app object
  */
 object TicketMachine {
+    /**
+     * Inits needed stuff
+     */
     fun init() {
         HAL.init()
         LCD.init()
@@ -18,6 +19,9 @@ object TicketMachine {
         TUI.init()
     }
 
+    /**
+     * Main APP loop. Handles the important logic.
+     */
     fun run() {
         var shutdown = false
         TUI.showWaitingScreen()
@@ -28,14 +32,14 @@ object TicketMachine {
 
             // maintenance mode
             if (M.verify()) {
-                TUI.waitingScreenDisplayed = false
+                TUI.updateWaitingScreen = false
                 shutdown = TUI.maintenanceMode()
             }
 
             // buy ticket
             if (KBD.getKey() == '#') {
                 TUI.normalMode()
-                TUI.waitingScreenDisplayed = false
+                TUI.updateWaitingScreen = false
             }
         }
 
@@ -46,16 +50,6 @@ object TicketMachine {
         System.exit(1)
     }
 }
-
-/*
-fun tb_KeyReceiver(){
-    KeyReceiver.init()
-    while(true){
-        Time.sleep(200)
-        println(KeyReceiver.rcv())
-    }
-}
- */
 
 fun main() {
     println("TicketMachine App by Pedro & Roberto")

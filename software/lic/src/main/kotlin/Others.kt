@@ -49,6 +49,7 @@ fun DEBUG(s: String) {
 }
 
 /**
- * Turns [d] double into String with
+ * Returns [d] into string with decimal places represented as euros.
+ * This function should be used to convert i.e 250 cents to 2.50 euro.
  */
-fun intToString(d: Double) = String.format("%.2f", d * 0.01)
+fun centsToString(d: Int) = String.format("%.2f", d.toDouble() * 0.01).replace(',', '.')

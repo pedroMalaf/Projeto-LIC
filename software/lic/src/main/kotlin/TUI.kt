@@ -3,34 +3,31 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object TUI {
-    private val DATEFORMAT = SimpleDateFormat("dd/MM/yyyy HH:mm")
+    // EURO + ARROW SPECIAL CHARS
+    private const val EURO_CHAR = 'e' //TODO:
+    private const val ARROW_CHAR = 'a' // TODO:
 
     // Used to know when to redraw waiting message
-    var waitingScreenDisplayed = false
+    var updateWaitingScreen = false
 
-    // Our current city // TODO: perguntar ao stor se é assim que funciona
-    var origin = 0
+    // Our current city
+    private var origin = 0
 
-    var updatedDate = DATEFORMAT.format(Date())
-
-    // Useful in some cases to convert from cents to euro
-    val toCent = hashMapOf(
-        5 to "0.05",
-        10 to "0.10",
-        20 to "0.20",
-        50 to "0.50",
-        100 to "1.00",
-        200 to "2.00"
-    )
+    // Updated date + format
+    private val DATEFORMAT = SimpleDateFormat("dd/MM/yyyy HH:mm")
+    private var updatedDate = DATEFORMAT.format(Date())
 
     /**
-     *
+     * Inits TUI
      */
     fun init() {
         LCD.init()
         KeyReceiver.init()
     }
 
+    /**
+     * Writes key received to LCD
+     */
     fun writeLCD() {
         println(KBD.waitKey(10000))
 
@@ -66,15 +63,15 @@ object TUI {
      */
     fun showWaitingScreen() {
         val now = DATEFORMAT.format(Date())
-        if (now != updatedDate){
+        if (now != updatedDate) {
             updatedDate = now
-            waitingScreenDisplayed = false
+            updateWaitingScreen = false
         }
-        if (!waitingScreenDisplayed) {
+        if (!updateWaitingScreen) {
             clearAndWrite("Ticket To Ride", true)
             LCD.newLine()
             LCD.write(updatedDate.toString())
-            waitingScreenDisplayed = true
+            updateWaitingScreen = true
         }
     }
 
@@ -96,14 +93,15 @@ object TUI {
         fun writeCity() {
             clearAndWrite(cities[keyIdx].name, true)
             LCD.newLine()
-            LCD.write(String.format("%02d${if (arrowMode) "a" else ":"}", keyIdx))
+            val str = String.format("%02d${if (arrowMode) ARROW_CHAR else ":"}", keyIdx)
+            LCD.write(str)
             if (!showPrice) {
                 LCD.cursor(1, 14)
                 LCD.write(String.format("%02d", cities[keyIdx].sold))
             } else {
                 LCD.cursor(1, 11)
-                val price = intToString(cities[keyIdx].price.toDouble())
-                LCD.write("$price€")
+                val price = centsToString(cities[keyIdx].price)
+                LCD.write("$price$EURO_CHAR")
             }
         }
 
@@ -183,17 +181,15 @@ object TUI {
                 '1' -> testPrintTicket()
                 '2' -> maintenanceStationsScreen()
                 '3' -> maintenanceCoinsScreen()
-                '4' -> { // reset ?
+                '4' -> { // reset
                     if (yesNoQuestion("Reset counters?", 5000L)) {
                         Stations.resetStations()
                         CoinDeposit.resetQuantity()
                     }
                 }
                 '5' -> { // shutdown
-                    if (yesNoQuestion("Shutdown?", 5000L)) {
-                        return true
-                    } else
-                        continue
+                    if (yesNoQuestion("Shutdown?", 5000L)) return true
+                    else continue
                 }
             }
         } while (M.verify())
@@ -207,14 +203,15 @@ object TUI {
         val coins = CoinDeposit.coins.keys.toList()
         var arrowMode = false
         var keyIdx = 0
+        val toCent = listOf(5, 10, 20, 50, 100, 200)
 
         // Display coins info in the correct format
         fun writeCoins() {
-            clearAndWrite("${toCent[coins[keyIdx]]?.let { intToString(it.toDouble()) }}€", true)
+            clearAndWrite("${centsToString(toCent[keyIdx])}$EURO_CHAR", true)
             LCD.newLine()
-            LCD.write("$keyIdx${if (arrowMode) "a" else ":"}")
+            LCD.write("$keyIdx${if (arrowMode) ARROW_CHAR else ":"}")
             LCD.cursor(1, 14)
-            LCD.write("${CoinDeposit.coins[coins[keyIdx]]}")
+            LCD.write(String.format("%02d", CoinDeposit.coins[coins[keyIdx]]))
         }
 
         writeCoins()
@@ -258,22 +255,6 @@ object TUI {
     }
 
     /**
-     * Prints and waits for ticket collect.
-     */
-    fun collectTicket(cityName: String, id: Int, rt: Boolean) {
-        clearAndWrite(cityName, true)
-        clearAndWrite("Collect Ticket", true, 1, 0, false)
-        TicketDispenser.print(id, origin, rt)
-        Stations.addSold(cityName)
-        origin = id
-        while (SerialEmitter.isBusy()) {
-        }
-        clearAndWrite("Thank you", true)
-        clearAndWrite("Have a nice trip", true, 1, 0, false)
-        Time.sleep(1500)
-    }
-
-    /**
      * Simulates ticket printing (maintenance mode)
      */
     private fun testPrintTicket() {
@@ -292,7 +273,13 @@ object TUI {
 
                     when (KBD.getKey()) {
                         '*' -> {
+                            clearAndWrite(city.name, true)
+                            clearAndWrite("Collect Ticket", true, 1, 0, false)
                             collectTicket(city.name, id, rt)
+                            origin = id
+                            clearAndWrite("Thank you", true)
+                            clearAndWrite("Have a nice trip", true, 1, 0, false)
+                            Time.sleep(1500)
                             return@handleCitySelection
                         }
                         '0' -> {
@@ -306,6 +293,22 @@ object TUI {
     }
 
     /**
+     * Prints and waits for ticket collect.
+     */
+    fun collectTicket(cityName: String, id: Int, rt: Boolean) {
+        clearAndWrite(cityName, true)
+        clearAndWrite("Collect Ticket", true, 1, 0, false)
+        TicketDispenser.print(id, origin, rt)
+        Stations.addSold(cityName)
+        origin = id
+        while (SerialEmitter.isBusy()) {
+        }
+        clearAndWrite("Thank you", true)
+        clearAndWrite("Have a nice trip", true, 1, 0, false)
+        Time.sleep(1500)
+    }
+
+    /**
      * Normal mode (buying ticket)
      */
     fun normalMode() {
@@ -315,11 +318,15 @@ object TUI {
                 var update = true // used to redraw screen ONLY when needed (when rt is pressed)
                 var credit = 0
 
+                var mult = 1 // multiply by 2 if RT (1 is default because no RT by default)
+                var finalPrice = mult * city.price
+
                 while (true) {
                     if (update) {
+
                         clearAndWrite(city.name, true)
-                        val price = intToString((city.price - credit).toDouble())
-                        clearAndWrite("${if (rt) 1 else 0}    $price€", l = 1, clear = false)
+                        val price = centsToString(finalPrice - credit)
+                        clearAndWrite("${if (rt) 1 else 0}    $price$EURO_CHAR", l = 1, clear = false)
                         update = false
                     }
 
@@ -333,7 +340,7 @@ object TUI {
                         credit += coin
                         CoinAcceptor.acceptCoin()
 
-                        if (credit >= city.price) {
+                        if (credit >= finalPrice) {
                             collectTicket(city.name, id, rt)
                             CoinAcceptor.collectCoins()
                             return@handleCitySelection
@@ -345,11 +352,18 @@ object TUI {
                         '0' -> {
                             rt = !rt
                             update = true
+                            mult = if (rt) 2 else 1 // multiply by 2 if RT
+                            finalPrice = mult * city.price // update final price
                         }
                         '#' -> {
                             if (credit < city.price) {
                                 clearAndWrite("Vending aborted", true)
-                                clearAndWrite("Return ${intToString(credit.toDouble())}", true, l=1, clear=false)
+                                clearAndWrite(
+                                    "Return ${centsToString(credit)}$EURO_CHAR",
+                                    true,
+                                    l = 1,
+                                    clear = false
+                                )
                                 CoinDeposit.returnValue(credit)
                                 CoinAcceptor.ejectCoins()
                                 Time.sleep(1000)
