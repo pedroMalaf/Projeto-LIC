@@ -1,9 +1,5 @@
 import isel.leic.utils.Time
 
-// EURO + ARROW SPECIAL CHARS
-const val EURO_CHAR = 'e' //TODO:
-const val ARROW_CHAR = 'a' // TODO:
-
 /**
  * TUI
  * Contains functions to help us draw/handle things on LCD
@@ -67,7 +63,7 @@ object TUI {
     fun writeCityRtPrice(cityName: String, rt: Boolean, price: Int) {
         clearAndWrite(cityName, true)
         clearAndWrite(
-            "${if (rt) 1 else 0}    ${centsToString(price)}$EURO_CHAR",
+            "$UP_ARROW_CHAR${if (rt) DOWN_ARROW_CHAR else " "}    ${centsToString(price)}$EURO_CHAR",
             l = 1,
             clear = false
         )
@@ -81,7 +77,7 @@ object TUI {
     fun writeCoins(value: Int, quant: Int, arrowMode: Boolean, idx: Int) {
         clearAndWrite("${centsToString(value)}$EURO_CHAR", true)
         LCD.newLine()
-        LCD.write("$idx${if (arrowMode) ARROW_CHAR else ":"}")
+        LCD.write("$idx${if (arrowMode) "$UP_ARROW_CHAR$DOWN_ARROW_CHAR" else ":"}")
         LCD.cursor(1, 14)
         LCD.write(String.format("%02d", quant))
     }

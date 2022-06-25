@@ -295,7 +295,7 @@ object TicketMachine {
         fun writeCity() {
             TUI.clearAndWrite(cities[keyIdx].name, true)
             LCD.newLine()
-            val str = String.format("%02d${if (arrowMode) ARROW_CHAR else ":"}", keyIdx)
+            val str = String.format("%02d${if (arrowMode) "$UP_ARROW_CHAR$DOWN_ARROW_CHAR" else ":"}", keyIdx)
             LCD.write(str)
             if (!showPrice) {
                 LCD.cursor(1, 14)
