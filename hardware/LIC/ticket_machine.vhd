@@ -7,7 +7,6 @@ ENTITY ticket_machine IS
 	PORT (
 		MCLK : IN STD_LOGIC;
 		collect : IN STD_LOGIC;
-		-- ??? TX_D : IN STD_LOGIC;
 		Reset : IN STD_LOGIC; 
 		Prt : OUT STD_LOGIC;
 		HEX0, HEX1, HEX2 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
