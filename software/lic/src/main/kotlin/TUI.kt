@@ -7,7 +7,7 @@ import isel.leic.utils.Time
 object TUI {
 
     /**
-     * Inits TUI
+     * Inits TUI.
      */
     fun init() {
         LCD.init()
@@ -19,7 +19,6 @@ object TUI {
      */
     fun writeLCD() {
         println(KBD.waitKey(10000))
-
     }
 
     /**

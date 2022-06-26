@@ -5,6 +5,9 @@
  */
 object TicketDispenser {
 
+    /**
+     * Inits the object.
+     */
     fun init() {
         SerialEmitter.init()
     }
@@ -25,15 +28,12 @@ object TicketDispenser {
 
 fun main() {
     /* no hex display aparece desta ordem: rt | origem | destino */
-    TicketDispenser_Testbench(0xA, 0xE, false)
-    //TicketDispenser_Testbench(0b0011, 0b1100, false)
+    TicketDispenser_Testbench()
 }
 
-fun TicketDispenser_Testbench(d: Int, o: Int, rt: Boolean) {
+fun TicketDispenser_Testbench() {
     DEBUG("[TicketDispenser::TESTBENCH] Starting")
-
     TicketDispenser.init()
-    TicketDispenser.print(d, o, rt)
-
+    TicketDispenser.print(destinyID = 0xA, originID = 0xE, roundTrip = false)
     DEBUG("[TicketDispenser::TESTBENCH] Done")
 }

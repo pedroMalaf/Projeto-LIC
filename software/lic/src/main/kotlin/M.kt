@@ -2,10 +2,13 @@ import isel.leic.utils.Time
 import kotlin.test.assertEquals
 
 /**
- * Maintenance.
+ * Maintenance mode.
  */
 object M {
 
+    /**
+     * Inits M.
+     */
     fun init() {
         HAL.init()
     }

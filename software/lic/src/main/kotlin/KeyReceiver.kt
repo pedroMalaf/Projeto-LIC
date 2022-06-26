@@ -37,7 +37,7 @@ object KeyReceiver {
 
         // frame: start_bit[0], key[1..4], end_bit[5]
         val startBit = frame and 0b000001
-        val endBit = frame and 0b100000
+        val endBit = (frame and 0b100000).shr(5)
         val key = frame and 0b011110
         return when {
             startBit == 0 -> -1 // error
@@ -48,7 +48,7 @@ object KeyReceiver {
 }
 
 fun main() {
-    //KeyReceiver_Testbench()
+    KeyReceiver_Testbench()
 }
 
 fun KeyReceiver_Testbench() {

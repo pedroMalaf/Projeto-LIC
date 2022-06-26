@@ -1,5 +1,4 @@
 import isel.leic.utils.Time
-import java.io.File
 
 /**
  * Simulates a "Coin Acceptor".

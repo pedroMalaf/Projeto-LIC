@@ -82,15 +82,15 @@ object SerialEmitter {
 }
 
 fun main() {
-    SerialEmitter_Testbench(0b001000011)
+    SerialEmitter_Testbench()
 }
 
-fun SerialEmitter_Testbench(data: Int) {
+fun SerialEmitter_Testbench() {
     DEBUG("[SerialEmitter::TESTBENCH] Starting")
 
     // README: if testing on real board, make sure to manipulate switches (?)
     SerialEmitter.init()
-    SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, data)
+    SerialEmitter.send(SerialEmitter.Destination.TICKER_DISPENSER, 0b001000011)
 
     DEBUG("[SerialEmitter::TESTBENCH] Done")
 }

@@ -1,10 +1,7 @@
-import java.io.File
-
 /**
- * Functions to work with station tickets (cities and prices)
+ * Functions to work with station tickets (cities and prices).
  */
 object Stations {
-
     // File name to read/save.
     private const val FILENAME = "stations.txt"
 

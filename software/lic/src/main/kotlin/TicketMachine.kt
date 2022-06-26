@@ -1,6 +1,7 @@
 import isel.leic.utils.Time
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.system.exitProcess
 
 /**
  * Main APP object.
@@ -61,7 +62,7 @@ object TicketMachine {
         Stations.saveCities()
         CoinDeposit.saveCoins()
         LCD.clear()
-        System.exit(1)
+        exitProcess(1)
     }
 
     /**
@@ -131,7 +132,7 @@ object TicketMachine {
      * Simulates ticket printing (maintenance mode)
      */
     private fun testPrintTicket() {
-        handleCitySelection(false, true) { key, city, id ->
+        handleCitySelection(returnIfHashtag = false, showPrice = true) { key, city, id ->
             if (key == '#') {
                 var rt = false
                 var update = true // used to redraw screen ONLY when needed (when rt is pressed)
@@ -209,14 +210,14 @@ object TicketMachine {
      * Stations screen (maintenance mode)
      */
     private fun maintenanceStationsScreen() {
-        handleCitySelection(true, false) { _, _, _ -> }
+        handleCitySelection(returnIfHashtag = true, showPrice = false) { _, _, _ -> }
     }
 
     /**
      * Normal mode (buying ticket).
      */
     private fun normalModeScreen() {
-        handleCitySelection(false, true) { key, city, id ->
+        handleCitySelection(returnIfHashtag = false, showPrice = true) { key, city, id ->
             if (key == '#') {
                 var rt = false
                 var update = true // used to redraw screen ONLY when needed (when rt is pressed)
@@ -284,7 +285,7 @@ object TicketMachine {
      * **This can be useful to avoid duplicate code.**
      * Lambda char is key pressed, String is city object, Int is city ID
      */
-    fun handleCitySelection(
+    private fun handleCitySelection(
         returnIfHashtag: Boolean, showPrice: Boolean, fn: (Char, Stations.City, Int) -> Unit
     ) {
         val cities = Stations.cities
