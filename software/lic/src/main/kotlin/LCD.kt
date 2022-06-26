@@ -145,8 +145,8 @@ object LCD {
      */
     private fun loadChar(charCode: Int, charLines: List<Int>) {
         repeat(MAX_CHAR_LINE) { line ->
-            val ACG = charCode.shl(3) or line // ACG = char code[5..3] char line[2..0]
-            writeCMD(  CMD_CGRAM_MASK or ACG) // go to specific char line
+            val ACG = charCode.shl(3) or line // ACG = char_code[5..3] char_line[2..0]
+            writeCMD(CMD_CGRAM_MASK or ACG) // go to specific char line
             writeDATA(charLines[line]) // draw the specific character bits on the line
         }
         writeCMD(0b10) // writes data into CGRAM
