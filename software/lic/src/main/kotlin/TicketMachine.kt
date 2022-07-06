@@ -11,7 +11,7 @@ object TicketMachine {
     var updateWaitingScreen = false
 
     // Our current city
-    private var origin = 0
+    private var origin = 6
 
     // Updated date + format
     private val DATEFORMAT = SimpleDateFormat("dd/MM/yyyy HH:mm")
@@ -119,6 +119,7 @@ object TicketMachine {
                         CoinDeposit.resetQuantity()
                     }
                 }
+
                 '5' -> { // shutdown
                     if (TUI.yesNoQuestion("Shutdown?", 5000L)) return true
                     else continue
@@ -152,6 +153,7 @@ object TicketMachine {
                             }
                             return@handleCitySelection
                         }
+
                         '0' -> {
                             rt = !rt
                             update = true
@@ -245,9 +247,18 @@ object TicketMachine {
                         if (credit >= finalPrice) {
                             TUI.collectTicketScreen(city.name) {
                                 TicketDispenser.print(id, origin, rt)
-                                while (SerialEmitter.isBusy());
+                                while (!SerialEmitter.isBusy()) {
+                                    DEBUG("Waiting for collect")
+                                    Time.sleep(50)
+                                }
                                 Stations.addSold(city.name)
-                                origin = id
+                                if (!rt) {
+                                    DEBUG("RoundTrip false, setting next origin to destiny")
+                                    origin = id
+                                } else {
+                                    DEBUG("RoundTrip true, adding also sold ticket to destiny")
+                                    Stations.addSold(origin)
+                                }
                             }
 
                             CoinAcceptor.collectCoins()
@@ -263,14 +274,13 @@ object TicketMachine {
                             mult = if (rt) 2 else 1 // multiply by 2 if RT
                             finalPrice = mult * city.price // update final price
                         }
+
                         '#' -> {
-                            if (credit < city.price) {
-                                TUI.vendingAbortedScreen(credit) {
-                                    CoinDeposit.returnValue(it)
-                                    CoinAcceptor.ejectCoins()
-                                }
-                                return@handleCitySelection
+                            TUI.vendingAbortedScreen(credit) {
+                                CoinDeposit.returnValue(it)
+                                CoinAcceptor.ejectCoins()
                             }
+                            return@handleCitySelection
                         }
                     }
                 }

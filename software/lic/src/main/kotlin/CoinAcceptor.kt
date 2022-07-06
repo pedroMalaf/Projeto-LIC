@@ -60,7 +60,6 @@ object CoinAcceptor {
         HAL.setBits(RETURN_MASK)
         Time.sleep(2100)
         HAL.clrBits(RETURN_MASK)
-
     }
 
     /**

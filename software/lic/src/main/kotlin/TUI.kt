@@ -107,7 +107,8 @@ object TUI {
         clearAndWrite(cityName, true)
         clearAndWrite("Collect Ticket", true, 1, 0, false)
         fn()
-        clearAndWrite("Thank you", true)
+        LCD.clear()
+        clearAndWrite("Thank you", true, 0, 0, true)
         clearAndWrite("Have a nice trip", true, 1, 0, false)
         Time.sleep(1500)
     }

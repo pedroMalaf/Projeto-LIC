@@ -40,6 +40,19 @@ object Stations {
     }
 
     /**
+     * Adds a new sold ticket to the city identified by [id].
+     */
+    fun addSold(id: Int) {
+        cities.forEachIndexed { index, city ->
+            if (index == id) {
+                city.sold++
+                return
+            }
+        }
+        throw Exception("City $id does not exist!")
+    }
+
+    /**
      * Resets sold tickets to each city
      */
     fun resetStations() {
@@ -53,7 +66,7 @@ object Stations {
      */
     fun saveCities() {
         openFile(FILENAME).saveCities(cities)
-        DEBUG("[CoinDeposit::saveCoins] saved cities)")
+        DEBUG("[CoinDeposit::saveCoins] saved cities = $cities")
     }
 
 }
