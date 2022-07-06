@@ -30,6 +30,246 @@ TIMESCALE "1ns";
 
 TIMINGDATA
 
+ARCDATA
+pos_CoinInserted__altera_reserved_tck__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.333");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.333");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_Maintenance__altera_reserved_tck__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.723");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.723");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_altera_reserved_tdi__altera_reserved_tck__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.590");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.590");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_altera_reserved_tms__altera_reserved_tck__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("5.416");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("5.416");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_coins[0]__altera_reserved_tck__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.519");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.519");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_coins[1]__altera_reserved_tck__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.677");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.677");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_coins[2]__altera_reserved_tck__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.112");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.112");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_collect__altera_reserved_tck__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("1.305");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("1.305");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CoinInserted__altera_reserved_tck__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.935");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.935");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_Maintenance__altera_reserved_tck__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.309");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.309");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_altera_reserved_tdi__altera_reserved_tck__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("0.788");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("0.788");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_altera_reserved_tms__altera_reserved_tck__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("0.744");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("0.744");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_coins[0]__altera_reserved_tck__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.115");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.115");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_coins[1]__altera_reserved_tck__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.267");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.267");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_coins[2]__altera_reserved_tck__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.679");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.679");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_collect__altera_reserved_tck__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-0.908");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-0.908");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_altera_reserved_tck__accept__delay:
+CELL_RISE( scalar ) {
+VALUES ("6.591");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("6.591");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_altera_reserved_tck__altera_reserved_tdo__delay:
+CELL_RISE( scalar ) {
+VALUES ("10.599");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("10.599");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_altera_reserved_tck__collect_coin__delay:
+CELL_RISE( scalar ) {
+VALUES ("6.585");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("6.585");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_altera_reserved_tck__eject__delay:
+CELL_RISE( scalar ) {
+VALUES ("6.318");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("6.318");
+}
+
+ENDARCDATA
+
 ENDTIMINGDATA
 
 ENDMODELDATA

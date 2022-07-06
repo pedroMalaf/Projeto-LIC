@@ -17,7 +17,9 @@ ENTITY ticket_machine IS
 		KEYPAD_COL : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
 		coins : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
 		CoinInserted : IN STD_LOGIC;
-		Maintenance : IN STD_LOGIC
+		Maintenance : IN STD_LOGIC;
+
+		accept, collect_coin, eject: OUT STD_LOGIC
 	);
 END ticket_machine;
 
@@ -90,7 +92,10 @@ BEGIN
 		outputPort(0) => TXCLK_s,
 		outputPort(1) => not_ss_s,
 		outputPort(2) => clk_s,
-		outputPort(3) => sdx_s
+		outputPort(3) => sdx_s,
+		outputPort(4) => accept,
+		outputPort(5) => collect_coin,
+		outputPort(6) => eject
 	);
 
 	u_ios : IOS

@@ -13,7 +13,10 @@ set_location_assignment PIN_B12 -to CoinInserted #SW[5]
 ###########################################
 # LEDS
 ###########################################
-set_location_assignment PIN_A8 -to Prt  # LEDR[0]
+set_location_assignment PIN_A8 -to Prt  	# LEDR[0]
+set_location_assignment PIN_A9 -to accept	# LEDR[1]
+set_location_assignment PIN_A10 -to collect_coin # LEDR[2]
+set_location_assignment PIN_B10 -to eject	# LEDR[3]
 
 
 ###########################################
